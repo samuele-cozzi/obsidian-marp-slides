@@ -1,4 +1,4 @@
-import { App, Editor, MarkdownView, Modal, Notice, Plugin, PluginSettingTab, Setting } from 'obsidian';
+import { App, Editor, MarkdownView, Modal, Notice, Plugin, PluginSettingTab, Setting, TAbstractFile } from 'obsidian';
 
 import { MARP_PREVIEW_VIEW, MarpPreviewView } from './views/marpPreviewView';
 
@@ -14,6 +14,8 @@ const DEFAULT_SETTINGS: MarpSlidesSettings = {
 
 export default class MarpSlides extends Plugin {
 	settings: MarpSlidesSettings;
+
+	private target: TAbstractFile;
 
 	async onload() {
 		await this.loadSettings();
@@ -116,18 +118,20 @@ export default class MarpSlides extends Plugin {
 
 	async showView() {
 		const targetDocument = this.app.workspace.getActiveFile();
+		const targetView = this.app.workspace.getActiveViewOfType(MarkdownView);
 
 		if (!targetDocument) {
 			return;
 		}
 
 		console.log(targetDocument);
+		console.log(targetView?.data);
 
-		// if (targetDocument == this.target && this.app.workspace.getLeavesOfType(REVEAL_PREVIEW_VIEW).length > 0) {
-		// 	return;
-		// }
+		if (targetDocument == this.target && this.app.workspace.getLeavesOfType(MARP_PREVIEW_VIEW).length > 0) {
+			return;
+		}
 
-		// this.target = targetDocument;
+		this.target = targetDocument;
 		await this.activateView();
 
 		// const url = this.revealServer.getUrl();
