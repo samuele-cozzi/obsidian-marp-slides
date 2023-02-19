@@ -1,11 +1,11 @@
 {
-	"id": "obsidian-sample-plugin",
-	"name": "Sample Plugin",
+	"id": "obsidian-marp-slides",
+	"name": "Marp Slides",
 	"version": "1.0.0",
 	"minAppVersion": "0.15.0",
-	"description": "This is a sample plugin for Obsidian. This plugin demonstrates some of the capabilities of the Obsidian API.",
+	"description": "Create markdown-based reveal.js presentations in Obsidian",
 	"author": "Obsidian",
-	"authorUrl": "https://obsidian.md",
+	"authorUrl": "https://samuele-cozzi.web.app/",
 	"fundingUrl": "https://obsidian.md/pricing",
 	"isDesktopOnly": false
 }
