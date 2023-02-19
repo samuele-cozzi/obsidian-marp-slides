@@ -29,6 +29,8 @@ export class MarpPreviewView extends ItemView  {
 
     
     displayView() {
+        console.log("Display View");
+
         this.contentEl.empty();
         this.containerEl.innerHTML = "<div>Hello Word!</div>"
         //this.contentEl.createDiv({ text: "hello word!" })
