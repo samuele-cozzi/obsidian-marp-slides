@@ -18,20 +18,27 @@ export class MarpPreviewView extends ItemView  {
     async onOpen() {
         console.log("Marp Preview onOpen View");
 
-        const container = this.containerEl.children[1];
-        container.empty();
-        container.createEl("h4", { text: "Example view" });
+        // const container = this.containerEl.children[1];
+        // container.empty();
+        // container.createEl("h4", { text: "Example view" });
     }
 
     async onClose() {
-    // Nothing to clean up.
+        console.log("Marp Preview onClose View");
+        // Nothing to clean up.
+    }
+
+    async onChange() {
+        console.log("Marp Preview onChange View");
+        // Nothing to clean up.
     }
     
-    displayView() {
-        console.log("Display View");
+    displaySlides() {
+        console.log("Marp Preview Display Slides");
 
-        this.contentEl.empty();
-        this.containerEl.innerHTML = "<div>Hello Word!</div>"
+        const container = this.containerEl.children[1];
+        container.empty();
+        container.innerHTML = "<div>Hello Word!</div>";
         //this.contentEl.createDiv({ text: "hello word!" })
 
 		// const viewContent = this.containerEl.children[1];

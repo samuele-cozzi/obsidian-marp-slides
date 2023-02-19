@@ -24,7 +24,7 @@ export default class MarpSlides extends Plugin {
 		);
 
 		const ribbonIconEl = this.addRibbonIcon('slides', 'Show Slide Preview', async () => {
-			await this.activateView();
+			await this.showView();
 		});
 		
 		// // This creates an icon in the left ribbon.
@@ -137,11 +137,7 @@ export default class MarpSlides extends Plugin {
 		// this.showMotm();
 
 		const instance = this.getViewInstance();
-		instance.displayView();
-	}
-
-	private async openUrl(url: URL) {
-		
+		instance.displaySlides();
 	}
 
 	getViewInstance() : MarpPreviewView {
