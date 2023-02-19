@@ -1,5 +1,7 @@
 import { App, Editor, MarkdownView, Modal, Notice, Plugin, PluginSettingTab, Setting } from 'obsidian';
 
+import { MARP_PREVIEW_VIEW } from './src/views/marpPreviewView';
+
 // Remember to rename these classes and interfaces!
 
 interface MarpSlidesSettings {
@@ -16,8 +18,6 @@ export default class MarpSlides extends Plugin {
 	async onload() {
 		await this.loadSettings();
 
-		
-
 		const ribbonIconEl = this.addRibbonIcon('slides', 'Show Slide Preview', async () => {
 			await this.showView();
 		});
@@ -31,7 +31,9 @@ export default class MarpSlides extends Plugin {
 		// // Perform additional things with the ribbon
 		//ribbonIconEl.addClass('my-plugin-ribbon-class');
 
-		
+
+
+
 		// This adds a simple command that can be triggered anywhere
 		this.addCommand({
 			id: 'open-sample-modal-simple',
@@ -83,7 +85,12 @@ export default class MarpSlides extends Plugin {
 	}
 
 	onunload() {
+		const instance = this.getViewInstance();
 
+		if (instance) {
+			this.app.workspace.detachLeavesOfType(MARP_PREVIEW_VIEW);
+			//instance.onClose();
+		}
 	}
 
 	async loadSettings() {
@@ -108,13 +115,34 @@ export default class MarpSlides extends Plugin {
 		// }
 
 		// this.target = targetDocument;
-		// await this.activateView();
+		await this.activateView();
 
 		// const url = this.revealServer.getUrl();
 		// url.pathname = this.fixedEncodeURIComponent(this.target.path);
 
 		// this.openUrl(url);
 		// this.showMotm();
+	}
+
+	async activateView() {
+		this.app.workspace.detachLeavesOfType(MARP_PREVIEW_VIEW);
+
+		await this.app.workspace.getLeaf("split").setViewState({
+			type: MARP_PREVIEW_VIEW,
+			active: false,
+		});
+
+		this.app.workspace.revealLeaf(this.app.workspace.getLeavesOfType(MARP_PREVIEW_VIEW)[0]);
+	}
+
+	getViewInstance() {//: MarpPreviewView {
+		for (const leaf of this.app.workspace.getLeavesOfType(MARP_PREVIEW_VIEW)) {
+			const view = leaf.view;
+			//if (view instanceof MarpPreviewView) {
+				return view;
+			//}
+		}
+		return null;
 	}
 }
 
