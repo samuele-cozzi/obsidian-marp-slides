@@ -1,6 +1,6 @@
 import { App, Editor, MarkdownView, Modal, Notice, Plugin, PluginSettingTab, Setting } from 'obsidian';
 
-import { MARP_PREVIEW_VIEW } from './src/views/marpPreviewView';
+import { MARP_PREVIEW_VIEW } from './views/marpPreviewView';
 
 // Remember to rename these classes and interfaces!
 
@@ -138,6 +138,7 @@ export default class MarpSlides extends Plugin {
 	getViewInstance() {//: MarpPreviewView {
 		for (const leaf of this.app.workspace.getLeavesOfType(MARP_PREVIEW_VIEW)) {
 			const view = leaf.view;
+			console.log(view);
 			//if (view instanceof MarpPreviewView) {
 				return view;
 			//}

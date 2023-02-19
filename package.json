@@ -2,7 +2,7 @@
 	"name": "obsidian-marp-slides",
 	"version": "1.0.0",
 	"description": "Create markdown-based reveal.js presentations in Obsidian ",
-	"main": "main.js",
+	"main": "src/main.js",
 	"scripts": {
 		"dev": "node esbuild.config.mjs",
 		"build": "tsc -noEmit -skipLibCheck && node esbuild.config.mjs production",
