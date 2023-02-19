@@ -16,18 +16,22 @@ export default class MarpSlides extends Plugin {
 	async onload() {
 		await this.loadSettings();
 
-		// This creates an icon in the left ribbon.
-		const ribbonIconEl = this.addRibbonIcon('dice', 'Sample Plugin', (evt: MouseEvent) => {
-			// Called when the user clicks the icon.
-			new Notice('This is a notice!');
+		
+
+		const ribbonIconEl = this.addRibbonIcon('slides', 'Show Slide Preview', async () => {
+			await this.showView();
 		});
-		// Perform additional things with the ribbon
-		ribbonIconEl.addClass('my-plugin-ribbon-class');
+		
+		// // This creates an icon in the left ribbon.
+		// const ribbonIconEl = this.addRibbonIcon('dice', 'Sample Plugin', (evt: MouseEvent) => {
+		// 	// Called when the user clicks the icon.
+		// 	new Notice('This is a notice!');
+		// });
 
-		// This adds a status bar item to the bottom of the app. Does not work on mobile apps.
-		const statusBarItemEl = this.addStatusBarItem();
-		statusBarItemEl.setText('Status Bar Text');
+		// // Perform additional things with the ribbon
+		//ribbonIconEl.addClass('my-plugin-ribbon-class');
 
+		
 		// This adds a simple command that can be triggered anywhere
 		this.addCommand({
 			id: 'open-sample-modal-simple',
@@ -88,6 +92,29 @@ export default class MarpSlides extends Plugin {
 
 	async saveSettings() {
 		await this.saveData(this.settings);
+	}
+
+	async showView() {
+		const targetDocument = this.app.workspace.getActiveFile();
+
+		if (!targetDocument) {
+			return;
+		}
+
+		console.log(targetDocument);
+
+		// if (targetDocument == this.target && this.app.workspace.getLeavesOfType(REVEAL_PREVIEW_VIEW).length > 0) {
+		// 	return;
+		// }
+
+		// this.target = targetDocument;
+		// await this.activateView();
+
+		// const url = this.revealServer.getUrl();
+		// url.pathname = this.fixedEncodeURIComponent(this.target.path);
+
+		// this.openUrl(url);
+		// this.showMotm();
 	}
 }
 
