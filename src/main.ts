@@ -1,6 +1,6 @@
 import { App, Editor, MarkdownView, Modal, Notice, Plugin, PluginSettingTab, Setting } from 'obsidian';
 
-import { MARP_PREVIEW_VIEW } from './views/marpPreviewView';
+import { MARP_PREVIEW_VIEW, MarpPreviewView } from './views/marpPreviewView';
 
 // Remember to rename these classes and interfaces!
 
@@ -17,6 +17,11 @@ export default class MarpSlides extends Plugin {
 
 	async onload() {
 		await this.loadSettings();
+
+		this.registerView(
+			MARP_PREVIEW_VIEW,
+			(leaf) => new MarpPreviewView(leaf)
+		);
 
 		const ribbonIconEl = this.addRibbonIcon('slides', 'Show Slide Preview', async () => {
 			await this.showView();
@@ -85,12 +90,7 @@ export default class MarpSlides extends Plugin {
 	}
 
 	onunload() {
-		const instance = this.getViewInstance();
-
-		if (instance) {
-			this.app.workspace.detachLeavesOfType(MARP_PREVIEW_VIEW);
-			//instance.onClose();
-		}
+		this.app.workspace.detachLeavesOfType(MARP_PREVIEW_VIEW);
 	}
 
 	async loadSettings() {
@@ -122,6 +122,9 @@ export default class MarpSlides extends Plugin {
 
 		// this.openUrl(url);
 		// this.showMotm();
+
+		const instance = this.getViewInstance();
+		instance.displayView();
 	}
 
 	async activateView() {
@@ -129,21 +132,25 @@ export default class MarpSlides extends Plugin {
 
 		await this.app.workspace.getLeaf("split").setViewState({
 			type: MARP_PREVIEW_VIEW,
-			active: false,
+			active: true,
 		});
 
 		this.app.workspace.revealLeaf(this.app.workspace.getLeavesOfType(MARP_PREVIEW_VIEW)[0]);
 	}
 
-	getViewInstance() {//: MarpPreviewView {
+	private async openUrl(url: URL) {
+		
+	}
+
+	getViewInstance() : MarpPreviewView {
 		for (const leaf of this.app.workspace.getLeavesOfType(MARP_PREVIEW_VIEW)) {
 			const view = leaf.view;
 			console.log(view);
-			//if (view instanceof MarpPreviewView) {
+			if (view instanceof MarpPreviewView) {
 				return view;
-			//}
+			}
 		}
-		return null;
+		return new MarpPreviewView(this.app.workspace.getLeavesOfType(MARP_PREVIEW_VIEW)[0]);
 	}
 }
 
