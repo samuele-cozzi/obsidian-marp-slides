@@ -3,30 +3,29 @@ import { ItemView, MarkdownView, Menu, WorkspaceLeaf } from 'obsidian';
 export const MARP_PREVIEW_VIEW = 'marp-preview-view';
 
 export class MarpPreviewView extends ItemView  {
-    getDisplayText(): string {
-        return "Slide Preview";
+    constructor(leaf: WorkspaceLeaf) {
+        super(leaf);
     }
-    
-    // getViewData() {
-    //     return this.;
-    // }
-
-    // setViewData(data: string, clear: boolean) {
-    //     this.data = data;
-    // }
-
-    // clear() {
-    //     this.data = "";
-    // }
 
     getViewType() {
         return MARP_PREVIEW_VIEW;
     }
 
-    onChange() {
-        this.displayView();
+    getDisplayText() {
+        return "Example view";
     }
 
+    async onOpen() {
+        console.log("Marp Preview onOpen View");
+
+        const container = this.containerEl.children[1];
+        container.empty();
+        container.createEl("h4", { text: "Example view" });
+    }
+
+    async onClose() {
+    // Nothing to clean up.
+    }
     
     displayView() {
         console.log("Display View");

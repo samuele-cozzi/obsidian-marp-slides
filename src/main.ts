@@ -24,7 +24,7 @@ export default class MarpSlides extends Plugin {
 		);
 
 		const ribbonIconEl = this.addRibbonIcon('slides', 'Show Slide Preview', async () => {
-			await this.showView();
+			await this.activateView();
 		});
 		
 		// // This creates an icon in the left ribbon.
@@ -101,6 +101,19 @@ export default class MarpSlides extends Plugin {
 		await this.saveData(this.settings);
 	}
 
+	async activateView() {
+		this.app.workspace.detachLeavesOfType(MARP_PREVIEW_VIEW);
+	
+		await this.app.workspace.getRightLeaf(false).setViewState({
+		  type: MARP_PREVIEW_VIEW,
+		  active: true,
+		});
+	
+		this.app.workspace.revealLeaf(
+		  this.app.workspace.getLeavesOfType(MARP_PREVIEW_VIEW)[0]
+		);
+	  }
+
 	async showView() {
 		const targetDocument = this.app.workspace.getActiveFile();
 
@@ -125,17 +138,6 @@ export default class MarpSlides extends Plugin {
 
 		const instance = this.getViewInstance();
 		instance.displayView();
-	}
-
-	async activateView() {
-		this.app.workspace.detachLeavesOfType(MARP_PREVIEW_VIEW);
-
-		await this.app.workspace.getLeaf("split").setViewState({
-			type: MARP_PREVIEW_VIEW,
-			active: true,
-		});
-
-		this.app.workspace.revealLeaf(this.app.workspace.getLeavesOfType(MARP_PREVIEW_VIEW)[0]);
 	}
 
 	private async openUrl(url: URL) {
