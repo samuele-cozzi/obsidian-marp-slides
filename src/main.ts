@@ -110,6 +110,10 @@ export default class MarpSlides extends Plugin {
 	async showView() {
 		const markdownView = this.app.workspace.getActiveViewOfType(MarkdownView);
 		console.log(markdownView?.data);
+		
+		const file = this.app.workspace.getActiveFile();
+		const basePath = '${file?.vault.adapter.getResourcePath()}/${file?.parent.path}';
+		console.log(basePath);
 
 		if (!markdownView) {
 			return;
