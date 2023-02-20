@@ -39,7 +39,7 @@ export class MarpPreviewView extends ItemView  {
     displaySlides(basePath: string, markdownText: string) {
         console.log("Marp Preview Display Slides");
         
-        const baseHref = "basePath";
+        const baseHref = basePath;
         const container = this.containerEl.children[1];
         container.empty();
         
