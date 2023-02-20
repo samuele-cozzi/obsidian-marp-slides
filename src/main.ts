@@ -129,7 +129,7 @@ export default class MarpSlides extends Plugin {
 		this.markdownViewText = markdownView.data;
 		
 		const instance = await this.activateView();
-		instance.displaySlides(this.markdownViewText);
+		instance.displaySlides(basePath, this.markdownViewText);
 
 		// const url = this.revealServer.getUrl();
 		// url.pathname = this.fixedEncodeURIComponent(this.target.path);

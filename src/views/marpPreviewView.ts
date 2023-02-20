@@ -36,10 +36,10 @@ export class MarpPreviewView extends ItemView  {
         // Nothing to clean up.
     }
     
-    displaySlides(markdownText: string) {
+    displaySlides(basePath: string, markdownText: string) {
         console.log("Marp Preview Display Slides");
         
-        const baseHref = "app://local/C:/Users/c335027/OneDrive%20-%20Unicredit/knowledge-base/0.Triage/";
+        const baseHref = "basePath";
         const container = this.containerEl.children[1];
         container.empty();
         
