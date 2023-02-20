@@ -1,4 +1,4 @@
-import { App, Editor, MarkdownView, Modal, Notice, Plugin, PluginSettingTab, Setting, TAbstractFile } from 'obsidian';
+import { App, Editor, MarkdownView, Modal, Notice, Plugin, PluginSettingTab, Setting } from 'obsidian';
 
 import { MARP_PREVIEW_VIEW, MarpPreviewView } from './views/marpPreviewView';
 
@@ -15,9 +15,10 @@ const DEFAULT_SETTINGS: MarpSlidesSettings = {
 export default class MarpSlides extends Plugin {
 	settings: MarpSlidesSettings;
 
-	private target: TAbstractFile;
+	private markdownViewText : string;
 
 	async onload() {
+		console.log("marp slides - start");
 		await this.loadSettings();
 
 		this.registerView(
@@ -46,7 +47,8 @@ export default class MarpSlides extends Plugin {
 			id: 'open-sample-modal-simple',
 			name: 'Open sample modal (simple)',
 			callback: () => {
-				new MarpSlidesModal(this.app).open();
+				this.showView();
+				//new MarpSlidesModal(this.app).open();
 			}
 		});
 		// This adds an editor command that can perform some operation on the current editor instance
@@ -89,6 +91,8 @@ export default class MarpSlides extends Plugin {
 
 		// When registering intervals, this function will automatically clear the interval when the plugin is disabled.
 		//this.registerInterval(window.setInterval(() => console.log('setInterval'), 5 * 60 * 1000));
+
+		console.log("marp slides - end");
 	}
 
 	onunload() {
@@ -103,36 +107,22 @@ export default class MarpSlides extends Plugin {
 		await this.saveData(this.settings);
 	}
 
-	async activateView() {
-		this.app.workspace.detachLeavesOfType(MARP_PREVIEW_VIEW);
-	
-		await this.app.workspace.getRightLeaf(false).setViewState({
-		  type: MARP_PREVIEW_VIEW,
-		  active: true,
-		});
-	
-		this.app.workspace.revealLeaf(
-		  this.app.workspace.getLeavesOfType(MARP_PREVIEW_VIEW)[0]
-		);
-	  }
-
 	async showView() {
-		const targetDocument = this.app.workspace.getActiveFile();
-		const targetView = this.app.workspace.getActiveViewOfType(MarkdownView);
+		const markdownView = this.app.workspace.getActiveViewOfType(MarkdownView);
+		console.log(markdownView?.data);
 
-		if (!targetDocument) {
+		if (!markdownView) {
 			return;
 		}
 
-		console.log(targetDocument);
-		console.log(targetView?.data);
-
-		if (targetDocument == this.target && this.app.workspace.getLeavesOfType(MARP_PREVIEW_VIEW).length > 0) {
+		if (markdownView.data == this.markdownViewText && this.app.workspace.getLeavesOfType(MARP_PREVIEW_VIEW).length > 0) {
 			return;
 		}
 
-		this.target = targetDocument;
-		await this.activateView();
+		this.markdownViewText = markdownView.data;
+		
+		const instance = await this.activateView();
+		instance.displaySlides(this.markdownViewText);
 
 		// const url = this.revealServer.getUrl();
 		// url.pathname = this.fixedEncodeURIComponent(this.target.path);
@@ -140,20 +130,48 @@ export default class MarpSlides extends Plugin {
 		// this.openUrl(url);
 		// this.showMotm();
 
-		const instance = this.getViewInstance();
-		instance.displaySlides();
+		//const instance = this.getViewInstance();
 	}
 
-	getViewInstance() : MarpPreviewView {
-		for (const leaf of this.app.workspace.getLeavesOfType(MARP_PREVIEW_VIEW)) {
-			const view = leaf.view;
-			console.log(view);
-			if (view instanceof MarpPreviewView) {
-				return view;
-			}
-		}
-		return new MarpPreviewView(this.app.workspace.getLeavesOfType(MARP_PREVIEW_VIEW)[0]);
+	// async activateView() {
+	// 	this.app.workspace.detachLeavesOfType(MARP_PREVIEW_VIEW);
+	
+	// 	await this.app.workspace.getRightLeaf(false).setViewState({
+	// 	  type: MARP_PREVIEW_VIEW,
+	// 	  active: true,
+	// 	});
+	
+	// 	this.app.workspace.revealLeaf(
+	// 	  this.app.workspace.getLeavesOfType(MARP_PREVIEW_VIEW)[0]
+	// 	);
+	// }
+
+	// getViewInstance() : MarpPreviewView {
+	// 	for (const leaf of this.app.workspace.getLeavesOfType(MARP_PREVIEW_VIEW)) {
+	// 		const view = leaf.view;
+	// 		if (view instanceof MarpPreviewView) {
+	// 			return view;
+	// 		}
+	// 	}
+	// 	return new MarpPreviewView(this.app.workspace.getLeavesOfType(MARP_PREVIEW_VIEW)[0]);
+	// }
+
+	async activateView() : Promise<MarpPreviewView> {
+		this.app.workspace.detachLeavesOfType(MARP_PREVIEW_VIEW);
+	
+		await this.app.workspace.getRightLeaf(false).setViewState({
+		  type: MARP_PREVIEW_VIEW,
+		  active: true,
+		});
+
+		const leaf = this.app.workspace.getLeavesOfType(MARP_PREVIEW_VIEW)[0];
+
+		this.app.workspace.revealLeaf(leaf);
+
+		return leaf.view as MarpPreviewView;
 	}
+
+	
 }
 
 class MarpSlidesModal extends Modal {

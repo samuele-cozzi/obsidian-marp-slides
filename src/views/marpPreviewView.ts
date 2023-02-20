@@ -1,8 +1,11 @@
 import { ItemView, MarkdownView, Menu, WorkspaceLeaf } from 'obsidian';
+import { Marp } from '@marp-team/marp-core'
 
 export const MARP_PREVIEW_VIEW = 'marp-preview-view';
 
 export class MarpPreviewView extends ItemView  {
+    private marp = new Marp();
+
     constructor(leaf: WorkspaceLeaf) {
         super(leaf);
     }
@@ -33,12 +36,26 @@ export class MarpPreviewView extends ItemView  {
         // Nothing to clean up.
     }
     
-    displaySlides() {
+    displaySlides(markdownText: string) {
         console.log("Marp Preview Display Slides");
-
+        
+        const baseHref = "app://local/C:/Users/c335027/OneDrive%20-%20Unicredit/knowledge-base/0.Triage/";
         const container = this.containerEl.children[1];
         container.empty();
-        container.innerHTML = "<div>Hello Word!</div>";
+        
+        const { html, css } = this.marp.render(markdownText);
+        console.log(html);
+        const htmlFile = `
+            <!DOCTYPE html>
+            <html>
+            <head>
+            <base href="${baseHref}"></base>
+            <style>${css}</style>
+            </head>
+            <body>${html}</body>
+            </html>
+            `
+        container.innerHTML = htmlFile;
         //this.contentEl.createDiv({ text: "hello word!" })
 
 		// const viewContent = this.containerEl.children[1];
