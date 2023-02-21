@@ -1,6 +1,7 @@
-import { App, Editor, MarkdownView, Modal, Notice, Plugin, PluginSettingTab, Setting } from 'obsidian';
+import { App, Editor, MarkdownView, Modal, Notice, Plugin, PluginSettingTab, FileSystemAdapter, Setting } from 'obsidian';
 
 import { MARP_PREVIEW_VIEW, MarpPreviewView } from './views/marpPreviewView';
+import { MarpExport } from './utilities/marpExport';
 
 // Remember to rename these classes and interfaces!
 
@@ -39,18 +40,43 @@ export default class MarpSlides extends Plugin {
 		// // Perform additional things with the ribbon
 		//ribbonIconEl.addClass('my-plugin-ribbon-class');
 
+		this.addCommand({
+			id: 'marp-slides-preview',
+			name: 'Slide Preview',
+			callback: () => {
+				this.showView();
+			}
+		});
 
-
+		this.addCommand({
+			id: 'marp-slides-preview',
+			name: 'Slide Preview',
+			callback: () => {
+				this.showView();
+			}
+		});
 
 		// This adds a simple command that can be triggered anywhere
 		this.addCommand({
-			id: 'open-sample-modal-simple',
-			name: 'Open sample modal (simple)',
-			callback: () => {
-				this.showView();
+			id: 'marp-export-pdf',
+			name: 'Export PDF',
+			callback: async () => {
+				console.log("export pdf - start");
+				const file = this.app.workspace.getActiveFile();
+				const basePath = (file?.vault.adapter as FileSystemAdapter).getBasePath();
+				console.log(basePath);
+				console.log(file);
+
+				
+				const marpCli = new MarpExport();
+				//let filepath = basePath + file?.name;
+				//await marpCli.exportPdf("C:\\Users\\samue\\code\\knowledge-base\\CICDSlides1.md");
+				await marpCli.exportPdf(`${basePath}\\${file?.path.replace(/\//g,"\\")}`);
 				//new MarpSlidesModal(this.app).open();
+				console.log("export pdf - end");
 			}
 		});
+
 		// This adds an editor command that can perform some operation on the current editor instance
 		this.addCommand({
 			id: 'sample-editor-command',
@@ -60,25 +86,7 @@ export default class MarpSlides extends Plugin {
 				editor.replaceSelection('Sample Editor Command');
 			}
 		});
-		// This adds a complex command that can check whether the current state of the app allows execution of the command
-		this.addCommand({
-			id: 'open-sample-modal-complex',
-			name: 'Open sample modal (complex)',
-			checkCallback: (checking: boolean) => {
-				// Conditions to check
-				const markdownView = this.app.workspace.getActiveViewOfType(MarkdownView);
-				if (markdownView) {
-					// If checking is true, we're simply "checking" if the command can be run.
-					// If checking is false, then we want to actually perform the operation.
-					if (!checking) {
-						new MarpSlidesModal(this.app).open();
-					}
-
-					// This command will only show up in Command Palette when the check function returns true
-					return true;
-				}
-			}
-		});
+		
 
 		// This adds a settings tab so the user can configure various aspects of the plugin
 		this.addSettingTab(new MarpSlidesSettingTab(this.app, this));
@@ -130,16 +138,21 @@ export default class MarpSlides extends Plugin {
 		
 		const instance = await this.activateView();
 		instance.displaySlides(basePath, this.markdownViewText);
-
-		// const url = this.revealServer.getUrl();
-		// url.pathname = this.fixedEncodeURIComponent(this.target.path);
-
-		// this.openUrl(url);
-		// this.showMotm();
-
-		//const instance = this.getViewInstance();
 	}
 
+	getCurrentFileBasePath(){
+		const file = this.app.workspace.getActiveFile();
+		console.log(file);
+		const resourcePath = file?.vault.adapter.getResourcePath("");
+		const rootPath = resourcePath?.substring(0, resourcePath.indexOf("?"))
+		const basePath = `${rootPath}/${file?.parent.path}/`;
+
+		return basePath;
+	}
+
+	async exportFile(){
+		
+	}
 	// async activateView() {
 	// 	this.app.workspace.detachLeavesOfType(MARP_PREVIEW_VIEW);
 	

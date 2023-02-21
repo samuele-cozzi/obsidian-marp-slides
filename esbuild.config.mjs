@@ -20,6 +20,8 @@ const context = await esbuild.context({
 	external: [
 		"obsidian",
 		"electron",
+		"chromium-bidi/lib/cjs/bidiMapper/bidiMapper.js",
+		"emitter",
 		"@codemirror/autocomplete",
 		"@codemirror/collab",
 		"@codemirror/commands",
@@ -30,7 +32,7 @@ const context = await esbuild.context({
 		"@codemirror/view",
 		"@lezer/common",
 		"@lezer/highlight",
-		"@lezer/lr",
+		"@lezer/lr",		
 		...builtins],
 	format: "cjs",
 	target: "es2018",
