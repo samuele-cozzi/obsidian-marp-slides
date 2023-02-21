@@ -45,7 +45,7 @@ export class MarpPreviewView extends ItemView  {
         
         var { html, css } = this.marp.render(markdownText);
         console.log(html);
-        html = html.replace(/background-image:url\(/g, `background-image:url("${baseHref}/`);
+        html = html.replace(/background-image:url\(&quot;/g, `background-image:url(&quot;${baseHref}/`);
         const htmlFile = `
             <!DOCTYPE html>
             <html>
