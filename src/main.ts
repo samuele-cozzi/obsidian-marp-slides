@@ -115,7 +115,7 @@ export default class MarpSlides extends Plugin {
 		console.log(file);
 		const resourcePath = file?.vault.adapter.getResourcePath("");
 		const rootPath = resourcePath?.substring(0, resourcePath.indexOf("?"))
-		const basePath = `${rootPath}/${file?.parent.path}`;
+		const basePath = `${rootPath}/${file?.parent.path}/`;
 		console.log(basePath);
 
 		if (!markdownView) {
