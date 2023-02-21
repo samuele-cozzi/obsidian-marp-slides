@@ -6,10 +6,42 @@ export class MarpCLIError extends Error {}
 
 export class MarpExport {
 
+    async exportHtml(filePath: string | undefined) {
+        console.log(filePath);
+        if (filePath !== undefined){
+            let argv: string[] = [filePath,'--allow-local-files'];
+            await this.runMarpCli(argv);
+        } 
+    }
+    
     async exportPdf(filePath: string | undefined) {
         console.log(filePath);
         if (filePath !== undefined){
+            let argv: string[] = [filePath, '--pdf','--allow-local-files'];
+            await this.runMarpCli(argv);
+        } 
+    }
+
+    async exportPdfWithNotes(filePath: string | undefined) {
+        console.log(filePath);
+        if (filePath !== undefined){
             let argv: string[] = [filePath, '--pdf','--pdf-notes','--pdf-outlines','--allow-local-files'];
+            await this.runMarpCli(argv);
+        } 
+    }
+
+    async exportPptx(filePath: string | undefined) {
+        console.log(filePath);
+        if (filePath !== undefined){
+            let argv: string[] = [filePath, '--pptx','--allow-local-files'];
+            await this.runMarpCli(argv);
+        } 
+    }
+
+    async exportPng(filePath: string | undefined) {
+        console.log(filePath);
+        if (filePath !== undefined){
+            let argv: string[] = [filePath, '--image', 'png','--allow-local-files'];
             await this.runMarpCli(argv);
         } 
     }

@@ -1,4 +1,4 @@
-import { App, Editor, MarkdownView, Modal, Notice, Plugin, PluginSettingTab, FileSystemAdapter, Setting } from 'obsidian';
+import { App, Editor, MarkdownView, Modal, Notice, Plugin, PluginSettingTab, FileSystemAdapter, Setting, TFile } from 'obsidian';
 
 import { MARP_PREVIEW_VIEW, MarpPreviewView } from './views/marpPreviewView';
 import { MarpExport } from './utilities/marpExport';
@@ -19,7 +19,6 @@ export default class MarpSlides extends Plugin {
 	private markdownViewText : string;
 
 	async onload() {
-		console.log("marp slides - start");
 		await this.loadSettings();
 
 		this.registerView(
@@ -47,45 +46,72 @@ export default class MarpSlides extends Plugin {
 				this.showView();
 			}
 		});
-
-		this.addCommand({
-			id: 'marp-slides-preview',
-			name: 'Slide Preview',
-			callback: () => {
-				this.showView();
-			}
-		});
-
+		
 		// This adds a simple command that can be triggered anywhere
 		this.addCommand({
 			id: 'marp-export-pdf',
 			name: 'Export PDF',
 			callback: async () => {
-				console.log("export pdf - start");
-				const file = this.app.workspace.getActiveFile();
-				const basePath = (file?.vault.adapter as FileSystemAdapter).getBasePath();
-				console.log(basePath);
-				console.log(file);
-
+				const file = this.getCurrentFilePath();
 				
 				const marpCli = new MarpExport();
-				//let filepath = basePath + file?.name;
-				//await marpCli.exportPdf("C:\\Users\\samue\\code\\knowledge-base\\CICDSlides1.md");
-				await marpCli.exportPdf(`${basePath}\\${file?.path.replace(/\//g,"\\")}`);
-				//new MarpSlidesModal(this.app).open();
-				console.log("export pdf - end");
+				await marpCli.exportPdf(file);
+			}
+		});
+
+		this.addCommand({
+			id: 'marp-export-pdf-notes',
+			name: 'Export PDF with Notes',
+			callback: async () => {
+				const file = this.getCurrentFilePath();
+				
+				const marpCli = new MarpExport();
+				await marpCli.exportPdfWithNotes(file);
+			}
+		});
+
+		this.addCommand({
+			id: 'marp-export-html',
+			name: 'Export HTML',
+			callback: async () => {
+				const file = this.getCurrentFilePath();
+				
+				const marpCli = new MarpExport();
+				await marpCli.exportHtml(file);
+			}
+		});
+
+		this.addCommand({
+			id: 'marp-export-pptx',
+			name: 'Export PPTX',
+			callback: async () => {
+				const file = this.getCurrentFilePath();
+				
+				const marpCli = new MarpExport();
+				await marpCli.exportPptx(file);
+			}
+		});
+
+		this.addCommand({
+			id: 'marp-export-png',
+			name: 'Export PNG',
+			callback: async () => {
+				const file = this.getCurrentFilePath();
+				
+				const marpCli = new MarpExport();
+				await marpCli.exportPng(file);
 			}
 		});
 
 		// This adds an editor command that can perform some operation on the current editor instance
-		this.addCommand({
-			id: 'sample-editor-command',
-			name: 'Sample editor command',
-			editorCallback: (editor: Editor, view: MarkdownView) => {
-				console.log(editor.getSelection());
-				editor.replaceSelection('Sample Editor Command');
-			}
-		});
+		// this.addCommand({
+		// 	id: 'sample-editor-command',
+		// 	name: 'Sample editor command',
+		// 	editorCallback: (editor: Editor, view: MarkdownView) => {
+		// 		console.log(editor.getSelection());
+		// 		editor.replaceSelection('Sample Editor Command');
+		// 	}
+		// });
 		
 
 		// This adds a settings tab so the user can configure various aspects of the plugin
@@ -99,8 +125,6 @@ export default class MarpSlides extends Plugin {
 
 		// When registering intervals, this function will automatically clear the interval when the plugin is disabled.
 		//this.registerInterval(window.setInterval(() => console.log('setInterval'), 5 * 60 * 1000));
-
-		console.log("marp slides - end");
 	}
 
 	onunload() {
@@ -117,14 +141,7 @@ export default class MarpSlides extends Plugin {
 
 	async showView() {
 		const markdownView = this.app.workspace.getActiveViewOfType(MarkdownView);
-		console.log(markdownView?.data);
-		
-		const file = this.app.workspace.getActiveFile();
-		console.log(file);
-		const resourcePath = file?.vault.adapter.getResourcePath("");
-		const rootPath = resourcePath?.substring(0, resourcePath.indexOf("?"))
-		const basePath = `${rootPath}/${file?.parent.path}/`;
-		console.log(basePath);
+		//console.log(markdownView?.data);
 
 		if (!markdownView) {
 			return;
@@ -133,21 +150,44 @@ export default class MarpSlides extends Plugin {
 		if (markdownView.data == this.markdownViewText && this.app.workspace.getLeavesOfType(MARP_PREVIEW_VIEW).length > 0) {
 			return;
 		}
+		
+		const file = this.app.workspace.getActiveFile();
+		
+		if(!file){
+			return;
+		}		
 
 		this.markdownViewText = markdownView.data;
 		
 		const instance = await this.activateView();
-		instance.displaySlides(basePath, this.markdownViewText);
+		instance.displaySlides(this.getCurrentFileBasePath(file), this.markdownViewText);
 	}
 
-	getCurrentFileBasePath(){
-		const file = this.app.workspace.getActiveFile();
-		console.log(file);
-		const resourcePath = file?.vault.adapter.getResourcePath("");
-		const rootPath = resourcePath?.substring(0, resourcePath.indexOf("?"))
-		const basePath = `${rootPath}/${file?.parent.path}/`;
+	getCurrentFileBasePath(file: TFile){
+		const resourcePath = this.app.vault.adapter.getResourcePath(file.parent.path);
+		let basePath = "";
+		if(file.parent.isRoot()){
+			basePath = `${resourcePath?.substring(0, resourcePath.indexOf("?"))}`;
+		}
+		else
+		{
+			basePath = `${resourcePath?.substring(0, resourcePath.indexOf("?"))}/`;
+		}
+		console.log(basePath);
 
 		return basePath;
+	}
+
+	getCurrentFilePath() {
+		const file = this.app.workspace.getActiveFile();
+		const basePath = (file?.vault.adapter as FileSystemAdapter).getBasePath();
+		console.log(basePath);
+		console.log(file);
+
+		const filePath = `${basePath}\\${file?.path.replace(/\//g,"\\")}`;
+		console.log(filePath);
+		
+		return filePath;
 	}
 
 	async exportFile(){
