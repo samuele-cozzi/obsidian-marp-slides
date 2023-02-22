@@ -1,4 +1,4 @@
-import { ItemView, MarkdownView, Menu, WorkspaceLeaf } from 'obsidian';
+import { ItemView, WorkspaceLeaf } from 'obsidian';
 import { Marp } from '@marp-team/marp-core'
 
 export const MARP_PREVIEW_VIEW = 'marp-preview-view';

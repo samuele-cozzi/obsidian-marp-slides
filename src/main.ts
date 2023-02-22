@@ -55,7 +55,7 @@ export default class MarpSlides extends Plugin {
 				const file = this.getCurrentFilePath();
 				
 				const marpCli = new MarpExport();
-				await marpCli.exportPdf(file);
+				await marpCli.export(file,'pdf');
 			}
 		});
 
@@ -66,7 +66,7 @@ export default class MarpSlides extends Plugin {
 				const file = this.getCurrentFilePath();
 				
 				const marpCli = new MarpExport();
-				await marpCli.exportPdfWithNotes(file);
+				await marpCli.export(file,'pdf-with-notes');
 			}
 		});
 
@@ -77,7 +77,7 @@ export default class MarpSlides extends Plugin {
 				const file = this.getCurrentFilePath();
 				
 				const marpCli = new MarpExport();
-				await marpCli.exportHtml(file);
+				await marpCli.export(file,'html');
 			}
 		});
 
@@ -88,7 +88,7 @@ export default class MarpSlides extends Plugin {
 				const file = this.getCurrentFilePath();
 				
 				const marpCli = new MarpExport();
-				await marpCli.exportPptx(file);
+				await marpCli.export(file,'pptx');
 			}
 		});
 
@@ -99,7 +99,7 @@ export default class MarpSlides extends Plugin {
 				const file = this.getCurrentFilePath();
 				
 				const marpCli = new MarpExport();
-				await marpCli.exportPng(file);
+				await marpCli.export(file,'png');
 			}
 		});
 

@@ -1,51 +1,33 @@
-//import { ItemView, MarkdownView, Menu, WorkspaceLeaf } from 'obsidian';
-import { Marp } from '@marp-team/marp-core'
 import type { marpCli } from '@marp-team/marp-cli'
 
 export class MarpCLIError extends Error {}
 
 export class MarpExport {
 
-    async exportHtml(filePath: string | undefined) {
+    async export(filePath: string | undefined, type: string){
         console.log(filePath);
         if (filePath !== undefined){
             let argv: string[] = [filePath,'--allow-local-files'];
+            switch (type) {
+                case 'pdf':
+                    argv.push('--pdf');
+                    break;
+                case 'pdf-with-notes':
+                    argv.push('--pdf');
+                    argv.push('--pdf-notes');
+                    argv.push('--pdf-outlines');
+                    break;
+                case 'pptx':
+                    argv.push('--pptx');
+                    break;
+                case 'png':
+                    argv.push('--png');
+                    break;
+            }
             await this.runMarpCli(argv);
         } 
-    }
-    
-    async exportPdf(filePath: string | undefined) {
-        console.log(filePath);
-        if (filePath !== undefined){
-            let argv: string[] = [filePath, '--pdf','--allow-local-files'];
-            await this.runMarpCli(argv);
-        } 
-    }
 
-    async exportPdfWithNotes(filePath: string | undefined) {
-        console.log(filePath);
-        if (filePath !== undefined){
-            let argv: string[] = [filePath, '--pdf','--pdf-notes','--pdf-outlines','--allow-local-files'];
-            await this.runMarpCli(argv);
-        } 
     }
-
-    async exportPptx(filePath: string | undefined) {
-        console.log(filePath);
-        if (filePath !== undefined){
-            let argv: string[] = [filePath, '--pptx','--allow-local-files'];
-            await this.runMarpCli(argv);
-        } 
-    }
-
-    async exportPng(filePath: string | undefined) {
-        console.log(filePath);
-        if (filePath !== undefined){
-            let argv: string[] = [filePath, '--image', 'png','--allow-local-files'];
-            await this.runMarpCli(argv);
-        } 
-    }
-
 
     //async exportPdf(argv: string[], opts?: MarpCLIAPIOptions | undefined){
     private async runMarpCli(argv: string[]){
