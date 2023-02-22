@@ -27,24 +27,15 @@ export default class MarpSlides extends Plugin {
 		);
 
 		const ribbonIconEl = this.addRibbonIcon('slides', 'Show Slide Preview', async () => {
-			await this.showView();
+			await this.showPreviewSlide();
 		});
 		ribbonIconEl.addClass('my-plugin-ribbon-class');
 		
-		// // This creates an icon in the left ribbon.
-		// const ribbonIconEl = this.addRibbonIcon('dice', 'Sample Plugin', (evt: MouseEvent) => {
-		// 	// Called when the user clicks the icon.
-		// 	new Notice('This is a notice!');
-		// });
-
-		// // Perform additional things with the ribbon
-		//ribbonIconEl.addClass('my-plugin-ribbon-class');
-
 		this.addCommand({
 			id: 'marp-slides-preview',
 			name: 'Slide Preview',
 			callback: () => {
-				this.showView();
+				this.showPreviewSlide();
 			}
 		});
 		
@@ -140,9 +131,9 @@ export default class MarpSlides extends Plugin {
 		await this.saveData(this.settings);
 	}
 
-	async showView() {
+	async showPreviewSlide(){
+		const group = "group1";
 		const markdownView = this.app.workspace.getActiveViewOfType(MarkdownView);
-		//console.log(markdownView?.data);
 
 		if (!markdownView) {
 			return;
@@ -151,18 +142,38 @@ export default class MarpSlides extends Plugin {
 		if (markdownView.data == this.markdownViewText && this.app.workspace.getLeavesOfType(MARP_PREVIEW_VIEW).length > 0) {
 			return;
 		}
-		
+
+		this.markdownViewText = markdownView.data;
+		markdownView?.leaf.setGroup(group);
+		console.log(markdownView.leaf);
+
 		const file = this.app.workspace.getActiveFile();
 		
 		if(!file){
 			return;
 		}		
 
-		this.markdownViewText = markdownView.data;
-		
-		const instance = await this.activateView();
-		instance.displaySlides(this.getCurrentFileBasePath(file), this.markdownViewText);
+		const slidesView = await this.activateView();
+		slidesView.leaf.setGroup(group);
+		console.log(slidesView.leaf);
+		slidesView.displaySlides(this.getCurrentFileBasePath(file), this.markdownViewText);
 	}
+	
+	async activateView() : Promise<MarpPreviewView> {
+		this.app.workspace.detachLeavesOfType(MARP_PREVIEW_VIEW);
+	
+		await this.app.workspace.getRightLeaf(false).setViewState({
+			type: MARP_PREVIEW_VIEW,
+			active: true,
+		});
+
+		const leaf = this.app.workspace.getLeavesOfType(MARP_PREVIEW_VIEW)[0];
+
+		this.app.workspace.revealLeaf(leaf);
+
+		return leaf.view as MarpPreviewView;
+	}
+
 
 	getCurrentFileBasePath(file: TFile){
 		const resourcePath = this.app.vault.adapter.getResourcePath(file.parent.path);
@@ -190,48 +201,6 @@ export default class MarpSlides extends Plugin {
 		
 		return filePath;
 	}
-
-	async exportFile(){
-		
-	}
-	// async activateView() {
-	// 	this.app.workspace.detachLeavesOfType(MARP_PREVIEW_VIEW);
-	
-	// 	await this.app.workspace.getRightLeaf(false).setViewState({
-	// 	  type: MARP_PREVIEW_VIEW,
-	// 	  active: true,
-	// 	});
-	
-	// 	this.app.workspace.revealLeaf(
-	// 	  this.app.workspace.getLeavesOfType(MARP_PREVIEW_VIEW)[0]
-	// 	);
-	// }
-
-	// getViewInstance() : MarpPreviewView {
-	// 	for (const leaf of this.app.workspace.getLeavesOfType(MARP_PREVIEW_VIEW)) {
-	// 		const view = leaf.view;
-	// 		if (view instanceof MarpPreviewView) {
-	// 			return view;
-	// 		}
-	// 	}
-	// 	return new MarpPreviewView(this.app.workspace.getLeavesOfType(MARP_PREVIEW_VIEW)[0]);
-	// }
-
-	async activateView() : Promise<MarpPreviewView> {
-		this.app.workspace.detachLeavesOfType(MARP_PREVIEW_VIEW);
-	
-		await this.app.workspace.getRightLeaf(false).setViewState({
-			type: MARP_PREVIEW_VIEW,
-			active: true,
-		});
-
-		const leaf = this.app.workspace.getLeavesOfType(MARP_PREVIEW_VIEW)[0];
-
-		this.app.workspace.revealLeaf(leaf);
-
-		return leaf.view as MarpPreviewView;
-	}
-
 	
 }
 
