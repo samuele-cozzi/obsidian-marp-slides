@@ -1,4 +1,4 @@
-import { App, Editor, MarkdownView, Modal, Notice, Plugin, PluginSettingTab, FileSystemAdapter, Setting, TFile } from 'obsidian';
+import { App, MarkdownView, Modal, Plugin, PluginSettingTab, FileSystemAdapter, Setting, TFile } from 'obsidian';
 
 import { MARP_PREVIEW_VIEW, MarpPreviewView } from './views/marpPreviewView';
 import { MarpExport } from './utilities/marpExport';
@@ -29,6 +29,7 @@ export default class MarpSlides extends Plugin {
 		const ribbonIconEl = this.addRibbonIcon('slides', 'Show Slide Preview', async () => {
 			await this.showView();
 		});
+		ribbonIconEl.addClass('my-plugin-ribbon-class');
 		
 		// // This creates an icon in the left ribbon.
 		// const ribbonIconEl = this.addRibbonIcon('dice', 'Sample Plugin', (evt: MouseEvent) => {
@@ -220,8 +221,8 @@ export default class MarpSlides extends Plugin {
 		this.app.workspace.detachLeavesOfType(MARP_PREVIEW_VIEW);
 	
 		await this.app.workspace.getRightLeaf(false).setViewState({
-		  type: MARP_PREVIEW_VIEW,
-		  active: true,
+			type: MARP_PREVIEW_VIEW,
+			active: true,
 		});
 
 		const leaf = this.app.workspace.getLeavesOfType(MARP_PREVIEW_VIEW)[0];
@@ -232,22 +233,6 @@ export default class MarpSlides extends Plugin {
 	}
 
 	
-}
-
-class MarpSlidesModal extends Modal {
-	constructor(app: App) {
-		super(app);
-	}
-
-	onOpen() {
-		const {contentEl} = this;
-		contentEl.setText('Woah!');
-	}
-
-	onClose() {
-		const {contentEl} = this;
-		contentEl.empty();
-	}
 }
 
 class MarpSlidesSettingTab extends PluginSettingTab {

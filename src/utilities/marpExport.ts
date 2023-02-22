@@ -1,13 +1,11 @@
-import type { marpCli } from '@marp-team/marp-cli'
-
 export class MarpCLIError extends Error {}
 
 export class MarpExport {
 
     async export(filePath: string | undefined, type: string){
-        console.log(filePath);
+        //console.log(filePath);
         if (filePath !== undefined){
-            let argv: string[] = [filePath,'--allow-local-files'];
+            const argv: string[] = [filePath,'--allow-local-files'];
             switch (type) {
                 case 'pdf':
                     argv.push('--pdf');

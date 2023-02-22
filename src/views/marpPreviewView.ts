@@ -38,7 +38,7 @@ export class MarpPreviewView extends ItemView  {
         const container = this.containerEl.children[1];
         container.empty();
         
-        var { html, css } = this.marp.render(markdownText);
+        let { html, css } = this.marp.render(markdownText);
         //console.log(html);
         
         // Replace Backgorund Url for images
