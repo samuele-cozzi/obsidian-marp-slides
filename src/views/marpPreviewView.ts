@@ -1,4 +1,4 @@
-import { ItemView, WorkspaceLeaf } from 'obsidian';
+import { ItemView, WorkspaceLeaf, TFile, MarkdownView } from 'obsidian';
 import { Marp } from '@marp-team/marp-core'
 
 export const MARP_PREVIEW_VIEW = 'marp-preview-view';
@@ -27,13 +27,16 @@ export class MarpPreviewView extends ItemView  {
         // Nothing to clean up.
     }
 
-    async onChange() {
+    async onChange(view : MarkdownView) {
         console.log("Marp Preview onChange View");
-        // Nothing to clean up.
+        this.displaySlides(view);
     }
     
-    displaySlides(basePath: string, markdownText: string) {
+    displaySlides(view : MarkdownView) {
         console.log("Marp Preview Display Slides");
+
+        const basePath = this.getCurrentFileBasePath(view.file);
+        const markdownText = view.data;
         
         const container = this.containerEl.children[1];
         container.empty();
@@ -56,4 +59,20 @@ export class MarpPreviewView extends ItemView  {
             `
         container.innerHTML = htmlFile;
 	}
+
+    getCurrentFileBasePath(file: TFile){
+		const resourcePath = this.app.vault.adapter.getResourcePath(file.parent.path);
+		let basePath = "";
+		if(file.parent.isRoot()){
+			basePath = `${resourcePath?.substring(0, resourcePath.indexOf("?"))}`;
+		}
+		else
+		{
+			basePath = `${resourcePath?.substring(0, resourcePath.indexOf("?"))}/`;
+		}
+		console.log(basePath);
+
+		return basePath;
+	}	
+
 }

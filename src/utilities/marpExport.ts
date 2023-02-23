@@ -18,6 +18,9 @@ export class MarpExport {
                 case 'pptx':
                     argv.push('--pptx');
                     break;
+                case 'html':
+                    argv.push('--html');
+                    break;
                 case 'png':
                     argv.push('--png');
                     break;

@@ -1,4 +1,4 @@
-import { App, MarkdownView, Modal, Plugin, PluginSettingTab, FileSystemAdapter, Setting, TFile } from 'obsidian';
+import { App, MarkdownView, TAbstractFile, Plugin, PluginSettingTab, FileSystemAdapter, Setting, TFile } from 'obsidian';
 
 import { MARP_PREVIEW_VIEW, MarpPreviewView } from './views/marpPreviewView';
 import { MarpExport } from './utilities/marpExport';
@@ -16,7 +16,8 @@ const DEFAULT_SETTINGS: MarpSlidesSettings = {
 export default class MarpSlides extends Plugin {
 	settings: MarpSlidesSettings;
 
-	private markdownViewText : string;
+	private slidesView : MarpPreviewView;
+	private editorView : MarkdownView | null;
 
 	async onload() {
 		await this.loadSettings();
@@ -117,6 +118,8 @@ export default class MarpSlides extends Plugin {
 
 		// When registering intervals, this function will automatically clear the interval when the plugin is disabled.
 		//this.registerInterval(window.setInterval(() => console.log('setInterval'), 5 * 60 * 1000));
+
+		this.registerEvent(this.app.vault.on('modify', this.onChange.bind(this)));
 	}
 
 	onunload() {
@@ -131,32 +134,25 @@ export default class MarpSlides extends Plugin {
 		await this.saveData(this.settings);
 	}
 
+	onChange(file: TAbstractFile) {
+		// if (!this.settings.autoReload) {
+		// 	return;
+		// }
+
+		if (file == this.editorView?.file) {
+			this.slidesView.onChange(this.editorView);
+		}
+	}
+
 	async showPreviewSlide(){
-		const group = "group1";
-		const markdownView = this.app.workspace.getActiveViewOfType(MarkdownView);
+		this.editorView = this.app.workspace.getActiveViewOfType(MarkdownView);
 
-		if (!markdownView) {
+		if (!this.editorView) {
 			return;
 		}
 
-		if (markdownView.data == this.markdownViewText && this.app.workspace.getLeavesOfType(MARP_PREVIEW_VIEW).length > 0) {
-			return;
-		}
-
-		this.markdownViewText = markdownView.data;
-		markdownView?.leaf.setGroup(group);
-		console.log(markdownView.leaf);
-
-		const file = this.app.workspace.getActiveFile();
-		
-		if(!file){
-			return;
-		}		
-
-		const slidesView = await this.activateView();
-		slidesView.leaf.setGroup(group);
-		console.log(slidesView.leaf);
-		slidesView.displaySlides(this.getCurrentFileBasePath(file), this.markdownViewText);
+		this.slidesView = await this.activateView();
+		this.slidesView.displaySlides(this.editorView);
 	}
 	
 	async activateView() : Promise<MarpPreviewView> {
@@ -174,23 +170,7 @@ export default class MarpSlides extends Plugin {
 		return leaf.view as MarpPreviewView;
 	}
 
-
-	getCurrentFileBasePath(file: TFile){
-		const resourcePath = this.app.vault.adapter.getResourcePath(file.parent.path);
-		let basePath = "";
-		if(file.parent.isRoot()){
-			basePath = `${resourcePath?.substring(0, resourcePath.indexOf("?"))}`;
-		}
-		else
-		{
-			basePath = `${resourcePath?.substring(0, resourcePath.indexOf("?"))}/`;
-		}
-		console.log(basePath);
-
-		return basePath;
-	}
-
-	getCurrentFilePath() {
+	private getCurrentFilePath() {
 		const file = this.app.workspace.getActiveFile();
 		const basePath = (file?.vault.adapter as FileSystemAdapter).getBasePath();
 		console.log(basePath);
@@ -201,7 +181,6 @@ export default class MarpSlides extends Plugin {
 		
 		return filePath;
 	}
-	
 }
 
 class MarpSlidesSettingTab extends PluginSettingTab {
