@@ -6,11 +6,11 @@ import { MarpExport } from './utilities/marpExport';
 // Remember to rename these classes and interfaces!
 
 interface MarpSlidesSettings {
-	mySetting: string;
+	CHROME_PATH: string;
 }
 
 const DEFAULT_SETTINGS: MarpSlidesSettings = {
-	mySetting: 'default'
+	CHROME_PATH: ''
 }
 
 export default class MarpSlides extends Plugin {
@@ -47,7 +47,7 @@ export default class MarpSlides extends Plugin {
 			callback: async () => {
 				const file = this.getCurrentFilePath();
 				
-				const marpCli = new MarpExport();
+				const marpCli = new MarpExport(this.settings.CHROME_PATH);
 				await marpCli.export(file,'pdf');
 			}
 		});
@@ -58,7 +58,7 @@ export default class MarpSlides extends Plugin {
 			callback: async () => {
 				const file = this.getCurrentFilePath();
 				
-				const marpCli = new MarpExport();
+				const marpCli = new MarpExport(this.settings.CHROME_PATH);
 				await marpCli.export(file,'pdf-with-notes');
 			}
 		});
@@ -69,7 +69,7 @@ export default class MarpSlides extends Plugin {
 			callback: async () => {
 				const file = this.getCurrentFilePath();
 				
-				const marpCli = new MarpExport();
+				const marpCli = new MarpExport(this.settings.CHROME_PATH);
 				await marpCli.export(file,'html');
 			}
 		});
@@ -80,7 +80,7 @@ export default class MarpSlides extends Plugin {
 			callback: async () => {
 				const file = this.getCurrentFilePath();
 				
-				const marpCli = new MarpExport();
+				const marpCli = new MarpExport(this.settings.CHROME_PATH);
 				await marpCli.export(file,'pptx');
 			}
 		});
@@ -91,7 +91,7 @@ export default class MarpSlides extends Plugin {
 			callback: async () => {
 				const file = this.getCurrentFilePath();
 				
-				const marpCli = new MarpExport();
+				const marpCli = new MarpExport(this.settings.CHROME_PATH);
 				await marpCli.export(file,'png');
 			}
 		});
@@ -196,17 +196,17 @@ class MarpSlidesSettingTab extends PluginSettingTab {
 
 		containerEl.empty();
 
-		containerEl.createEl('h2', {text: 'Settings for my awesome plugin.'});
+		containerEl.createEl('h2', {text: 'MARP Slide Plugin - Settings'});
 
 		new Setting(containerEl)
-			.setName('Setting #1')
-			.setDesc('It\'s a secret')
+			.setName('Chrome Path')
+			.setDesc('Sets the custom path for Chrome or Chromium-based browser to export PDF, PPTX, and image. If it\'s empty, Marp will find out the installed Google Chrome \/ Chromium \/ Microsoft Edge.')
 			.addText(text => text
-				.setPlaceholder('Enter your secret')
-				.setValue(this.plugin.settings.mySetting)
+				.setPlaceholder('Enter CHROME_PATH')
+				.setValue(this.plugin.settings.CHROME_PATH)
 				.onChange(async (value) => {
-					console.log('Secret: ' + value);
-					this.plugin.settings.mySetting = value;
+					console.log('Chrome Path: ' + value);
+					this.plugin.settings.CHROME_PATH = value;
 					await this.plugin.saveSettings();
 				}));
 	}

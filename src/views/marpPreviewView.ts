@@ -40,7 +40,7 @@ export class MarpPreviewView extends ItemView  {
         
         const container = this.containerEl.children[1];
         container.empty();
-        
+        //this.marp.themeSet.add("");
         let { html, css } = this.marp.render(markdownText);
         //console.log(html);
         
