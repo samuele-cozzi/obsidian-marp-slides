@@ -1,4 +1,4 @@
-import { CLIError, CLIErrorCode } from '@marp-team/marp-cli'
+import marpCli, { CLIError, CLIErrorCode } from '@marp-team/marp-cli'
 
 export class MarpCLIError extends Error {}
 
@@ -32,7 +32,7 @@ export class MarpExport {
 
             throw e
         } finally {
-            process.env.CHROME_PATH = CHROME_PATH
+            //process.env.CHROME_PATH = CHROME_PATH
         }
     }
 
@@ -66,10 +66,11 @@ export class MarpExport {
 
         //console.info(`Execute Marp CLI [${argv.join(' ')}] (${JSON.stringify(opts)})`)
         console.info(`Execute Marp CLI [${argv.join(' ')}]`);
+        console.log(process.env.CHROME_PATH);
 
-        const { marpCli } = await import(
-            '@marp-team/marp-cli'
-        )
+        // const { marpCli } = await import(
+        //     '@marp-team/marp-cli'
+        // )
         
         //exitCode = await marpCli(argv, opts)
         marpCli(argv)
@@ -84,7 +85,5 @@ export class MarpExport {
                 console.log("Errore");
                 console.log(e);
             });
-
     }
-
 }
