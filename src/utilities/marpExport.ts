@@ -9,6 +9,7 @@ export class MarpExport {
 
         try {
             process.env.CHROME_PATH = chromePath || CHROME_PATH;
+            process.env.ELECTRON_NO_ASAR = "true";
         } catch (e) {
             console.error(e)
 
@@ -37,7 +38,7 @@ export class MarpExport {
     }
 
     async export(filePath: string | undefined, type: string){
-        //console.log(filePath);
+        console.log(filePath);
         if (filePath !== undefined){
             const argv: string[] = [filePath,'--allow-local-files'];
             switch (type) {
@@ -73,6 +74,7 @@ export class MarpExport {
         // )
         
         //exitCode = await marpCli(argv, opts)
+
         marpCli(argv)
             .then((exitStatus) => {
                 if (exitStatus > 0) {
@@ -82,8 +84,14 @@ export class MarpExport {
                 }
             })
             .catch((e) =>{
-                console.log("Errore");
-                console.log(e);
+                if (e instanceof CLIError){
+                    console.log("Errore!");
+                    const err = e as CLIError;
+                    console.log(e.message);
+                    console.log(e.errorCode);
+                } else {
+                    console.log("Errore");
+                }
             });
     }
 }

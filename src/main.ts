@@ -1,4 +1,6 @@
-import { App, MarkdownView, TAbstractFile, Plugin, PluginSettingTab, FileSystemAdapter, Setting, TFile } from 'obsidian';
+require ('electron');
+
+import { App, MarkdownView, TAbstractFile, Plugin, PluginSettingTab, FileSystemAdapter, Setting, TFile, normalizePath } from 'obsidian';
 
 import { MARP_PREVIEW_VIEW, MarpPreviewView } from './views/marpPreviewView';
 import { MarpExport } from './utilities/marpExport';
@@ -179,7 +181,7 @@ export default class MarpSlides extends Plugin {
 		const filePath = `${basePath}\\${file?.path.replace(/\//g,"\\")}`;
 		console.log(filePath);
 		
-		return filePath;
+		return normalizePath(filePath);
 	}
 }
 

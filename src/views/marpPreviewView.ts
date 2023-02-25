@@ -1,4 +1,4 @@
-import { ItemView, WorkspaceLeaf, TFile, MarkdownView } from 'obsidian';
+import { ItemView, WorkspaceLeaf, TFile, MarkdownView, normalizePath } from 'obsidian';
 import { Marp } from '@marp-team/marp-core'
 
 export const MARP_PREVIEW_VIEW = 'marp-preview-view';
@@ -72,7 +72,7 @@ export class MarpPreviewView extends ItemView  {
 		}
 		console.log(basePath);
 
-		return basePath;
+		return normalizePath(basePath);
 	}	
 
 }
