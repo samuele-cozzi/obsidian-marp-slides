@@ -1,9 +1,10 @@
 require ('electron');
 
-import { App, MarkdownView, TAbstractFile, Plugin, PluginSettingTab, FileSystemAdapter, Setting, TFile, normalizePath } from 'obsidian';
+import { App, MarkdownView, TAbstractFile, Plugin, PluginSettingTab, FileSystemAdapter, Setting, normalizePath, addIcon } from 'obsidian';
 
 import { MARP_PREVIEW_VIEW, MarpPreviewView } from './views/marpPreviewView';
 import { MarpExport } from './utilities/marpExport';
+import { ICON_SLIDE_PREVIEW, ICON_SLIDE_SHOW } from './utilities/icons';
 
 // Remember to rename these classes and interfaces!
 
@@ -29,10 +30,16 @@ export default class MarpSlides extends Plugin {
 			(leaf) => new MarpPreviewView(leaf)
 		);
 
-		const ribbonIconEl = this.addRibbonIcon('slides', 'Show Slide Preview', async () => {
+		addIcon('slides-preview-marp', ICON_SLIDE_PREVIEW);
+		const ribbonIconEl = this.addRibbonIcon('slides-preview-marp', 'Show Slide Preview', async () => {
 			await this.showPreviewSlide();
 		});
 		ribbonIconEl.addClass('my-plugin-ribbon-class');
+
+		// addIcon('slides-show-marp', ICON_SLIDE_SHOW);
+		// this.addRibbonIcon('slides-show-marp', 'Show Slide Preview', async () => {
+		// 	await this.showPreviewSlide();
+		// });
 		
 		this.addCommand({
 			id: 'marp-slides-preview',
