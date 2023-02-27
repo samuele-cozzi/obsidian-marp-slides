@@ -9,7 +9,7 @@ export class MarpExport {
 
         try {
             process.env.CHROME_PATH = chromePath || CHROME_PATH;
-            process.env.ELECTRON_NO_ASAR = "true";
+            
         } catch (e) {
             console.error(e)
 
@@ -54,8 +54,15 @@ export class MarpExport {
                     argv.push('--pptx');
                     break;
                 case 'png':
-                    argv.push('--images --png');
+                    argv.push('--images');
+                    argv.push('--png');
                     break;
+                default:
+                    argv.push('--template');
+                    argv.push('bare');
+                    //argv.push('bespoke');
+                    argv.push('--engine');
+                    argv.push('@marp-team/marpit');
             }
             await this.runMarpCli(argv);
         } 

@@ -1,5 +1,3 @@
-require ('electron');
-
 import { App, MarkdownView, TAbstractFile, Plugin, PluginSettingTab, FileSystemAdapter, Setting, normalizePath, addIcon } from 'obsidian';
 
 import { MARP_PREVIEW_VIEW, MarpPreviewView } from './views/marpPreviewView';

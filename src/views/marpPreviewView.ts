@@ -1,4 +1,4 @@
-import { ItemView, WorkspaceLeaf, TFile, MarkdownView, normalizePath } from 'obsidian';
+import { ItemView, WorkspaceLeaf, TFile, MarkdownView, normalizePath, FileSystemAdapter } from 'obsidian';
 import { Marp } from '@marp-team/marp-core'
 
 export const MARP_PREVIEW_VIEW = 'marp-preview-view';
@@ -61,18 +61,30 @@ export class MarpPreviewView extends ItemView  {
 	}
 
     getCurrentFileBasePath(file: TFile){
-		const resourcePath = this.app.vault.adapter.getResourcePath(file.parent.path);
-		let basePath = "";
-		if(file.parent.isRoot()){
-			basePath = `${resourcePath?.substring(0, resourcePath.indexOf("?"))}`;
-		}
-		else
-		{
-			basePath = `${resourcePath?.substring(0, resourcePath.indexOf("?"))}/`;
-		}
-		console.log(basePath);
+		// const resourcePath = this.app.vault.adapter.getResourcePath(file.parent.path);
+		
+        // let basePath = '';
+		// if(file.parent.isRoot()){
+		// 	basePath = `${resourcePath?.substring(0, resourcePath.indexOf("?"))}`;
+		// }
+		// else
+		// {
+		// 	basePath = `${resourcePath?.substring(0, resourcePath.indexOf("?"))}/`;
+		// }
 
-		return normalizePath(basePath);
+        const basePath1 = `${(file?.vault.adapter as FileSystemAdapter).getBasePath()}\\${file.parent.path}\\`;
+
+
+		console.log(file);
+        // console.log(basePath);
+        // console.log(`${normalizePath(basePath)}/`);
+        console.log(basePath1);
+        console.log(`${normalizePath(basePath1)}/`);
+
+        //app://local/C:/Users/samue/code/knowledge-base/bookshelf/tech_management/
+        //app://local/C:/Users/samue/code/knowledge-base/bookshelf/tech_management/
+		//return basePath;
+        return `app://local/${normalizePath(basePath1)}/`;
 	}	
 
 }
