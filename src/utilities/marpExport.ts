@@ -61,8 +61,8 @@ export class MarpExport {
                     argv.push('--template');
                     argv.push('bare');
                     //argv.push('bespoke');
-                    argv.push('--engine');
-                    argv.push('@marp-team/marpit');
+                    //argv.push('--engine');
+                    //argv.push('@marp-team/marpit');
             }
             await this.runMarpCli(argv);
         } 
