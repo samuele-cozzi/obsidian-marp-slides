@@ -1,14 +1,16 @@
 import marpCli, { CLIError, CLIErrorCode } from '@marp-team/marp-cli'
+import { normalizePath } from 'obsidian';
+import { MarpSlidesSettings } from './settings';
 
 export class MarpCLIError extends Error {}
 
 export class MarpExport {
 
-    constructor(chromePath: string) {
+    constructor(settings: MarpSlidesSettings) {
         const { CHROME_PATH } = process.env;
 
         try {
-            process.env.CHROME_PATH = chromePath || CHROME_PATH;
+            process.env.CHROME_PATH = settings.CHROME_PATH || CHROME_PATH;
             
         } catch (e) {
             console.error(e)
@@ -40,7 +42,7 @@ export class MarpExport {
     async export(filePath: string | undefined, type: string){
         console.log(filePath);
         if (filePath !== undefined){
-            const argv: string[] = [filePath,'--allow-local-files'];
+            const argv: string[] = [filePath,'--allow-local-files', '--theme-set', normalizePath('C:\\Users\\samue\\code\\knowledge-base\\templates\\marp\\themes')];
             switch (type) {
                 case 'pdf':
                     argv.push('--pdf');

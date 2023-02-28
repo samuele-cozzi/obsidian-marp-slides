@@ -3,20 +3,12 @@ import { App, MarkdownView, TAbstractFile, Plugin, PluginSettingTab, FileSystemA
 import { MARP_PREVIEW_VIEW, MarpPreviewView } from './views/marpPreviewView';
 import { MarpExport } from './utilities/marpExport';
 import { ICON_SLIDE_PREVIEW, ICON_SLIDE_SHOW } from './utilities/icons';
+import { MarpSlidesSettings, MarpSlidesSettingTab, DEFAULT_SETTINGS } from 'utilities/settings';
 
-// Remember to rename these classes and interfaces!
-
-interface MarpSlidesSettings {
-	CHROME_PATH: string;
-}
-
-const DEFAULT_SETTINGS: MarpSlidesSettings = {
-	CHROME_PATH: ''
-}
 
 export default class MarpSlides extends Plugin {
-	settings: MarpSlidesSettings;
-
+	
+	public settings: MarpSlidesSettings;
 	private slidesView : MarpPreviewView;
 	private editorView : MarkdownView | null;
 
@@ -25,7 +17,7 @@ export default class MarpSlides extends Plugin {
 
 		this.registerView(
 			MARP_PREVIEW_VIEW,
-			(leaf) => new MarpPreviewView(leaf)
+			(leaf) => new MarpPreviewView(this.settings, leaf)
 		);
 
 		addIcon('slides-preview-marp', ICON_SLIDE_PREVIEW);
@@ -54,7 +46,7 @@ export default class MarpSlides extends Plugin {
 			callback: async () => {
 				const file = this.getCurrentFilePath();
 				
-				const marpCli = new MarpExport(this.settings.CHROME_PATH);
+				const marpCli = new MarpExport(this.settings);
 				await marpCli.export(file,'pdf');
 			}
 		});
@@ -65,7 +57,7 @@ export default class MarpSlides extends Plugin {
 			callback: async () => {
 				const file = this.getCurrentFilePath();
 				
-				const marpCli = new MarpExport(this.settings.CHROME_PATH);
+				const marpCli = new MarpExport(this.settings);
 				await marpCli.export(file,'pdf-with-notes');
 			}
 		});
@@ -76,7 +68,7 @@ export default class MarpSlides extends Plugin {
 			callback: async () => {
 				const file = this.getCurrentFilePath();
 				
-				const marpCli = new MarpExport(this.settings.CHROME_PATH);
+				const marpCli = new MarpExport(this.settings);
 				await marpCli.export(file,'html');
 			}
 		});
@@ -87,7 +79,7 @@ export default class MarpSlides extends Plugin {
 			callback: async () => {
 				const file = this.getCurrentFilePath();
 				
-				const marpCli = new MarpExport(this.settings.CHROME_PATH);
+				const marpCli = new MarpExport(this.settings);
 				await marpCli.export(file,'pptx');
 			}
 		});
@@ -98,7 +90,7 @@ export default class MarpSlides extends Plugin {
 			callback: async () => {
 				const file = this.getCurrentFilePath();
 				
-				const marpCli = new MarpExport(this.settings.CHROME_PATH);
+				const marpCli = new MarpExport(this.settings);
 				await marpCli.export(file,'png');
 			}
 		});
@@ -190,31 +182,3 @@ export default class MarpSlides extends Plugin {
 	}
 }
 
-class MarpSlidesSettingTab extends PluginSettingTab {
-	plugin: MarpSlides;
-
-	constructor(app: App, plugin: MarpSlides) {
-		super(app, plugin);
-		this.plugin = plugin;
-	}
-
-	display(): void {
-		const {containerEl} = this;
-
-		containerEl.empty();
-
-		containerEl.createEl('h2', {text: 'MARP Slide Plugin - Settings'});
-
-		new Setting(containerEl)
-			.setName('Chrome Path')
-			.setDesc('Sets the custom path for Chrome or Chromium-based browser to export PDF, PPTX, and image. If it\'s empty, Marp will find out the installed Google Chrome \/ Chromium \/ Microsoft Edge.')
-			.addText(text => text
-				.setPlaceholder('Enter CHROME_PATH')
-				.setValue(this.plugin.settings.CHROME_PATH)
-				.onChange(async (value) => {
-					console.log('Chrome Path: ' + value);
-					this.plugin.settings.CHROME_PATH = value;
-					await this.plugin.saveSettings();
-				}));
-	}
-}

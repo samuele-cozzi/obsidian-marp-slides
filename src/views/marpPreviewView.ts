@@ -1,13 +1,18 @@
-import { ItemView, WorkspaceLeaf, TFile, MarkdownView, normalizePath, FileSystemAdapter } from 'obsidian';
+import { ItemView, WorkspaceLeaf, TFile, MarkdownView, normalizePath, FileSystemAdapter, Setting } from 'obsidian';
 import { Marp } from '@marp-team/marp-core'
+
+import { MarpSlidesSettings } from '../utilities/settings'
 
 export const MARP_PREVIEW_VIEW = 'marp-preview-view';
 
 export class MarpPreviewView extends ItemView  {
     private marp = new Marp();
+    private settings : MarpSlidesSettings;
 
-    constructor(leaf: WorkspaceLeaf) {
+    constructor(settings: MarpSlidesSettings, leaf: WorkspaceLeaf) {
         super(leaf);
+
+        this.settings = settings;
     }
 
     getViewType() {
@@ -19,7 +24,15 @@ export class MarpPreviewView extends ItemView  {
     }
 
     async onOpen() {
-        //console.log("Marp Preview onOpen View");
+        const fileContents: string[] = await Promise.all(
+            this.app.vault.getFiles()
+                .filter(x => x.parent.path == normalizePath(this.settings.ThemePath))
+                .map((file) => this.app.vault.cachedRead(file))
+        );
+
+        fileContents.forEach((content) => {
+            this.marp.themeSet.add(content);
+        });
     }
 
     async onClose() {
@@ -32,7 +45,7 @@ export class MarpPreviewView extends ItemView  {
         this.displaySlides(view);
     }
     
-    displaySlides(view : MarkdownView) {
+    async displaySlides(view : MarkdownView) {
         console.log("Marp Preview Display Slides");
 
         const basePath = this.getCurrentFileBasePath(view.file);
@@ -40,7 +53,7 @@ export class MarpPreviewView extends ItemView  {
         
         const container = this.containerEl.children[1];
         container.empty();
-        //this.marp.themeSet.add("");
+       
         let { html, css } = this.marp.render(markdownText);
         //console.log(html);
         

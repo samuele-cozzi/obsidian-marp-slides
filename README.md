@@ -61,4 +61,7 @@ image
 
 - [plugin obsidian development docs](https://marcus.se.net/obsidian-plugin-docs/)
 - [marp vs code](https://github.com/marp-team/marp-vscode)
-- 
+
+## tools
+
+- [svg editor](https://www.svgviewer.dev/s/20183/slideshow-3)
