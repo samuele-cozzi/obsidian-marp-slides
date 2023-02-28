@@ -1,4 +1,4 @@
-import { ItemView, WorkspaceLeaf, TFile, MarkdownView, normalizePath, FileSystemAdapter, Setting } from 'obsidian';
+import { ItemView, WorkspaceLeaf, TFile, MarkdownView, normalizePath, FileSystemAdapter } from 'obsidian';
 import { Marp } from '@marp-team/marp-core'
 
 import { MarpSlidesSettings } from '../utilities/settings'

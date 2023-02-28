@@ -95,7 +95,6 @@ export class MarpExport {
             .catch((e) =>{
                 if (e instanceof CLIError){
                     console.log("Errore!");
-                    const err = e as CLIError;
                     console.log(e.message);
                     console.log(e.errorCode);
                 } else {

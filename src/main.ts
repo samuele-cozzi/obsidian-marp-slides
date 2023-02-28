@@ -1,4 +1,4 @@
-import { App, MarkdownView, TAbstractFile, Plugin, PluginSettingTab, FileSystemAdapter, Setting, normalizePath, addIcon } from 'obsidian';
+import { MarkdownView, TAbstractFile, Plugin, FileSystemAdapter, normalizePath, addIcon } from 'obsidian';
 
 import { MARP_PREVIEW_VIEW, MarpPreviewView } from './views/marpPreviewView';
 import { MarpExport } from './utilities/marpExport';
@@ -26,10 +26,10 @@ export default class MarpSlides extends Plugin {
 		});
 		ribbonIconEl.addClass('my-plugin-ribbon-class');
 
-		// addIcon('slides-show-marp', ICON_SLIDE_SHOW);
-		// this.addRibbonIcon('slides-show-marp', 'Show Slide Preview', async () => {
-		// 	await this.showPreviewSlide();
-		// });
+		addIcon('slides-show-marp', ICON_SLIDE_SHOW);
+		this.addRibbonIcon('slides-show-marp', 'Show Slide Preview', async () => {
+			await this.showPreviewSlide();
+		});
 		
 		this.addCommand({
 			id: 'marp-slides-preview',
