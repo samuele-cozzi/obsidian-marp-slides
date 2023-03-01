@@ -2,6 +2,7 @@ import { ItemView, WorkspaceLeaf, TFile, MarkdownView, normalizePath, FileSystem
 import { Marp } from '@marp-team/marp-core'
 
 import { MarpSlidesSettings } from '../utilities/settings'
+import { FilePath } from '../utilities/filePath'
 
 export const MARP_PREVIEW_VIEW = 'marp-preview-view';
 
@@ -48,7 +49,7 @@ export class MarpPreviewView extends ItemView  {
     async displaySlides(view : MarkdownView) {
         console.log("Marp Preview Display Slides");
 
-        const basePath = this.getCurrentFileBasePath(view.file);
+        const basePath = `app://local/${(new FilePath).getCompleteFileBasePath(view.file)}/`;
         const markdownText = view.data;
         
         const container = this.containerEl.children[1];
@@ -73,31 +74,31 @@ export class MarpPreviewView extends ItemView  {
         container.innerHTML = htmlFile;
 	}
 
-    getCurrentFileBasePath(file: TFile){
-		// const resourcePath = this.app.vault.adapter.getResourcePath(file.parent.path);
+    // getCurrentFileBasePath(file: TFile){
+	// 	// const resourcePath = this.app.vault.adapter.getResourcePath(file.parent.path);
 		
-        // let basePath = '';
-		// if(file.parent.isRoot()){
-		// 	basePath = `${resourcePath?.substring(0, resourcePath.indexOf("?"))}`;
-		// }
-		// else
-		// {
-		// 	basePath = `${resourcePath?.substring(0, resourcePath.indexOf("?"))}/`;
-		// }
+    //     // let basePath = '';
+	// 	// if(file.parent.isRoot()){
+	// 	// 	basePath = `${resourcePath?.substring(0, resourcePath.indexOf("?"))}`;
+	// 	// }
+	// 	// else
+	// 	// {
+	// 	// 	basePath = `${resourcePath?.substring(0, resourcePath.indexOf("?"))}/`;
+	// 	// }
 
-        const basePath1 = `${(file?.vault.adapter as FileSystemAdapter).getBasePath()}\\${file.parent.path}\\`;
+    //     const basePath1 = `${(file?.vault.adapter as FileSystemAdapter).getBasePath()}\\${file.parent.path}\\`;
 
 
-		console.log(file);
-        // console.log(basePath);
-        // console.log(`${normalizePath(basePath)}/`);
-        console.log(basePath1);
-        console.log(`${normalizePath(basePath1)}/`);
+	// 	console.log(file);
+    //     // console.log(basePath);
+    //     // console.log(`${normalizePath(basePath)}/`);
+    //     console.log(basePath1);
+    //     console.log(`${normalizePath(basePath1)}/`);
 
-        //app://local/C:/Users/samue/code/knowledge-base/bookshelf/tech_management/
-        //app://local/C:/Users/samue/code/knowledge-base/bookshelf/tech_management/
-		//return basePath;
-        return `app://local/${normalizePath(basePath1)}/`;
-	}	
+    //     //app://local/C:/Users/samue/code/knowledge-base/bookshelf/tech_management/
+    //     //app://local/C:/Users/samue/code/knowledge-base/bookshelf/tech_management/
+	// 	//return basePath;
+    //     return `app://local/${normalizePath(basePath1)}/`;
+	// }	
 
 }

@@ -4,6 +4,7 @@ import { MARP_PREVIEW_VIEW, MarpPreviewView } from './views/marpPreviewView';
 import { MarpExport } from './utilities/marpExport';
 import { ICON_SLIDE_PREVIEW, ICON_SLIDE_SHOW } from './utilities/icons';
 import { MarpSlidesSettings, MarpSlidesSettingTab, DEFAULT_SETTINGS } from 'utilities/settings';
+import { FilePath } from 'utilities/filePath';
 
 
 export default class MarpSlides extends Plugin {
@@ -43,56 +44,31 @@ export default class MarpSlides extends Plugin {
 		this.addCommand({
 			id: 'marp-export-pdf',
 			name: 'Export PDF',
-			callback: async () => {
-				const file = this.getCurrentFilePath();
-				
-				const marpCli = new MarpExport(this.settings);
-				await marpCli.export(file,'pdf');
-			}
+			callback: (() => this.exportFile('pdf'))
 		});
 
 		this.addCommand({
 			id: 'marp-export-pdf-notes',
 			name: 'Export PDF with Notes',
-			callback: async () => {
-				const file = this.getCurrentFilePath();
-				
-				const marpCli = new MarpExport(this.settings);
-				await marpCli.export(file,'pdf-with-notes');
-			}
+			callback: (() => this.exportFile('pdf-with-notes'))
 		});
 
 		this.addCommand({
 			id: 'marp-export-html',
 			name: 'Export HTML',
-			callback: async () => {
-				const file = this.getCurrentFilePath();
-				
-				const marpCli = new MarpExport(this.settings);
-				await marpCli.export(file,'html');
-			}
+			callback: (() => this.exportFile('html'))
 		});
 
 		this.addCommand({
 			id: 'marp-export-pptx',
 			name: 'Export PPTX',
-			callback: async () => {
-				const file = this.getCurrentFilePath();
-				
-				const marpCli = new MarpExport(this.settings);
-				await marpCli.export(file,'pptx');
-			}
+			callback: (() => this.exportFile('pptx'))
 		});
 
 		this.addCommand({
 			id: 'marp-export-png',
 			name: 'Export PNG',
-			callback: async () => {
-				const file = this.getCurrentFilePath();
-				
-				const marpCli = new MarpExport(this.settings);
-				await marpCli.export(file,'png');
-			}
+			callback: (() => this.exportFile('png'))
 		});
 
 		// This adds an editor command that can perform some operation on the current editor instance
@@ -143,6 +119,17 @@ export default class MarpSlides extends Plugin {
 		}
 	}
 
+	async exportFile(type: string){
+		const file = this.app.workspace.getActiveFile();
+		if(file !== null){	
+		const marpCli = new MarpExport(this.settings);
+			await marpCli.export(
+				(new FilePath()).getRootPath(file)
+				,(new FilePath()).getFilePath(file)
+				,type);
+		}
+	}
+
 	async showPreviewSlide(){
 		this.editorView = this.app.workspace.getActiveViewOfType(MarkdownView);
 
@@ -167,18 +154,6 @@ export default class MarpSlides extends Plugin {
 		this.app.workspace.revealLeaf(leaf);
 
 		return leaf.view as MarpPreviewView;
-	}
-
-	private getCurrentFilePath() {
-		const file = this.app.workspace.getActiveFile();
-		const basePath = (file?.vault.adapter as FileSystemAdapter).getBasePath();
-		console.log(basePath);
-		console.log(file);
-
-		const filePath = `${basePath}\\${file?.path.replace(/\//g,"\\")}`;
-		console.log(filePath);
-		
-		return normalizePath(filePath);
 	}
 }
 
