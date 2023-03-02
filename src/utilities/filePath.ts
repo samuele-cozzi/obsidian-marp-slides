@@ -1,4 +1,4 @@
-import { normalizePath, FileSystemAdapter, TFile, Platform } from 'obsidian';
+import { normalizePath, FileSystemAdapter, TFile } from 'obsidian';
 import { MarpSlidesSettings } from './settings';
 
 export class FilePath {
