@@ -1,6 +1,7 @@
 import marpCli, { CLIError, CLIErrorCode } from '@marp-team/marp-cli'
-import { normalizePath } from 'obsidian';
+import { TFile } from 'obsidian';
 import { MarpSlidesSettings } from './settings';
+import { FilePath } from './filePath';
 
 export class MarpCLIError extends Error {}
 
@@ -12,14 +13,21 @@ export class MarpExport {
         this.settings = settings;
     }
 
-    async export(rootPath: string, filePath: string | undefined, type: string){
-        if (filePath !== undefined){
-            const themePath = normalizePath(`${rootPath}\\${this.settings.ThemePath}`);
-            const completeFilePath = normalizePath(`${rootPath}\\${filePath}`);
+    async export(file: TFile, type: string){
+        const completeFilePath = (new FilePath(this.settings)).getCompleteFilePath(file);
+        const themePath = (new FilePath(this.settings)).getThemePath(file);
+
+        if (completeFilePath != ''){            
             console.log(completeFilePath);
-            console.log(themePath);
-            //const argv: string[] = [filePath,'--allow-local-files', '--theme-set', normalizePath('C:\\Users\\samue\\code\\knowledge-base\\templates\\marp\\themes')];
-            const argv: string[] = [completeFilePath,'--allow-local-files', '--theme-set', themePath];
+            
+            const argv: string[] = [completeFilePath,'--allow-local-files'];
+            
+            if (themePath != ''){
+                console.log(themePath);
+                argv.push('--theme-set');
+                argv.push(themePath);
+            }
+
             switch (type) {
                 case 'pdf':
                     argv.push('--pdf');

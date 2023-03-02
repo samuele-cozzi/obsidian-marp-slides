@@ -1,30 +1,40 @@
-import { App, PluginSettingTab, Setting, normalizePath, FileSystemAdapter, TFile } from 'obsidian';
-import MarpSlides from '../main';
+import { normalizePath, FileSystemAdapter, TFile, Platform } from 'obsidian';
+import { MarpSlidesSettings } from './settings';
 
 export class FilePath {
 
-    getRootPath(file: TFile): string {
-		const basePath = normalizePath((file.vault.adapter as FileSystemAdapter).getBasePath());
+    private settings : MarpSlidesSettings;
+
+    constructor(settings: MarpSlidesSettings) {
+        this.settings = settings;
+    }
+
+    private getRootPath(file: TFile): string {
+		const basePath = (file.vault.adapter as FileSystemAdapter).getBasePath();
 		console.log(`Root Path: ${basePath}`);
 		return basePath;
 	}
 
-	getCompleteFileBasePath(file: TFile){
-        const basePath = `${this.getRootPath(file)}\\${file.parent.path}\\`;
+	getCompleteFileBasePath(file: TFile): string{
+        const basePath = `${this.getRootPath(file)}/${normalizePath(file.parent.path)}/`;
         console.log(`Complete File Base Path: ${basePath}`);
-        return `${normalizePath(basePath)}`;
+        return basePath;
 	}
 
-    getCompleteFilePath(file: TFile){
-        const basePath = `${this.getRootPath(file)}\\${file.path}`;
+    getCompleteFilePath(file: TFile) : string{
+        const basePath = `${this.getRootPath(file)}/${normalizePath(file.path)}`;
         console.log(`Complete File Path: ${basePath}`);
-        return `${normalizePath(basePath)}`;
+        return basePath;
 	}
 
-    getFilePath(file: TFile){
-        const basePath = `${file.path}`;
-        console.log(`File Path: ${basePath}`);
-        return `${normalizePath(basePath)}`;
-	}
-
+    getThemePath(file: TFile): string{
+        const themePath = `${this.getRootPath(file)}/${normalizePath(this.settings.ThemePath)}`;
+        if (this.settings.ThemePath != ''){
+            return themePath;
+        } 
+        else
+        {
+            return '';
+        }
+    }
 }

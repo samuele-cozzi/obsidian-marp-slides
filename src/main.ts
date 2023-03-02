@@ -1,10 +1,9 @@
-import { MarkdownView, TAbstractFile, Plugin, FileSystemAdapter, normalizePath, addIcon } from 'obsidian';
+import { MarkdownView, TAbstractFile, Plugin, addIcon } from 'obsidian';
 
 import { MARP_PREVIEW_VIEW, MarpPreviewView } from './views/marpPreviewView';
 import { MarpExport } from './utilities/marpExport';
-import { ICON_SLIDE_PREVIEW, ICON_SLIDE_SHOW } from './utilities/icons';
+import { ICON_SLIDE_PREVIEW } from './utilities/icons';
 import { MarpSlidesSettings, MarpSlidesSettingTab, DEFAULT_SETTINGS } from 'utilities/settings';
-import { FilePath } from 'utilities/filePath';
 
 
 export default class MarpSlides extends Plugin {
@@ -26,11 +25,6 @@ export default class MarpSlides extends Plugin {
 			await this.showPreviewSlide();
 		});
 		ribbonIconEl.addClass('my-plugin-ribbon-class');
-
-		addIcon('slides-show-marp', ICON_SLIDE_SHOW);
-		this.addRibbonIcon('slides-show-marp', 'Show Slide Preview', async () => {
-			await this.showPreviewSlide();
-		});
 		
 		this.addCommand({
 			id: 'marp-slides-preview',
@@ -123,10 +117,7 @@ export default class MarpSlides extends Plugin {
 		const file = this.app.workspace.getActiveFile();
 		if(file !== null){	
 		const marpCli = new MarpExport(this.settings);
-			await marpCli.export(
-				(new FilePath()).getRootPath(file)
-				,(new FilePath()).getFilePath(file)
-				,type);
+			await marpCli.export(file,type);
 		}
 	}
 
