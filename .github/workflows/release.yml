@@ -7,9 +7,6 @@ on:
 
 env:
   PLUGIN_NAME: obsidian-marp-slides
-  
-permissions:
-  packages: write
 
 jobs:
   build:
