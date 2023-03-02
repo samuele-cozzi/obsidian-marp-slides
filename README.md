@@ -61,6 +61,7 @@ image
 
 - [plugin obsidian development docs](https://marcus.se.net/obsidian-plugin-docs/)
 - [marp vs code](https://github.com/marp-team/marp-vscode)
+- [obsidian api](https://github.com/obsidianmd/obsidian-api)
 
 ## tools
 
