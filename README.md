@@ -66,3 +66,4 @@ image
 ## tools
 
 - [svg editor](https://www.svgviewer.dev/s/20183/slideshow-3)
+- [release please](https://www.conventionalcommits.org/en/v1.0.0/)
