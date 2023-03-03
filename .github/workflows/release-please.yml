@@ -11,9 +11,7 @@ jobs:
       - uses: google-github-actions/release-please-action@v3
         id: release
         with:
+          token: ${{ secrets.PAT }}
           release-type: node
           package-name: release-please-action
-          manifest-file: manifest.json
-          
-   
-      
+          extra-files: manifest.json     
