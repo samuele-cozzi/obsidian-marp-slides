@@ -14,4 +14,5 @@ jobs:
           token: ${{ secrets.PAT }}
           release-type: node
           package-name: release-please-action
-          extra-files: manifest.json     
+          config-file: release-please-config.json
+          extra-files: manifest.json
