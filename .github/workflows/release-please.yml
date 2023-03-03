@@ -15,4 +15,3 @@ jobs:
           release-type: node
           package-name: release-please-action
           config-file: release-please-config.json
-          extra-files: manifest.json
