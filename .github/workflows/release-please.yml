@@ -35,6 +35,8 @@ jobs:
       - name: Commit manifest
         if: ${{ steps.release.outputs.release_created }}
         run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
           git branch --show-current
           git add .
           git status
