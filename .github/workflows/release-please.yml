@@ -18,6 +18,7 @@ jobs:
           release-type: node
           package-name: release-please-action
           config-file: release-please-config.json
+          include-v-in-tag: false
       - uses: actions/checkout@v2
         # these if statements ensure that a publication only occurs when
         # a new release is created:
