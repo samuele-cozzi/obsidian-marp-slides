@@ -72,7 +72,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          upload_url: ${{ github.event.release.upload_url }}
+          upload_url: ${{ steps.release.outputs.upload_url }}
           asset_path: ./${{ env.PLUGIN_NAME }}.zip
           asset_name: ${{ env.PLUGIN_NAME }}-${{ steps.build.outputs.tag_name }}.zip
           asset_content_type: application/zip
@@ -84,7 +84,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          upload_url: ${{ github.event.release.upload_url }}
+          upload_url: ${{ steps.release.outputs.upload_url }}
           asset_path: ./main.js
           asset_name: main.js
           asset_content_type: text/javascript
@@ -96,7 +96,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          upload_url: ${{ github.event.release.upload_url }}
+          upload_url: ${{ steps.release.outputs.upload_url }}
           asset_path: ./manifest.json
           asset_name: manifest.json
           asset_content_type: application/json
@@ -108,7 +108,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          upload_url: ${{ github.event.release.upload_url }}
+          upload_url: ${{ steps.release.outputs.upload_url }}
           asset_path: ./styles.css
           asset_name: styles.css
           asset_content_type: text/css
