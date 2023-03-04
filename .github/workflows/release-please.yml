@@ -38,9 +38,9 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git branch --show-current
-          git add .
+          git add manifest.json
           git status
-          git commit --amend
+          git commit -m updateVersion
           git pull
       # push the commit
       - name: Push changes
