@@ -12,12 +12,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: google-github-actions/release-please-action@v2
-        id: release
-        with:
-          command: manifest
-          token: ${{secrets.GITHUB_TOKEN}}
-          default-branch: main
       - uses: actions/checkout@v2
       - name: Use Node.js
         uses: actions/setup-node@v1
@@ -34,18 +28,6 @@ jobs:
           zip -r ${{ env.PLUGIN_NAME }}.zip ${{ env.PLUGIN_NAME }}
           ls
           echo "::set-output name=tag_name::$(git tag --sort version:refname | tail -n 1)"
-
-      #- name: Create Release
-      #  id: create_release
-      #  uses: actions/create-release@v1
-      #  env:
-      #    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #    VERSION: ${{ github.ref }}
-      #  with:
-      #    tag_name: ${{ github.ref }}
-      #    release_name: ${{ github.ref }}
-      #    draft: false
-      #    prerelease: false
 
       - name: Upload zip file
         id: upload-zip
