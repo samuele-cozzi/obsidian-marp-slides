@@ -46,4 +46,4 @@ jobs:
         if: ${{ steps.release.outputs.release_created }}
         with:
           github_token: ${{secrets.PAT}}
-          branch: origin/main
+          branch: main
