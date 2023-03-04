@@ -24,6 +24,12 @@ jobs:
           fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
           token: ${{secrets.PAT}} # use a personal acces token so that other actions can trigger
           ref: main
+      - name: Git Pull
+        id: pull
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git pull
           
       #- uses: actions/checkout@v2
       #  with:
@@ -41,8 +47,6 @@ jobs:
       - name: Commit manifest
         if: ${{ steps.release.outputs.release_created }}
         run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
           git branch --show-current
           git add -u
           git commit --amend --no-edit
