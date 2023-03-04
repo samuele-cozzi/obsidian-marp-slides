@@ -1,6 +1,6 @@
 {
 	"name": "obsidian-marp-slides",
-	"version": "0.11.0",
+	"version": "0.12.0",
 	"description": "Create markdown-based marp presentations in Obsidian ",
 	"main": "src/main.js",
 	"scripts": {
