@@ -19,11 +19,15 @@ jobs:
           package-name: release-please-action
           config-file: release-please-config.json
           include-v-in-tag: false
+    outputs:
+      release_created: ${{ steps.release.outputs.release_created }}
+      tag_name: ${{ steps.release.outputs.tag_name }}
+      upload_url: ${{ steps.release.outputs.upload_url }}
           
   update-version:
     needs: release-please
     runs-on: ubuntu-latest
-    if: ${{ needs.release-please.steps.release.outputs.release_created }}
+    if: ${{ needs.release-please.outputs.release_created }}
     steps:
       - uses: actions/checkout@v2
         # these if statements ensure that a publication only occurs when
@@ -39,7 +43,7 @@ jobs:
         with:
           file: manifest.json
           field: version
-          value: ${{ needs.release-please.steps.release.outputs.tag_name }}
+          value: ${{ needs.release-please.outputs.tag_name }}
       - name: Commit manifest
         run: |
           git config --local user.email "action@github.com"
@@ -59,7 +63,7 @@ jobs:
   build-plugin:
     needs: update-version
     runs-on: ubuntu-latest
-    if: ${{ needs.release-please.steps.release.outputs.release_created }}
+    if: ${{ needs.release-please.outputs.release_created }}
     steps:       
       - name: Build
         id: build
@@ -75,7 +79,7 @@ jobs:
   release-plugin:
     needs: build-plugin
     runs-on: ubuntu-latest
-    if: ${{ needs.release-please.steps.release.outputs.release_created }}
+    if: ${{ needs.release-please.outputs.release_created }}
     steps:
       - name: Upload zip file
         id: upload-zip
@@ -83,9 +87,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          upload_url: ${{ needs.release-please.steps.release.outputs.upload_url }}
+          upload_url: ${{ needs.release-please.outputs.upload_url }}
           asset_path: ./${{ env.PLUGIN_NAME }}.zip
-          asset_name: ${{ env.PLUGIN_NAME }}-${{ needs.build-plugin.steps.build.outputs.tag_name }}.zip
+          asset_name: ${{ env.PLUGIN_NAME }}-${{ needs.release-please.outputs.tag_name }}.zip
           asset_content_type: application/zip
 
       - name: Upload main.js
@@ -94,7 +98,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          upload_url: ${{ needs.release-please.steps.release.outputs.upload_url }}
+          upload_url: ${{ needs.release-please.outputs.upload_url }}
           asset_path: ./main.js
           asset_name: main.js
           asset_content_type: text/javascript
@@ -105,7 +109,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          upload_url: ${{ needs.release-please.steps.release.outputs.upload_url }}
+          upload_url: ${{ needs.release-please.outputs.upload_url }}
           asset_path: ./manifest.json
           asset_name: manifest.json
           asset_content_type: application/json
@@ -116,7 +120,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          upload_url: ${{ needs.release-please.steps.release.outputs.upload_url }}
+          upload_url: ${{ needs.release-please.outputs.upload_url }}
           asset_path: ./styles.css
           asset_name: styles.css
           asset_content_type: text/css
