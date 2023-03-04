@@ -6,7 +6,7 @@ on:
 env:
   PLUGIN_NAME: obsidian-marp-slides
   
-name: release-please
+name: release
 jobs:
   release-please:
     runs-on: ubuntu-latest
@@ -19,10 +19,13 @@ jobs:
           package-name: release-please-action
           config-file: release-please-config.json
           include-v-in-tag: false
+  update-version:
+    runs-on: ubuntu-latest
+    if: ${{ steps.release.outputs.release_created }}
+    steps:
       - uses: actions/checkout@v2
         # these if statements ensure that a publication only occurs when
         # a new release is created:
-        if: ${{ steps.release.outputs.release_created }}
         with:
           persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
           fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
@@ -31,13 +34,11 @@ jobs:
       # update the manifest.json with the tag version
       - name: Update manifest version
         uses: jossef/action-set-json-field@v1
-        if: ${{ steps.release.outputs.release_created }}
         with:
           file: manifest.json
           field: version
           value: ${{ steps.release.outputs.tag_name }}
       - name: Commit manifest
-        if: ${{ steps.release.outputs.release_created }}
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
@@ -49,14 +50,16 @@ jobs:
       # push the commit
       - name: Push changes
         uses: ad-m/github-push-action@v0.6.0
-        if: ${{ steps.release.outputs.release_created }}
         with:
           github_token: ${{secrets.GITHUB_TOKEN}}
           branch: main
-          
+
+  build-plugin:
+    runs-on: ubuntu-latest
+    if: ${{ steps.release.outputs.release_created }}
+    steps:       
       - name: Build
         id: build
-        if: ${{ steps.release.outputs.release_created }}
         run: |
           npm install
           npm run build
@@ -66,10 +69,13 @@ jobs:
           ls
           echo "::set-output name=tag_name::$(git tag --sort version:refname | tail -n 1)"
 
+  release-plugin:
+    runs-on: ubuntu-latest
+    if: ${{ steps.release.outputs.release_created }}
+    steps:
       - name: Upload zip file
         id: upload-zip
         uses: actions/upload-release-asset@v1
-        if: ${{ steps.release.outputs.release_created }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
@@ -81,7 +87,6 @@ jobs:
       - name: Upload main.js
         id: upload-main
         uses: actions/upload-release-asset@v1
-        if: ${{ steps.release.outputs.release_created }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
@@ -93,7 +98,6 @@ jobs:
       - name: Upload manifest.json
         id: upload-manifest
         uses: actions/upload-release-asset@v1
-        if: ${{ steps.release.outputs.release_created }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
@@ -105,7 +109,6 @@ jobs:
       - name: Upload styles.css
         id: upload-css
         uses: actions/upload-release-asset@v1
-        if: ${{ steps.release.outputs.release_created }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
