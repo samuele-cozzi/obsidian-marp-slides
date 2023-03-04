@@ -19,6 +19,6 @@ author: Samuele Cozzi
 # --- List of links in the navigation bar --- #
 ###############################################
 
-remote_theme: pages-themes/hacker@v0.2.0
+remote_theme: rundocs/jekyll-rtd-theme
 plugins:
 - jekyll-remote-theme
