@@ -10,6 +10,8 @@ theme: default
 
 ## subtitle
 
+![](../attachments/placeholder-circle.png)
+
 ---
 
 # Third Slide
