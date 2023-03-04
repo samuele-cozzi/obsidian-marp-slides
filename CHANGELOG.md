@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.17.0](https://github.com/samuele-cozzi/obsidian-marp-slides/compare/v0.16.0...v0.17.0) (2023-03-04)
+
+
+### Features
+
+* . ([02cbf5a](https://github.com/samuele-cozzi/obsidian-marp-slides/commit/02cbf5a549089b09c16a5a79d69fd29a5daf6d28))
+
 ## [0.16.0](https://github.com/samuele-cozzi/obsidian-marp-slides/compare/v0.15.0...v0.16.0) (2023-03-04)
 
 
