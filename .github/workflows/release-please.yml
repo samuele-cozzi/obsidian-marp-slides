@@ -19,7 +19,9 @@ jobs:
           package-name: release-please-action
           config-file: release-please-config.json
           include-v-in-tag: false
+          
   update-version:
+    needs: release-please
     runs-on: ubuntu-latest
     if: ${{ steps.release.outputs.release_created }}
     steps:
@@ -55,6 +57,7 @@ jobs:
           branch: main
 
   build-plugin:
+    needs: update-version
     runs-on: ubuntu-latest
     if: ${{ steps.release.outputs.release_created }}
     steps:       
@@ -70,6 +73,7 @@ jobs:
           echo "::set-output name=tag_name::$(git tag --sort version:refname | tail -n 1)"
 
   release-plugin:
+    needs: build-plugin
     runs-on: ubuntu-latest
     if: ${{ steps.release.outputs.release_created }}
     steps:
