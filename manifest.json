@@ -1,7 +1,7 @@
 {
   "id": "obsidian-marp-slides",
   "name": "Marp Slides",
-  "version": "v0.20.0",
+  "version": "v0.21.0",
   "minAppVersion": "0.15.0",
   "description": "Create markdown-based Marp presentations in Obsidian",
   "author": "Obsidian",
