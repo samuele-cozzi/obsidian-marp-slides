@@ -19,6 +19,7 @@ jobs:
           package-name: release-please-action
           config-file: release-please-config.json
           include-v-in-tag: false
+          changelog-path: docs/CHANGELOG.md
     outputs:
       release_created: ${{ steps.release.outputs.release_created }}
       tag_name: ${{ steps.release.outputs.tag_name }}
