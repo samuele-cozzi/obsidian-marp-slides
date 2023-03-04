@@ -21,61 +21,9 @@ Marp have powerful tools for Markdown Slides: [Marpit Framework](https://marpit.
 
 ## Features
 
-### Preview Slides
-
-Marp for Obsidian lets you preview your Marp Markdown in real time, allowing you to instantly view changes as you make them! With this feature, you can quickly refine and perfect your Markdown documents.
-
-The preview of the content of active Markdow editor, use the ribbon icon or execute command from the Command Palette (<kbd>Ctrl/Cmd+P</kbd> + 'Slide Preview')
-
-### Export slide deck (html, pdf, pptx, img)
-
-We have integrated [Marp CLI](https://github.com/marp-team/marp-cli/) to export your deck into several formats.
-
-To export the content of active Markdown editor execute command from the Command Palette (<kbd>Ctrl/Cmd+P</kbd>).
-
-#### Supported file types
-
-- **HTML** Basic export
-- **PDF** with or without annotation
-- **PPTX** PowerPoint document
-- **PNG** One file for every slide
-
-> ⚠️ Export except HTML requires to install any one of [Google Chrome](https://www.google.com/chrome/), [Chromium](https://www.chromium.org/), or [Microsoft Edge](https://www.microsoft.com/edge). You may also specify the custom path for Chrome / Chromium-based browser by preference `CHEROME_PATH`.
-
-### Use custom theme CSS
-
-You can register and use [custom theme CSS for Marpit](https://marpit.marp.app/theme-css) / [Marp Core](https://github.com/marp-team/marp-core/tree/main/themes#readme) by setting `ThemePath`, that includes relative paths to local files in the current vault.
-The registered theme can use by specifying theme name in [`theme` global directive](https://marpit.marp.app/directives?id=theme).
-
-Theme.css:
-
-```css
-/* @theme your-theme */
-
-@import 'default';
-
-section {
-  background: #fc9;
-}
-```
-
-Slides.md:
-
-```markdown
----
-theme: your-theme
----
-
-# Use your own theme
-
----
-
-# Second Slide
-```
-
-Markdown preview will reload updated theme CSS automatically when you edited the registered local CSS file.
-
----
+- [Preview Slides](https://samuele-cozzi.github.io/obsidian-marp-slides/SlidesPreview.md)
+- [Export slide deck (html, pdf, pptx, img)](https://samuele-cozzi.github.io/obsidian-marp-slides/SlidesExport.md)
+- [Use custom theme CSS](https://samuele-cozzi.github.io/obsidian-marp-slides/SlidesCustomTheme.md)
 
 ## References (Tanks)
 
