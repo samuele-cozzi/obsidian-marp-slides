@@ -2,7 +2,10 @@ on:
   push:
     branches:
       - main
-      
+
+env:
+  PLUGIN_NAME: obsidian-marp-slides
+  
 name: release-please
 jobs:
   release-please:
