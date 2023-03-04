@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.25.0](https://github.com/samuele-cozzi/obsidian-marp-slides/compare/0.24.0...0.25.0) (2023-03-04)
+
+
+### Features
+
+* enhance github action ([298ec00](https://github.com/samuele-cozzi/obsidian-marp-slides/commit/298ec00a875379061ea45f91803e94239fe03124))
+
 ## [0.24.0](https://github.com/samuele-cozzi/obsidian-marp-slides/compare/0.23.0...0.24.0) (2023-03-04)
 
 
