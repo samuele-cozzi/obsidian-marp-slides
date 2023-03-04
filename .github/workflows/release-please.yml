@@ -23,7 +23,7 @@ jobs:
   update-version:
     needs: release-please
     runs-on: ubuntu-latest
-    if: ${{ release-please.steps.release.outputs.release_created }}
+    if: ${{ needs.release-please.steps.release.outputs.release_created }}
     steps:
       - uses: actions/checkout@v2
         # these if statements ensure that a publication only occurs when
