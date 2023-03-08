@@ -23,8 +23,7 @@ jobs:
     outputs:
       release_created: ${{ steps.release.outputs.release_created }}
       tag_name: ${{ steps.release.outputs.tag_name }}
-      upload_url: ${{ steps.release.outputs.upload_url }}
-          
+      upload_url: ${{ steps.release.outputs.upload_url }}         
   release-plugin:
     needs: release-please
     runs-on: ubuntu-latest
@@ -60,7 +59,6 @@ jobs:
         with:
           github_token: ${{secrets.GITHUB_TOKEN}}
           branch: main
-     
       - name: Build
         id: build
         run: |
@@ -71,7 +69,14 @@ jobs:
           zip -r ${{ env.PLUGIN_NAME }}.zip ${{ env.PLUGIN_NAME }}
           ls
           echo "::set-output name=tag_name::$(git tag --sort version:refname | tail -n 1)"
-          
+      - name: Test & publish code coverage
+        uses: paambaati/codeclimate-action@v3.2.0
+        env:
+          CC_TEST_REPORTER_ID: ${{secrets.CC_TEST_REPORTER_ID}}
+        with:
+          coverageCommand: ynpm run test
+          coverageLocations: |
+            ${{github.workspace}}/tests/coverage/lcov.info:lcov
       - name: Upload zip file
         id: upload-zip
         uses: actions/upload-release-asset@v1
@@ -82,7 +87,6 @@ jobs:
           asset_path: ./${{ env.PLUGIN_NAME }}.zip
           asset_name: ${{ env.PLUGIN_NAME }}-${{ needs.release-please.outputs.tag_name }}.zip
           asset_content_type: application/zip
-
       - name: Upload main.js
         id: upload-main
         uses: actions/upload-release-asset@v1
@@ -93,7 +97,6 @@ jobs:
           asset_path: ./main.js
           asset_name: main.js
           asset_content_type: text/javascript
-
       - name: Upload manifest.json
         id: upload-manifest
         uses: actions/upload-release-asset@v1
@@ -104,7 +107,6 @@ jobs:
           asset_path: ./manifest.json
           asset_name: manifest.json
           asset_content_type: application/json
-
       - name: Upload styles.css
         id: upload-css
         uses: actions/upload-release-asset@v1
