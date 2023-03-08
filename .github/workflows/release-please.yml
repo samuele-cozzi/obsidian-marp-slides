@@ -74,7 +74,7 @@ jobs:
         env:
           CC_TEST_REPORTER_ID: ${{secrets.CC_TEST_REPORTER_ID}}
         with:
-          coverageCommand: ynpm run test
+          coverageCommand: npm run test
           coverageLocations: |
             ${{github.workspace}}/tests/coverage/lcov.info:lcov
       - name: Upload zip file
