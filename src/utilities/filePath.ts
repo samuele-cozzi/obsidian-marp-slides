@@ -10,13 +10,20 @@ export class FilePath {
     }
 
     private getRootPath(file: TFile): string {
-		const basePath = (file.vault.adapter as FileSystemAdapter).getBasePath();
+		let basePath = (file.vault.adapter as FileSystemAdapter).getBasePath();
+        if (basePath.startsWith('/')){
+            basePath = `/${normalizePath(basePath)}`;
+        }
+        else
+        {
+            basePath = normalizePath(basePath);
+        }
 		console.log(`Root Path: ${basePath}`);
 		return basePath;
 	}
 
 	getCompleteFileBasePath(file: TFile): string{
-        const basePath = `${this.getRootPath(file)}/${normalizePath(file.parent.path)}/`;
+        const basePath = `app://local/${this.getRootPath(file)}/${normalizePath(file.parent.path)}/`;
         console.log(`Complete File Base Path: ${basePath}`);
         return basePath;
 	}
