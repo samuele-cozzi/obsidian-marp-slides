@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.28.2](https://github.com/samuele-cozzi/obsidian-marp-slides/compare/0.28.1...0.28.2) (2023-03-08)
+
+
+### Bug Fixes
+
+* unit tests ([da08b9b](https://github.com/samuele-cozzi/obsidian-marp-slides/commit/da08b9b122e6cfd1d5e14c6374521885ddb421cb))
+
 ## [0.28.1](https://github.com/samuele-cozzi/obsidian-marp-slides/compare/0.28.0...0.28.1) (2023-03-08)
 
 
