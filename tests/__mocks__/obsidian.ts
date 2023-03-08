@@ -31,6 +31,7 @@ export const normalizePath = jest.fn().mockImplementation((str: string) => {
 
 function normalize (path: string) {
   if (typeof path !== 'string') {
+    console.log(path);
     throw new TypeError('expected path to be a string');
   }
 
