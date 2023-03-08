@@ -10,7 +10,7 @@ theme: default
 
 ## subtitle
 
-![](../attachments/placeholder-circle.png)
+![bg](../attachments/placeholder-circle.png)
 
 ---
 
