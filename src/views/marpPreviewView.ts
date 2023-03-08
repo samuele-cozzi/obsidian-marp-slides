@@ -52,7 +52,7 @@ export class MarpPreviewView extends ItemView  {
     async displaySlides(view : MarkdownView) {
         console.log("Marp Preview Display Slides");
 
-        const basePath = `app://local/${(new FilePath(this.settings)).getCompleteFileBasePath(view.file)}/`;
+        const basePath = (new FilePath(this.settings)).getCompleteFileBasePath(view.file);
         const markdownText = view.data;
         
         const container = this.containerEl.children[1];
