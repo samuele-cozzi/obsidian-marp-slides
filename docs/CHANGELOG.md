@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.28.1](https://github.com/samuele-cozzi/obsidian-marp-slides/compare/0.28.0...0.28.1) (2023-03-08)
+
+
+### Bug Fixes
+
+* normalize path of pictures ([#53](https://github.com/samuele-cozzi/obsidian-marp-slides/issues/53)) ([c362ae5](https://github.com/samuele-cozzi/obsidian-marp-slides/commit/c362ae56a3d931bf154e4a2d043890f380a31760)), closes [#46](https://github.com/samuele-cozzi/obsidian-marp-slides/issues/46)
+
 ## [0.28.0](https://github.com/samuele-cozzi/obsidian-marp-slides/compare/0.27.0...0.28.0) (2023-03-08)
 
 
