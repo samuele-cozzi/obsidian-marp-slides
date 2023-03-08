@@ -1,5 +1,5 @@
 import { TFile } from 'obsidian';
-import {describe, expect, test} from '@jest/globals';
+import { expect, test} from '@jest/globals';
 import { FilePath } from "../src/utilities/filePath";
 import { DEFAULT_SETTINGS } from "../src/utilities/settings";
 
