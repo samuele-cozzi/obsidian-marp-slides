@@ -4,8 +4,7 @@
   "version": "0.28.2",
   "minAppVersion": "0.15.0",
   "description": "Create markdown-based Marp presentations in Obsidian",
-  "author": "Obsidian",
+  "author": "samuele-cozzi",
   "authorUrl": "https://samuele-cozzi.web.app/",
-  "fundingUrl": "https://buymeacoffee.com",
   "isDesktopOnly": true
 }

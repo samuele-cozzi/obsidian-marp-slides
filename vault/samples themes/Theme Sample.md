@@ -1,5 +1,5 @@
 ---
-theme: academic
+theme: border
 size: 16:9
 header: title of presentation
 _header: ''

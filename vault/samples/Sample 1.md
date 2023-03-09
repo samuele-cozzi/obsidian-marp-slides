@@ -1,5 +1,5 @@
 ---
-theme: colors
+theme: default
 footer: Samuele Cozzi
 ---
 
