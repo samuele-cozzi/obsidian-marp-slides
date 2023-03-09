@@ -23,7 +23,7 @@ section {
     color: #28a745; }
   section pre {
     display: block;
-    margin: 1em 0 0 0;
+    margin: 1em 0 0;
     min-height: 1em;
     overflow: visible; }
     section pre code {
@@ -57,5 +57,3 @@ section.lead {
 
 section.split div.split {
   columns: 2; }
-
-/*# sourceMappingURL=github.css.map */

@@ -23,7 +23,7 @@ section {
     color: #1b7aca; }
   section pre {
     display: block;
-    margin: 1em 0 0 0;
+    margin: 1em 0 0;
     min-height: 1em;
     overflow: visible; }
     section pre code {
@@ -44,10 +44,10 @@ section {
     background-color: rgba(0, 0, 0, 0.1); }
   section ul > li,
   section ol > li {
-    margin: 0.3em 0 0 0; }
+    margin: 0.3em 0 0; }
     section ul > li > p,
     section ol > li > p {
-      margin: 0.6em 0 0 0; }
+      margin: 0.6em 0 0; }
   section img[alt~="center"] {
     display: block;
     margin: 0 auto; }
@@ -66,5 +66,3 @@ section.split div.column {
   columns: 2; }
   section.split div.column h3 {
     break-before: column; }
-
-/*# sourceMappingURL=iggg.css.map */

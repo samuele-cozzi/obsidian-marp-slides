@@ -16,7 +16,7 @@ h3,
 h4,
 h5,
 h6 {
-  margin: 0.5em 0 0 0; }
+  margin: 0.5em 0 0; }
   h1 strong,
   h2 strong,
   h3 strong,
@@ -45,14 +45,14 @@ h6 {
 
 p,
 blockquote {
-  margin: 1em 0 0 0; }
+  margin: 1em 0 0; }
 
 ul > li,
 ol > li {
-  margin: 0.3em 0 0 0; }
+  margin: 0.3em 0 0; }
   ul > li > p,
   ol > li > p {
-    margin: 0.6em 0 0 0; }
+    margin: 0.6em 0 0; }
 
 code {
   display: inline-block;
@@ -65,7 +65,7 @@ code {
 
 pre {
   display: block;
-  margin: 1em 0 0 0;
+  margin: 1em 0 0;
   min-height: 1em;
   overflow: visible; }
   pre code {
@@ -78,7 +78,7 @@ pre {
       max-height: calc(580px - 1em); }
 
 blockquote {
-  margin: 1em 0 0 0;
+  margin: 1em 0 0;
   padding: 0 1em;
   position: relative; }
   blockquote::after, blockquote::before {
@@ -103,7 +103,7 @@ mark {
 table {
   border-spacing: 0;
   border-collapse: collapse;
-  margin: 1em 0 0 0; }
+  margin: 1em 0 0; }
   table th,
   table td {
     padding: 0.2em 0.4em;
@@ -1786,5 +1786,3 @@ section::after {
   right: 0;
   bottom: 0;
   font-size: 80%; }
-
-/*# sourceMappingURL=colors.css.map */
