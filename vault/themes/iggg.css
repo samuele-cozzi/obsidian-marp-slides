@@ -2,7 +2,7 @@
 /*!
  * Marp / Marpit IGGG theme.
  *
- * @theme github
+ * @theme iggg
  * @author MATSUBARA Nobutada
  * @size 4:3 960px 720px
  * @size 16:9 1280px 720px
@@ -18,12 +18,12 @@ section {
   font-family: '源真ゴシック', 'ヒラギノ角ゴ Pro W3', 'Lato', 'Avenir Next', 'Avenir', 'Trebuchet MS', 'Segoe UI', sans-serif; }
   section > *:first-child {
     margin-top: -0.5em;
-    border-bottom: 1px solid #eaecef; }
+    margin-bottom: 0; }
   section strong {
-    color: #28a745; }
+    color: #1b7aca; }
   section pre {
     display: block;
-    margin: 1em 0 0 0;
+    margin: 1em 0 0;
     min-height: 1em;
     overflow: visible; }
     section pre code {
@@ -42,9 +42,15 @@ section {
     padding: 0.1em 0.2em;
     vertical-align: baseline;
     background-color: rgba(0, 0, 0, 0.1); }
-
-section.red strong {
-  color: #cb2431; }
+  section ul > li,
+  section ol > li {
+    margin: 0.3em 0 0; }
+    section ul > li > p,
+    section ol > li > p {
+      margin: 0.6em 0 0; }
+  section img[alt~="center"] {
+    display: block;
+    margin: 0 auto; }
 
 section.lead {
   display: flex;
@@ -55,7 +61,8 @@ section.lead {
   section.lead > *:first-child {
     margin-top: 0; }
 
-section.split div.split {
+section.split div.column {
+  display: table-cell;
   columns: 2; }
-
-/*# sourceMappingURL=github.css.map */
+  section.split div.column h3 {
+    break-before: column; }

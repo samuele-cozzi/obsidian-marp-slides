@@ -1,0 +1,59 @@
+@charset "UTF-8";
+/*!
+ * Marp / Marpit IGGG theme.
+ *
+ * @theme github
+ * @author MATSUBARA Nobutada
+ * @size 4:3 960px 720px
+ * @size 16:9 1280px 720px
+ */
+@import url("https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/github.min.css");
+section {
+  background-color: white;
+  color: #323232;
+  font-size: 28px;
+  line-height: 1.35;
+  letter-spacing: 1.25px;
+  padding: 70px;
+  font-family: '源真ゴシック', 'ヒラギノ角ゴ Pro W3', 'Lato', 'Avenir Next', 'Avenir', 'Trebuchet MS', 'Segoe UI', sans-serif; }
+  section > *:first-child {
+    margin-top: -0.5em;
+    border-bottom: 1px solid #eaecef; }
+  section strong {
+    color: #28a745; }
+  section pre {
+    display: block;
+    margin: 1em 0 0;
+    min-height: 1em;
+    overflow: visible; }
+    section pre code {
+      box-sizing: border-box;
+      margin: 0;
+      min-width: 100%;
+      padding: 0.5em;
+      font-size: 0.7em;
+      background-color: rgba(0, 0, 0, 0.1); }
+  section code {
+    display: inline-block;
+    font-family: 'NasuM', 'Roboto Mono', monospace;
+    font-size: 0.8em;
+    letter-spacing: 0;
+    margin: -0.1em 0.15em;
+    padding: 0.1em 0.2em;
+    vertical-align: baseline;
+    background-color: rgba(0, 0, 0, 0.1); }
+
+section.red strong {
+  color: #cb2431; }
+
+section.lead {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  text-align: center; }
+  section.lead > *:first-child {
+    margin-top: 0; }
+
+section.split div.split {
+  columns: 2; }

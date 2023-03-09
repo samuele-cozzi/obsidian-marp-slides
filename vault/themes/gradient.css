@@ -1,0 +1,66 @@
+/* @theme gradient */
+
+@import "default";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+:root {
+  font-family: Inter, Helvetica, Arial;
+}
+
+section {
+  background-color: #ffffff;
+  background-image: linear-gradient(40deg, #e2bee2ad 0%, #a7e1e7ad 100%);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #842174;
+}
+
+a {
+  color: #9d30a6;
+}
+
+code {
+  background-color: rgba(146, 146, 146, 0.2);
+}
+
+pre {
+  background-color: #ece1ecad;
+}
+
+/* https://github.com/yhatt/marp/issues/263 */
+section::after {
+  font-size: 0.75em;
+  content: attr(data-marpit-pagination) ' / ' attr(data-marpit-pagination-total);
+}
+
+/* the "center" keyword centers the image - may break, careful */
+img[alt~="center"] {
+  display: block;
+  margin: 0 auto;
+}
+
+/* || SECTION CLASS: blue */
+section.blue {
+  background-color: #ffffff;
+  background-image: linear-gradient(to bottom right, #cadaf7 0%, #87a7e4 100%);
+}
+
+section.blue>h1, section.blue>h2, section.blue>h3, section.blue>h4, section.blue>h5, section.blue>h6 {
+  color: #214484;
+}
+
+section.blue>a {
+  color: #303ca6;
+}
+
+section.blue::after, section.blue>footer, section.blue>header {
+  color: #303ca6;
+}
+
+/* || SECTION CLASS: tinytext */
+/* new class that makes p, ul, and blockquote text smaller */
+/* might be useful for the References slide, use <!-- _class: tinytext --> */
+section.tinytext>p, section.tinytext>ul, section.tinytext>blockquote {
+  font-size: 0.65em;
+}

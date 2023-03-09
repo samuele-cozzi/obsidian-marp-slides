@@ -1,0 +1,463 @@
+@charset "UTF-8";
+/*!
+ * Marp / Marpit Olive theme.
+ *
+ * @theme olive
+ * @author MATSUBARA Nobutada
+ * @size 4:3 960px 720px
+ * @size 16:9 1280px 720px
+ */
+@import url("https://fonts.googleapis.com/css?family=Lato:400,900|Roboto+Mono:400,700");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/styles/github.min.css");
+svg[data-marp-fitting='svg'] {
+  max-height: 580px; }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0.5em 0 0; }
+  h1 strong,
+  h2 strong,
+  h3 strong,
+  h4 strong,
+  h5 strong,
+  h6 strong {
+    font-weight: inherit; }
+
+h1 {
+  font-size: 1.8em; }
+
+h2 {
+  font-size: 1.5em; }
+
+h3 {
+  font-size: 1.3em; }
+
+h4 {
+  font-size: 1.1em; }
+
+h5 {
+  font-size: 1em; }
+
+h6 {
+  font-size: 0.9em; }
+
+p,
+blockquote {
+  margin: 1em 0 0; }
+
+ul > li,
+ol > li {
+  margin: 0.3em 0 0; }
+  ul > li > p,
+  ol > li > p {
+    margin: 0.6em 0 0; }
+
+code {
+  display: inline-block;
+  font-family: 'NasuM', 'Roboto Mono', monospace;
+  font-size: 0.8em;
+  letter-spacing: 0;
+  margin: -0.1em 0.15em;
+  padding: 0.1em 0.2em;
+  vertical-align: baseline; }
+
+pre {
+  display: block;
+  margin: 1em 0 0;
+  min-height: 1em;
+  overflow: visible; }
+  pre code {
+    box-sizing: border-box;
+    margin: 0;
+    min-width: 100%;
+    padding: 0.5em;
+    font-size: 0.7em; }
+    pre code svg[data-marp-fitting='svg'] {
+      max-height: calc(580px - 1em); }
+
+blockquote {
+  margin: 1em 0 0;
+  padding: 0 1em;
+  position: relative; }
+  blockquote::after, blockquote::before {
+    content: '“';
+    display: block;
+    font-family: 'Times New Roman', serif;
+    font-weight: bold;
+    position: absolute; }
+  blockquote::before {
+    top: 0;
+    left: 0; }
+  blockquote::after {
+    right: 0;
+    bottom: 0;
+    transform: rotate(180deg); }
+  blockquote > *:first-child {
+    margin-top: 0; }
+
+mark {
+  background: transparent; }
+
+table {
+  border-spacing: 0;
+  border-collapse: collapse;
+  margin: 1em 0 0; }
+  table th,
+  table td {
+    padding: 0.2em 0.4em;
+    border-width: 1px;
+    border-style: solid; }
+
+section {
+  background-image: linear-gradient(135deg, rgba(136, 136, 136, 0), rgba(136, 136, 136, 0.02) 50%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.05));
+  font-size: 28px;
+  font-family: '源真ゴシック', 'ヒラギノ角ゴ Pro W3', 'Lato', 'Avenir Next', 'Avenir', 'Trebuchet MS', 'Segoe UI', sans-serif;
+  line-height: 1.35;
+  letter-spacing: 1.25px;
+  padding: 70px;
+  color: #FFF2DD;
+  background-color: #4e4f53; }
+  section > *:first-child,
+  section > header:first-child + * {
+    margin-top: 0; }
+  section a,
+  section mark {
+    color: #CCA551; }
+  section code {
+    background: #dcd1c1;
+    color: #4e4f53; }
+  section h1 strong,
+  section h2 strong,
+  section h3 strong,
+  section h4 strong,
+  section h5 strong,
+  section h6 strong {
+    color: #CCA551; }
+  section h1 img,
+  section h2 img,
+  section h3 img,
+  section h4 img,
+  section h5 img,
+  section h6 img {
+    display: block;
+    margin: auto; }
+  section pre > code {
+    background: #FFF2DD; }
+  section header,
+  section footer,
+  section section::after,
+  section blockquote::before,
+  section blockquote::after {
+    color: #dcd1c1; }
+  section table th,
+  section table td {
+    border-color: #FFF2DD; }
+  section table thead th {
+    background: #FFF2DD;
+    color: #4e4f53; }
+  section table tbody > tr:nth-child(odd) td,
+  section table tbody > tr:nth-child(odd) th {
+    background: rgba(255, 242, 221, 0.1); }
+  section.invert {
+    color: #4e4f53;
+    background-color: #FFF2DD; }
+    section.invert a,
+    section.invert mark {
+      color: #CCA551; }
+    section.invert code {
+      background: #71706f;
+      color: #FFF2DD; }
+    section.invert h1 strong,
+    section.invert h2 strong,
+    section.invert h3 strong,
+    section.invert h4 strong,
+    section.invert h5 strong,
+    section.invert h6 strong {
+      color: #CCA551; }
+    section.invert h1 img,
+    section.invert h2 img,
+    section.invert h3 img,
+    section.invert h4 img,
+    section.invert h5 img,
+    section.invert h6 img {
+      display: block;
+      margin: auto; }
+    section.invert pre > code {
+      background: #4e4f53; }
+    section.invert header,
+    section.invert footer,
+    section.invert section::after,
+    section.invert blockquote::before,
+    section.invert blockquote::after {
+      color: #71706f; }
+    section.invert table th,
+    section.invert table td {
+      border-color: #4e4f53; }
+    section.invert table thead th {
+      background: #4e4f53;
+      color: #FFF2DD; }
+    section.invert table tbody > tr:nth-child(odd) td,
+    section.invert table tbody > tr:nth-child(odd) th {
+      background: rgba(78, 79, 83, 0.1); }
+  section.olive {
+    color: #4e4f53;
+    background-color: #CCA551; }
+    section.olive a,
+    section.olive mark {
+      color: #FFF2DD; }
+    section.olive code {
+      background: #676053;
+      color: #CCA551; }
+    section.olive h1 strong,
+    section.olive h2 strong,
+    section.olive h3 strong,
+    section.olive h4 strong,
+    section.olive h5 strong,
+    section.olive h6 strong {
+      color: #FFF2DD; }
+    section.olive h1 img,
+    section.olive h2 img,
+    section.olive h3 img,
+    section.olive h4 img,
+    section.olive h5 img,
+    section.olive h6 img {
+      display: block;
+      margin: auto; }
+    section.olive pre > code {
+      background: #4e4f53; }
+    section.olive header,
+    section.olive footer,
+    section.olive section::after,
+    section.olive blockquote::before,
+    section.olive blockquote::after {
+      color: #676053; }
+    section.olive table th,
+    section.olive table td {
+      border-color: #4e4f53; }
+    section.olive table thead th {
+      background: #4e4f53;
+      color: #CCA551; }
+    section.olive table tbody > tr:nth-child(odd) td,
+    section.olive table tbody > tr:nth-child(odd) th {
+      background: rgba(78, 79, 83, 0.1); }
+  section.lead {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center; }
+    section.lead h1,
+    section.lead h2,
+    section.lead h3,
+    section.lead h4,
+    section.lead h5,
+    section.lead h6 {
+      text-align: center; }
+      section.lead h1 svg[data-marp-fitting='svg'],
+      section.lead h2 svg[data-marp-fitting='svg'],
+      section.lead h3 svg[data-marp-fitting='svg'],
+      section.lead h4 svg[data-marp-fitting='svg'],
+      section.lead h5 svg[data-marp-fitting='svg'],
+      section.lead h6 svg[data-marp-fitting='svg'] {
+        --preserve-aspect-ratio: xMidYMid meet; }
+    section.lead p {
+      text-align: center; }
+    section.lead blockquote > h1,
+    section.lead blockquote > h2,
+    section.lead blockquote > h3,
+    section.lead blockquote > h4,
+    section.lead blockquote > h5,
+    section.lead blockquote > h6,
+    section.lead blockquote > p {
+      text-align: left; }
+    section.lead blockquote svg[data-marp-fitting='svg']:not([data-marp-fitting-math]) {
+      --preserve-aspect-ratio: xMinYMin meet; }
+    section.lead ul > li > p,
+    section.lead ol > li > p {
+      text-align: left; }
+    section.lead table {
+      margin-left: auto;
+      margin-right: auto; }
+  section.lead-invert {
+    color: #4e4f53;
+    background-color: #FFF2DD;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center; }
+    section.lead-invert a,
+    section.lead-invert mark {
+      color: #CCA551; }
+    section.lead-invert code {
+      background: #71706f;
+      color: #FFF2DD; }
+    section.lead-invert h1 strong,
+    section.lead-invert h2 strong,
+    section.lead-invert h3 strong,
+    section.lead-invert h4 strong,
+    section.lead-invert h5 strong,
+    section.lead-invert h6 strong {
+      color: #CCA551; }
+    section.lead-invert h1 img,
+    section.lead-invert h2 img,
+    section.lead-invert h3 img,
+    section.lead-invert h4 img,
+    section.lead-invert h5 img,
+    section.lead-invert h6 img {
+      display: block;
+      margin: auto; }
+    section.lead-invert pre > code {
+      background: #4e4f53; }
+    section.lead-invert header,
+    section.lead-invert footer,
+    section.lead-invert section::after,
+    section.lead-invert blockquote::before,
+    section.lead-invert blockquote::after {
+      color: #71706f; }
+    section.lead-invert table th,
+    section.lead-invert table td {
+      border-color: #4e4f53; }
+    section.lead-invert table thead th {
+      background: #4e4f53;
+      color: #FFF2DD; }
+    section.lead-invert table tbody > tr:nth-child(odd) td,
+    section.lead-invert table tbody > tr:nth-child(odd) th {
+      background: rgba(78, 79, 83, 0.1); }
+    section.lead-invert h1,
+    section.lead-invert h2,
+    section.lead-invert h3,
+    section.lead-invert h4,
+    section.lead-invert h5,
+    section.lead-invert h6 {
+      text-align: center; }
+      section.lead-invert h1 svg[data-marp-fitting='svg'],
+      section.lead-invert h2 svg[data-marp-fitting='svg'],
+      section.lead-invert h3 svg[data-marp-fitting='svg'],
+      section.lead-invert h4 svg[data-marp-fitting='svg'],
+      section.lead-invert h5 svg[data-marp-fitting='svg'],
+      section.lead-invert h6 svg[data-marp-fitting='svg'] {
+        --preserve-aspect-ratio: xMidYMid meet; }
+    section.lead-invert p {
+      text-align: center; }
+    section.lead-invert blockquote > h1,
+    section.lead-invert blockquote > h2,
+    section.lead-invert blockquote > h3,
+    section.lead-invert blockquote > h4,
+    section.lead-invert blockquote > h5,
+    section.lead-invert blockquote > h6,
+    section.lead-invert blockquote > p {
+      text-align: left; }
+    section.lead-invert blockquote svg[data-marp-fitting='svg']:not([data-marp-fitting-math]) {
+      --preserve-aspect-ratio: xMinYMin meet; }
+    section.lead-invert ul > li > p,
+    section.lead-invert ol > li > p {
+      text-align: left; }
+    section.lead-invert table {
+      margin-left: auto;
+      margin-right: auto; }
+  section.lead-olive {
+    color: #4e4f53;
+    background-color: #CCA551;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center; }
+    section.lead-olive a,
+    section.lead-olive mark {
+      color: #FFF2DD; }
+    section.lead-olive code {
+      background: #676053;
+      color: #CCA551; }
+    section.lead-olive h1 strong,
+    section.lead-olive h2 strong,
+    section.lead-olive h3 strong,
+    section.lead-olive h4 strong,
+    section.lead-olive h5 strong,
+    section.lead-olive h6 strong {
+      color: #FFF2DD; }
+    section.lead-olive h1 img,
+    section.lead-olive h2 img,
+    section.lead-olive h3 img,
+    section.lead-olive h4 img,
+    section.lead-olive h5 img,
+    section.lead-olive h6 img {
+      display: block;
+      margin: auto; }
+    section.lead-olive pre > code {
+      background: #4e4f53; }
+    section.lead-olive header,
+    section.lead-olive footer,
+    section.lead-olive section::after,
+    section.lead-olive blockquote::before,
+    section.lead-olive blockquote::after {
+      color: #676053; }
+    section.lead-olive table th,
+    section.lead-olive table td {
+      border-color: #4e4f53; }
+    section.lead-olive table thead th {
+      background: #4e4f53;
+      color: #CCA551; }
+    section.lead-olive table tbody > tr:nth-child(odd) td,
+    section.lead-olive table tbody > tr:nth-child(odd) th {
+      background: rgba(78, 79, 83, 0.1); }
+    section.lead-olive h1,
+    section.lead-olive h2,
+    section.lead-olive h3,
+    section.lead-olive h4,
+    section.lead-olive h5,
+    section.lead-olive h6 {
+      text-align: center; }
+      section.lead-olive h1 svg[data-marp-fitting='svg'],
+      section.lead-olive h2 svg[data-marp-fitting='svg'],
+      section.lead-olive h3 svg[data-marp-fitting='svg'],
+      section.lead-olive h4 svg[data-marp-fitting='svg'],
+      section.lead-olive h5 svg[data-marp-fitting='svg'],
+      section.lead-olive h6 svg[data-marp-fitting='svg'] {
+        --preserve-aspect-ratio: xMidYMid meet; }
+    section.lead-olive p {
+      text-align: center; }
+    section.lead-olive blockquote > h1,
+    section.lead-olive blockquote > h2,
+    section.lead-olive blockquote > h3,
+    section.lead-olive blockquote > h4,
+    section.lead-olive blockquote > h5,
+    section.lead-olive blockquote > h6,
+    section.lead-olive blockquote > p {
+      text-align: left; }
+    section.lead-olive blockquote svg[data-marp-fitting='svg']:not([data-marp-fitting-math]) {
+      --preserve-aspect-ratio: xMinYMin meet; }
+    section.lead-olive ul > li > p,
+    section.lead-olive ol > li > p {
+      text-align: left; }
+    section.lead-olive table {
+      margin-left: auto;
+      margin-right: auto; }
+
+header,
+footer,
+section::after {
+  box-sizing: border-box;
+  font-size: 66%;
+  height: 70px;
+  line-height: 50px;
+  overflow: hidden;
+  padding: 10px 25px;
+  position: absolute; }
+
+header {
+  left: 0;
+  right: 0;
+  top: 0; }
+
+footer {
+  left: 0;
+  right: 0;
+  bottom: 0; }
+
+section::after {
+  right: 0;
+  bottom: 0;
+  font-size: 80%; }

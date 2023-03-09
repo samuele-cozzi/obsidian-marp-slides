@@ -1,0 +1,1788 @@
+@charset "UTF-8";
+/*!
+ * Marp / Marpit Colors theme.
+ *
+ * @theme colors
+ * @author MATSUBARA Nobutada
+ */
+@import url("https://fonts.googleapis.com/css?family=Lato:400,900|Roboto+Mono:400,700");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/styles/github.min.css");
+svg[data-marp-fitting='svg'] {
+  max-height: 580px; }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0.5em 0 0; }
+  h1 strong,
+  h2 strong,
+  h3 strong,
+  h4 strong,
+  h5 strong,
+  h6 strong {
+    font-weight: inherit; }
+
+h1 {
+  font-size: 1.8em; }
+
+h2 {
+  font-size: 1.5em; }
+
+h3 {
+  font-size: 1.3em; }
+
+h4 {
+  font-size: 1.1em; }
+
+h5 {
+  font-size: 1em; }
+
+h6 {
+  font-size: 0.9em; }
+
+p,
+blockquote {
+  margin: 1em 0 0; }
+
+ul > li,
+ol > li {
+  margin: 0.3em 0 0; }
+  ul > li > p,
+  ol > li > p {
+    margin: 0.6em 0 0; }
+
+code {
+  display: inline-block;
+  font-family: 'NasuM', 'Roboto Mono', monospace;
+  font-size: 0.8em;
+  letter-spacing: 0;
+  margin: -0.1em 0.15em;
+  padding: 0.1em 0.2em;
+  vertical-align: baseline; }
+
+pre {
+  display: block;
+  margin: 1em 0 0;
+  min-height: 1em;
+  overflow: visible; }
+  pre code {
+    box-sizing: border-box;
+    margin: 0;
+    min-width: 100%;
+    padding: 0.5em;
+    font-size: 0.7em; }
+    pre code svg[data-marp-fitting='svg'] {
+      max-height: calc(580px - 1em); }
+
+blockquote {
+  margin: 1em 0 0;
+  padding: 0 1em;
+  position: relative; }
+  blockquote::after, blockquote::before {
+    content: '“';
+    display: block;
+    font-family: 'Times New Roman', serif;
+    font-weight: bold;
+    position: absolute; }
+  blockquote::before {
+    top: 0;
+    left: 0; }
+  blockquote::after {
+    right: 0;
+    bottom: 0;
+    transform: rotate(180deg); }
+  blockquote > *:first-child {
+    margin-top: 0; }
+
+mark {
+  background: transparent; }
+
+table {
+  border-spacing: 0;
+  border-collapse: collapse;
+  margin: 1em 0 0; }
+  table th,
+  table td {
+    padding: 0.2em 0.4em;
+    border-width: 1px;
+    border-style: solid; }
+
+section {
+  background-image: linear-gradient(135deg, rgba(136, 136, 136, 0), rgba(136, 136, 136, 0.02) 50%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.05));
+  font-size: 28px;
+  font-family: '源真ゴシック', 'ヒラギノ角ゴ Pro W3', 'Lato', 'Avenir Next', 'Avenir', 'Trebuchet MS', 'Segoe UI', sans-serif;
+  line-height: 1.35;
+  letter-spacing: 1.25px;
+  padding: 70px;
+  width: 960px;
+  height: 720px;
+  color: #465A65;
+  background-color: #FFF2DD; }
+  section > *:first-child,
+  section > header:first-child + * {
+    margin-top: 0; }
+  section a,
+  section mark {
+    color: #465A65; }
+  section code {
+    background: rgba(70, 90, 101, 0.8);
+    color: #FFF2DD; }
+  section h1 strong,
+  section h2 strong,
+  section h3 strong,
+  section h4 strong,
+  section h5 strong,
+  section h6 strong {
+    color: #465A65; }
+  section h1 img,
+  section h2 img,
+  section h3 img,
+  section h4 img,
+  section h5 img,
+  section h6 img {
+    display: block;
+    margin: auto; }
+  section pre > code {
+    background: #465A65;
+    color: #FFF2DD; }
+  section header,
+  section footer,
+  section section::after,
+  section blockquote::before,
+  section blockquote::after {
+    color: #6b787d; }
+  section table th,
+  section table td {
+    border-color: #465A65; }
+  section table thead th {
+    background: #465A65;
+    color: #FFF2DD; }
+  section table tbody > tr:nth-child(odd) td,
+  section table tbody > tr:nth-child(odd) th {
+    background: rgba(70, 90, 101, 0.1); }
+  section.invert {
+    color: #FFF2DD;
+    background-color: #465A65; }
+    section.invert a,
+    section.invert mark {
+      color: #FFF2DD; }
+    section.invert code {
+      background: rgba(255, 242, 221, 0.8);
+      color: #465A65; }
+    section.invert h1 strong,
+    section.invert h2 strong,
+    section.invert h3 strong,
+    section.invert h4 strong,
+    section.invert h5 strong,
+    section.invert h6 strong {
+      color: #FFF2DD; }
+    section.invert h1 img,
+    section.invert h2 img,
+    section.invert h3 img,
+    section.invert h4 img,
+    section.invert h5 img,
+    section.invert h6 img {
+      display: block;
+      margin: auto; }
+    section.invert pre > code {
+      background: #FFF2DD;
+      color: #465A65; }
+    section.invert header,
+    section.invert footer,
+    section.invert section::after,
+    section.invert blockquote::before,
+    section.invert blockquote::after {
+      color: #dad4c5; }
+    section.invert table th,
+    section.invert table td {
+      border-color: #FFF2DD; }
+    section.invert table thead th {
+      background: #FFF2DD;
+      color: #465A65; }
+    section.invert table tbody > tr:nth-child(odd) td,
+    section.invert table tbody > tr:nth-child(odd) th {
+      background: rgba(255, 242, 221, 0.1); }
+  section.lead {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center; }
+    section.lead h1,
+    section.lead h2,
+    section.lead h3,
+    section.lead h4,
+    section.lead h5,
+    section.lead h6 {
+      text-align: center; }
+      section.lead h1 svg[data-marp-fitting='svg'],
+      section.lead h2 svg[data-marp-fitting='svg'],
+      section.lead h3 svg[data-marp-fitting='svg'],
+      section.lead h4 svg[data-marp-fitting='svg'],
+      section.lead h5 svg[data-marp-fitting='svg'],
+      section.lead h6 svg[data-marp-fitting='svg'] {
+        --preserve-aspect-ratio: xMidYMid meet; }
+    section.lead p {
+      text-align: center; }
+    section.lead blockquote > h1,
+    section.lead blockquote > h2,
+    section.lead blockquote > h3,
+    section.lead blockquote > h4,
+    section.lead blockquote > h5,
+    section.lead blockquote > h6,
+    section.lead blockquote > p {
+      text-align: left; }
+    section.lead blockquote svg[data-marp-fitting='svg']:not([data-marp-fitting-math]) {
+      --preserve-aspect-ratio: xMinYMin meet; }
+    section.lead ul > li > p,
+    section.lead ol > li > p {
+      text-align: left; }
+    section.lead table {
+      margin-left: auto;
+      margin-right: auto; }
+  section.lead-invert {
+    color: #FFF2DD;
+    background-color: #465A65;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center; }
+    section.lead-invert a,
+    section.lead-invert mark {
+      color: #FFF2DD; }
+    section.lead-invert code {
+      background: rgba(255, 242, 221, 0.8);
+      color: #465A65; }
+    section.lead-invert h1 strong,
+    section.lead-invert h2 strong,
+    section.lead-invert h3 strong,
+    section.lead-invert h4 strong,
+    section.lead-invert h5 strong,
+    section.lead-invert h6 strong {
+      color: #FFF2DD; }
+    section.lead-invert h1 img,
+    section.lead-invert h2 img,
+    section.lead-invert h3 img,
+    section.lead-invert h4 img,
+    section.lead-invert h5 img,
+    section.lead-invert h6 img {
+      display: block;
+      margin: auto; }
+    section.lead-invert pre > code {
+      background: #FFF2DD;
+      color: #465A65; }
+    section.lead-invert header,
+    section.lead-invert footer,
+    section.lead-invert section::after,
+    section.lead-invert blockquote::before,
+    section.lead-invert blockquote::after {
+      color: #dad4c5; }
+    section.lead-invert table th,
+    section.lead-invert table td {
+      border-color: #FFF2DD; }
+    section.lead-invert table thead th {
+      background: #FFF2DD;
+      color: #465A65; }
+    section.lead-invert table tbody > tr:nth-child(odd) td,
+    section.lead-invert table tbody > tr:nth-child(odd) th {
+      background: rgba(255, 242, 221, 0.1); }
+    section.lead-invert h1,
+    section.lead-invert h2,
+    section.lead-invert h3,
+    section.lead-invert h4,
+    section.lead-invert h5,
+    section.lead-invert h6 {
+      text-align: center; }
+      section.lead-invert h1 svg[data-marp-fitting='svg'],
+      section.lead-invert h2 svg[data-marp-fitting='svg'],
+      section.lead-invert h3 svg[data-marp-fitting='svg'],
+      section.lead-invert h4 svg[data-marp-fitting='svg'],
+      section.lead-invert h5 svg[data-marp-fitting='svg'],
+      section.lead-invert h6 svg[data-marp-fitting='svg'] {
+        --preserve-aspect-ratio: xMidYMid meet; }
+    section.lead-invert p {
+      text-align: center; }
+    section.lead-invert blockquote > h1,
+    section.lead-invert blockquote > h2,
+    section.lead-invert blockquote > h3,
+    section.lead-invert blockquote > h4,
+    section.lead-invert blockquote > h5,
+    section.lead-invert blockquote > h6,
+    section.lead-invert blockquote > p {
+      text-align: left; }
+    section.lead-invert blockquote svg[data-marp-fitting='svg']:not([data-marp-fitting-math]) {
+      --preserve-aspect-ratio: xMinYMin meet; }
+    section.lead-invert ul > li > p,
+    section.lead-invert ol > li > p {
+      text-align: left; }
+    section.lead-invert table {
+      margin-left: auto;
+      margin-right: auto; }
+  section.green {
+    color: #465A65;
+    background-color: #FFF2DD; }
+    section.green a,
+    section.green mark {
+      color: #32B490; }
+    section.green code {
+      background: rgba(70, 90, 101, 0.8);
+      color: #FFF2DD; }
+    section.green h1 strong,
+    section.green h2 strong,
+    section.green h3 strong,
+    section.green h4 strong,
+    section.green h5 strong,
+    section.green h6 strong {
+      color: #32B490; }
+    section.green h1 img,
+    section.green h2 img,
+    section.green h3 img,
+    section.green h4 img,
+    section.green h5 img,
+    section.green h6 img {
+      display: block;
+      margin: auto; }
+    section.green pre > code {
+      background: #465A65;
+      color: #FFF2DD; }
+    section.green header,
+    section.green footer,
+    section.green section::after,
+    section.green blockquote::before,
+    section.green blockquote::after {
+      color: #6b787d; }
+    section.green table th,
+    section.green table td {
+      border-color: #465A65; }
+    section.green table thead th {
+      background: #465A65;
+      color: #FFF2DD; }
+    section.green table tbody > tr:nth-child(odd) td,
+    section.green table tbody > tr:nth-child(odd) th {
+      background: rgba(70, 90, 101, 0.1); }
+  section.invert-green {
+    color: #FFF2DD;
+    background-color: #32B490; }
+    section.invert-green a,
+    section.invert-green mark {
+      color: #465A65; }
+    section.invert-green code {
+      background: rgba(255, 242, 221, 0.8);
+      color: #465A65; }
+    section.invert-green h1 strong,
+    section.invert-green h2 strong,
+    section.invert-green h3 strong,
+    section.invert-green h4 strong,
+    section.invert-green h5 strong,
+    section.invert-green h6 strong {
+      color: #465A65; }
+    section.invert-green h1 img,
+    section.invert-green h2 img,
+    section.invert-green h3 img,
+    section.invert-green h4 img,
+    section.invert-green h5 img,
+    section.invert-green h6 img {
+      display: block;
+      margin: auto; }
+    section.invert-green pre > code {
+      background: #FFF2DD;
+      color: #465A65; }
+    section.invert-green header,
+    section.invert-green footer,
+    section.invert-green section::after,
+    section.invert-green blockquote::before,
+    section.invert-green blockquote::after {
+      color: #d6e6ce; }
+    section.invert-green table th,
+    section.invert-green table td {
+      border-color: #FFF2DD; }
+    section.invert-green table thead th {
+      background: #FFF2DD;
+      color: #32B490; }
+    section.invert-green table tbody > tr:nth-child(odd) td,
+    section.invert-green table tbody > tr:nth-child(odd) th {
+      background: rgba(255, 242, 221, 0.1); }
+  section.lead-green {
+    color: #465A65;
+    background-color: #FFF2DD;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center; }
+    section.lead-green a,
+    section.lead-green mark {
+      color: #32B490; }
+    section.lead-green code {
+      background: rgba(70, 90, 101, 0.8);
+      color: #FFF2DD; }
+    section.lead-green h1 strong,
+    section.lead-green h2 strong,
+    section.lead-green h3 strong,
+    section.lead-green h4 strong,
+    section.lead-green h5 strong,
+    section.lead-green h6 strong {
+      color: #32B490; }
+    section.lead-green h1 img,
+    section.lead-green h2 img,
+    section.lead-green h3 img,
+    section.lead-green h4 img,
+    section.lead-green h5 img,
+    section.lead-green h6 img {
+      display: block;
+      margin: auto; }
+    section.lead-green pre > code {
+      background: #465A65;
+      color: #FFF2DD; }
+    section.lead-green header,
+    section.lead-green footer,
+    section.lead-green section::after,
+    section.lead-green blockquote::before,
+    section.lead-green blockquote::after {
+      color: #6b787d; }
+    section.lead-green table th,
+    section.lead-green table td {
+      border-color: #465A65; }
+    section.lead-green table thead th {
+      background: #465A65;
+      color: #FFF2DD; }
+    section.lead-green table tbody > tr:nth-child(odd) td,
+    section.lead-green table tbody > tr:nth-child(odd) th {
+      background: rgba(70, 90, 101, 0.1); }
+    section.lead-green h1,
+    section.lead-green h2,
+    section.lead-green h3,
+    section.lead-green h4,
+    section.lead-green h5,
+    section.lead-green h6 {
+      text-align: center; }
+      section.lead-green h1 svg[data-marp-fitting='svg'],
+      section.lead-green h2 svg[data-marp-fitting='svg'],
+      section.lead-green h3 svg[data-marp-fitting='svg'],
+      section.lead-green h4 svg[data-marp-fitting='svg'],
+      section.lead-green h5 svg[data-marp-fitting='svg'],
+      section.lead-green h6 svg[data-marp-fitting='svg'] {
+        --preserve-aspect-ratio: xMidYMid meet; }
+    section.lead-green p {
+      text-align: center; }
+    section.lead-green blockquote > h1,
+    section.lead-green blockquote > h2,
+    section.lead-green blockquote > h3,
+    section.lead-green blockquote > h4,
+    section.lead-green blockquote > h5,
+    section.lead-green blockquote > h6,
+    section.lead-green blockquote > p {
+      text-align: left; }
+    section.lead-green blockquote svg[data-marp-fitting='svg']:not([data-marp-fitting-math]) {
+      --preserve-aspect-ratio: xMinYMin meet; }
+    section.lead-green ul > li > p,
+    section.lead-green ol > li > p {
+      text-align: left; }
+    section.lead-green table {
+      margin-left: auto;
+      margin-right: auto; }
+  section.lead-invert-green {
+    color: #FFF2DD;
+    background-color: #32B490;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center; }
+    section.lead-invert-green a,
+    section.lead-invert-green mark {
+      color: #465A65; }
+    section.lead-invert-green code {
+      background: rgba(255, 242, 221, 0.8);
+      color: #465A65; }
+    section.lead-invert-green h1 strong,
+    section.lead-invert-green h2 strong,
+    section.lead-invert-green h3 strong,
+    section.lead-invert-green h4 strong,
+    section.lead-invert-green h5 strong,
+    section.lead-invert-green h6 strong {
+      color: #465A65; }
+    section.lead-invert-green h1 img,
+    section.lead-invert-green h2 img,
+    section.lead-invert-green h3 img,
+    section.lead-invert-green h4 img,
+    section.lead-invert-green h5 img,
+    section.lead-invert-green h6 img {
+      display: block;
+      margin: auto; }
+    section.lead-invert-green pre > code {
+      background: #FFF2DD;
+      color: #465A65; }
+    section.lead-invert-green header,
+    section.lead-invert-green footer,
+    section.lead-invert-green section::after,
+    section.lead-invert-green blockquote::before,
+    section.lead-invert-green blockquote::after {
+      color: #d6e6ce; }
+    section.lead-invert-green table th,
+    section.lead-invert-green table td {
+      border-color: #FFF2DD; }
+    section.lead-invert-green table thead th {
+      background: #FFF2DD;
+      color: #32B490; }
+    section.lead-invert-green table tbody > tr:nth-child(odd) td,
+    section.lead-invert-green table tbody > tr:nth-child(odd) th {
+      background: rgba(255, 242, 221, 0.1); }
+    section.lead-invert-green h1,
+    section.lead-invert-green h2,
+    section.lead-invert-green h3,
+    section.lead-invert-green h4,
+    section.lead-invert-green h5,
+    section.lead-invert-green h6 {
+      text-align: center; }
+      section.lead-invert-green h1 svg[data-marp-fitting='svg'],
+      section.lead-invert-green h2 svg[data-marp-fitting='svg'],
+      section.lead-invert-green h3 svg[data-marp-fitting='svg'],
+      section.lead-invert-green h4 svg[data-marp-fitting='svg'],
+      section.lead-invert-green h5 svg[data-marp-fitting='svg'],
+      section.lead-invert-green h6 svg[data-marp-fitting='svg'] {
+        --preserve-aspect-ratio: xMidYMid meet; }
+    section.lead-invert-green p {
+      text-align: center; }
+    section.lead-invert-green blockquote > h1,
+    section.lead-invert-green blockquote > h2,
+    section.lead-invert-green blockquote > h3,
+    section.lead-invert-green blockquote > h4,
+    section.lead-invert-green blockquote > h5,
+    section.lead-invert-green blockquote > h6,
+    section.lead-invert-green blockquote > p {
+      text-align: left; }
+    section.lead-invert-green blockquote svg[data-marp-fitting='svg']:not([data-marp-fitting-math]) {
+      --preserve-aspect-ratio: xMinYMin meet; }
+    section.lead-invert-green ul > li > p,
+    section.lead-invert-green ol > li > p {
+      text-align: left; }
+    section.lead-invert-green table {
+      margin-left: auto;
+      margin-right: auto; }
+  section.blue {
+    color: #465A65;
+    background-color: #FFF2DD; }
+    section.blue a,
+    section.blue mark {
+      color: #01BBD4; }
+    section.blue code {
+      background: rgba(70, 90, 101, 0.8);
+      color: #FFF2DD; }
+    section.blue h1 strong,
+    section.blue h2 strong,
+    section.blue h3 strong,
+    section.blue h4 strong,
+    section.blue h5 strong,
+    section.blue h6 strong {
+      color: #01BBD4; }
+    section.blue h1 img,
+    section.blue h2 img,
+    section.blue h3 img,
+    section.blue h4 img,
+    section.blue h5 img,
+    section.blue h6 img {
+      display: block;
+      margin: auto; }
+    section.blue pre > code {
+      background: #465A65;
+      color: #FFF2DD; }
+    section.blue header,
+    section.blue footer,
+    section.blue section::after,
+    section.blue blockquote::before,
+    section.blue blockquote::after {
+      color: #6b787d; }
+    section.blue table th,
+    section.blue table td {
+      border-color: #465A65; }
+    section.blue table thead th {
+      background: #465A65;
+      color: #FFF2DD; }
+    section.blue table tbody > tr:nth-child(odd) td,
+    section.blue table tbody > tr:nth-child(odd) th {
+      background: rgba(70, 90, 101, 0.1); }
+  section.invert-blue {
+    color: #FFF2DD;
+    background-color: #01BBD4; }
+    section.invert-blue a,
+    section.invert-blue mark {
+      color: #465A65; }
+    section.invert-blue code {
+      background: rgba(255, 242, 221, 0.8);
+      color: #465A65; }
+    section.invert-blue h1 strong,
+    section.invert-blue h2 strong,
+    section.invert-blue h3 strong,
+    section.invert-blue h4 strong,
+    section.invert-blue h5 strong,
+    section.invert-blue h6 strong {
+      color: #465A65; }
+    section.invert-blue h1 img,
+    section.invert-blue h2 img,
+    section.invert-blue h3 img,
+    section.invert-blue h4 img,
+    section.invert-blue h5 img,
+    section.invert-blue h6 img {
+      display: block;
+      margin: auto; }
+    section.invert-blue pre > code {
+      background: #FFF2DD;
+      color: #465A65; }
+    section.invert-blue header,
+    section.invert-blue footer,
+    section.invert-blue section::after,
+    section.invert-blue blockquote::before,
+    section.invert-blue blockquote::after {
+      color: #cce7db; }
+    section.invert-blue table th,
+    section.invert-blue table td {
+      border-color: #FFF2DD; }
+    section.invert-blue table thead th {
+      background: #FFF2DD;
+      color: #01BBD4; }
+    section.invert-blue table tbody > tr:nth-child(odd) td,
+    section.invert-blue table tbody > tr:nth-child(odd) th {
+      background: rgba(255, 242, 221, 0.1); }
+  section.lead-blue {
+    color: #465A65;
+    background-color: #FFF2DD;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center; }
+    section.lead-blue a,
+    section.lead-blue mark {
+      color: #01BBD4; }
+    section.lead-blue code {
+      background: rgba(70, 90, 101, 0.8);
+      color: #FFF2DD; }
+    section.lead-blue h1 strong,
+    section.lead-blue h2 strong,
+    section.lead-blue h3 strong,
+    section.lead-blue h4 strong,
+    section.lead-blue h5 strong,
+    section.lead-blue h6 strong {
+      color: #01BBD4; }
+    section.lead-blue h1 img,
+    section.lead-blue h2 img,
+    section.lead-blue h3 img,
+    section.lead-blue h4 img,
+    section.lead-blue h5 img,
+    section.lead-blue h6 img {
+      display: block;
+      margin: auto; }
+    section.lead-blue pre > code {
+      background: #465A65;
+      color: #FFF2DD; }
+    section.lead-blue header,
+    section.lead-blue footer,
+    section.lead-blue section::after,
+    section.lead-blue blockquote::before,
+    section.lead-blue blockquote::after {
+      color: #6b787d; }
+    section.lead-blue table th,
+    section.lead-blue table td {
+      border-color: #465A65; }
+    section.lead-blue table thead th {
+      background: #465A65;
+      color: #FFF2DD; }
+    section.lead-blue table tbody > tr:nth-child(odd) td,
+    section.lead-blue table tbody > tr:nth-child(odd) th {
+      background: rgba(70, 90, 101, 0.1); }
+    section.lead-blue h1,
+    section.lead-blue h2,
+    section.lead-blue h3,
+    section.lead-blue h4,
+    section.lead-blue h5,
+    section.lead-blue h6 {
+      text-align: center; }
+      section.lead-blue h1 svg[data-marp-fitting='svg'],
+      section.lead-blue h2 svg[data-marp-fitting='svg'],
+      section.lead-blue h3 svg[data-marp-fitting='svg'],
+      section.lead-blue h4 svg[data-marp-fitting='svg'],
+      section.lead-blue h5 svg[data-marp-fitting='svg'],
+      section.lead-blue h6 svg[data-marp-fitting='svg'] {
+        --preserve-aspect-ratio: xMidYMid meet; }
+    section.lead-blue p {
+      text-align: center; }
+    section.lead-blue blockquote > h1,
+    section.lead-blue blockquote > h2,
+    section.lead-blue blockquote > h3,
+    section.lead-blue blockquote > h4,
+    section.lead-blue blockquote > h5,
+    section.lead-blue blockquote > h6,
+    section.lead-blue blockquote > p {
+      text-align: left; }
+    section.lead-blue blockquote svg[data-marp-fitting='svg']:not([data-marp-fitting-math]) {
+      --preserve-aspect-ratio: xMinYMin meet; }
+    section.lead-blue ul > li > p,
+    section.lead-blue ol > li > p {
+      text-align: left; }
+    section.lead-blue table {
+      margin-left: auto;
+      margin-right: auto; }
+  section.lead-invert-blue {
+    color: #FFF2DD;
+    background-color: #01BBD4;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center; }
+    section.lead-invert-blue a,
+    section.lead-invert-blue mark {
+      color: #465A65; }
+    section.lead-invert-blue code {
+      background: rgba(255, 242, 221, 0.8);
+      color: #465A65; }
+    section.lead-invert-blue h1 strong,
+    section.lead-invert-blue h2 strong,
+    section.lead-invert-blue h3 strong,
+    section.lead-invert-blue h4 strong,
+    section.lead-invert-blue h5 strong,
+    section.lead-invert-blue h6 strong {
+      color: #465A65; }
+    section.lead-invert-blue h1 img,
+    section.lead-invert-blue h2 img,
+    section.lead-invert-blue h3 img,
+    section.lead-invert-blue h4 img,
+    section.lead-invert-blue h5 img,
+    section.lead-invert-blue h6 img {
+      display: block;
+      margin: auto; }
+    section.lead-invert-blue pre > code {
+      background: #FFF2DD;
+      color: #465A65; }
+    section.lead-invert-blue header,
+    section.lead-invert-blue footer,
+    section.lead-invert-blue section::after,
+    section.lead-invert-blue blockquote::before,
+    section.lead-invert-blue blockquote::after {
+      color: #cce7db; }
+    section.lead-invert-blue table th,
+    section.lead-invert-blue table td {
+      border-color: #FFF2DD; }
+    section.lead-invert-blue table thead th {
+      background: #FFF2DD;
+      color: #01BBD4; }
+    section.lead-invert-blue table tbody > tr:nth-child(odd) td,
+    section.lead-invert-blue table tbody > tr:nth-child(odd) th {
+      background: rgba(255, 242, 221, 0.1); }
+    section.lead-invert-blue h1,
+    section.lead-invert-blue h2,
+    section.lead-invert-blue h3,
+    section.lead-invert-blue h4,
+    section.lead-invert-blue h5,
+    section.lead-invert-blue h6 {
+      text-align: center; }
+      section.lead-invert-blue h1 svg[data-marp-fitting='svg'],
+      section.lead-invert-blue h2 svg[data-marp-fitting='svg'],
+      section.lead-invert-blue h3 svg[data-marp-fitting='svg'],
+      section.lead-invert-blue h4 svg[data-marp-fitting='svg'],
+      section.lead-invert-blue h5 svg[data-marp-fitting='svg'],
+      section.lead-invert-blue h6 svg[data-marp-fitting='svg'] {
+        --preserve-aspect-ratio: xMidYMid meet; }
+    section.lead-invert-blue p {
+      text-align: center; }
+    section.lead-invert-blue blockquote > h1,
+    section.lead-invert-blue blockquote > h2,
+    section.lead-invert-blue blockquote > h3,
+    section.lead-invert-blue blockquote > h4,
+    section.lead-invert-blue blockquote > h5,
+    section.lead-invert-blue blockquote > h6,
+    section.lead-invert-blue blockquote > p {
+      text-align: left; }
+    section.lead-invert-blue blockquote svg[data-marp-fitting='svg']:not([data-marp-fitting-math]) {
+      --preserve-aspect-ratio: xMinYMin meet; }
+    section.lead-invert-blue ul > li > p,
+    section.lead-invert-blue ol > li > p {
+      text-align: left; }
+    section.lead-invert-blue table {
+      margin-left: auto;
+      margin-right: auto; }
+  section.pink {
+    color: #465A65;
+    background-color: #FFF2DD; }
+    section.pink a,
+    section.pink mark {
+      color: #FF3F80; }
+    section.pink code {
+      background: rgba(70, 90, 101, 0.8);
+      color: #FFF2DD; }
+    section.pink h1 strong,
+    section.pink h2 strong,
+    section.pink h3 strong,
+    section.pink h4 strong,
+    section.pink h5 strong,
+    section.pink h6 strong {
+      color: #FF3F80; }
+    section.pink h1 img,
+    section.pink h2 img,
+    section.pink h3 img,
+    section.pink h4 img,
+    section.pink h5 img,
+    section.pink h6 img {
+      display: block;
+      margin: auto; }
+    section.pink pre > code {
+      background: #465A65;
+      color: #FFF2DD; }
+    section.pink header,
+    section.pink footer,
+    section.pink section::after,
+    section.pink blockquote::before,
+    section.pink blockquote::after {
+      color: #6b787d; }
+    section.pink table th,
+    section.pink table td {
+      border-color: #465A65; }
+    section.pink table thead th {
+      background: #465A65;
+      color: #FFF2DD; }
+    section.pink table tbody > tr:nth-child(odd) td,
+    section.pink table tbody > tr:nth-child(odd) th {
+      background: rgba(70, 90, 101, 0.1); }
+  section.invert-pink {
+    color: #FFF2DD;
+    background-color: #FF3F80; }
+    section.invert-pink a,
+    section.invert-pink mark {
+      color: #465A65; }
+    section.invert-pink code {
+      background: rgba(255, 242, 221, 0.8);
+      color: #465A65; }
+    section.invert-pink h1 strong,
+    section.invert-pink h2 strong,
+    section.invert-pink h3 strong,
+    section.invert-pink h4 strong,
+    section.invert-pink h5 strong,
+    section.invert-pink h6 strong {
+      color: #465A65; }
+    section.invert-pink h1 img,
+    section.invert-pink h2 img,
+    section.invert-pink h3 img,
+    section.invert-pink h4 img,
+    section.invert-pink h5 img,
+    section.invert-pink h6 img {
+      display: block;
+      margin: auto; }
+    section.invert-pink pre > code {
+      background: #FFF2DD;
+      color: #465A65; }
+    section.invert-pink header,
+    section.invert-pink footer,
+    section.invert-pink section::after,
+    section.invert-pink blockquote::before,
+    section.invert-pink blockquote::after {
+      color: #ffceca; }
+    section.invert-pink table th,
+    section.invert-pink table td {
+      border-color: #FFF2DD; }
+    section.invert-pink table thead th {
+      background: #FFF2DD;
+      color: #FF3F80; }
+    section.invert-pink table tbody > tr:nth-child(odd) td,
+    section.invert-pink table tbody > tr:nth-child(odd) th {
+      background: rgba(255, 242, 221, 0.1); }
+  section.lead-pink {
+    color: #465A65;
+    background-color: #FFF2DD;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center; }
+    section.lead-pink a,
+    section.lead-pink mark {
+      color: #FF3F80; }
+    section.lead-pink code {
+      background: rgba(70, 90, 101, 0.8);
+      color: #FFF2DD; }
+    section.lead-pink h1 strong,
+    section.lead-pink h2 strong,
+    section.lead-pink h3 strong,
+    section.lead-pink h4 strong,
+    section.lead-pink h5 strong,
+    section.lead-pink h6 strong {
+      color: #FF3F80; }
+    section.lead-pink h1 img,
+    section.lead-pink h2 img,
+    section.lead-pink h3 img,
+    section.lead-pink h4 img,
+    section.lead-pink h5 img,
+    section.lead-pink h6 img {
+      display: block;
+      margin: auto; }
+    section.lead-pink pre > code {
+      background: #465A65;
+      color: #FFF2DD; }
+    section.lead-pink header,
+    section.lead-pink footer,
+    section.lead-pink section::after,
+    section.lead-pink blockquote::before,
+    section.lead-pink blockquote::after {
+      color: #6b787d; }
+    section.lead-pink table th,
+    section.lead-pink table td {
+      border-color: #465A65; }
+    section.lead-pink table thead th {
+      background: #465A65;
+      color: #FFF2DD; }
+    section.lead-pink table tbody > tr:nth-child(odd) td,
+    section.lead-pink table tbody > tr:nth-child(odd) th {
+      background: rgba(70, 90, 101, 0.1); }
+    section.lead-pink h1,
+    section.lead-pink h2,
+    section.lead-pink h3,
+    section.lead-pink h4,
+    section.lead-pink h5,
+    section.lead-pink h6 {
+      text-align: center; }
+      section.lead-pink h1 svg[data-marp-fitting='svg'],
+      section.lead-pink h2 svg[data-marp-fitting='svg'],
+      section.lead-pink h3 svg[data-marp-fitting='svg'],
+      section.lead-pink h4 svg[data-marp-fitting='svg'],
+      section.lead-pink h5 svg[data-marp-fitting='svg'],
+      section.lead-pink h6 svg[data-marp-fitting='svg'] {
+        --preserve-aspect-ratio: xMidYMid meet; }
+    section.lead-pink p {
+      text-align: center; }
+    section.lead-pink blockquote > h1,
+    section.lead-pink blockquote > h2,
+    section.lead-pink blockquote > h3,
+    section.lead-pink blockquote > h4,
+    section.lead-pink blockquote > h5,
+    section.lead-pink blockquote > h6,
+    section.lead-pink blockquote > p {
+      text-align: left; }
+    section.lead-pink blockquote svg[data-marp-fitting='svg']:not([data-marp-fitting-math]) {
+      --preserve-aspect-ratio: xMinYMin meet; }
+    section.lead-pink ul > li > p,
+    section.lead-pink ol > li > p {
+      text-align: left; }
+    section.lead-pink table {
+      margin-left: auto;
+      margin-right: auto; }
+  section.lead-invert-pink {
+    color: #FFF2DD;
+    background-color: #FF3F80;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center; }
+    section.lead-invert-pink a,
+    section.lead-invert-pink mark {
+      color: #465A65; }
+    section.lead-invert-pink code {
+      background: rgba(255, 242, 221, 0.8);
+      color: #465A65; }
+    section.lead-invert-pink h1 strong,
+    section.lead-invert-pink h2 strong,
+    section.lead-invert-pink h3 strong,
+    section.lead-invert-pink h4 strong,
+    section.lead-invert-pink h5 strong,
+    section.lead-invert-pink h6 strong {
+      color: #465A65; }
+    section.lead-invert-pink h1 img,
+    section.lead-invert-pink h2 img,
+    section.lead-invert-pink h3 img,
+    section.lead-invert-pink h4 img,
+    section.lead-invert-pink h5 img,
+    section.lead-invert-pink h6 img {
+      display: block;
+      margin: auto; }
+    section.lead-invert-pink pre > code {
+      background: #FFF2DD;
+      color: #465A65; }
+    section.lead-invert-pink header,
+    section.lead-invert-pink footer,
+    section.lead-invert-pink section::after,
+    section.lead-invert-pink blockquote::before,
+    section.lead-invert-pink blockquote::after {
+      color: #ffceca; }
+    section.lead-invert-pink table th,
+    section.lead-invert-pink table td {
+      border-color: #FFF2DD; }
+    section.lead-invert-pink table thead th {
+      background: #FFF2DD;
+      color: #FF3F80; }
+    section.lead-invert-pink table tbody > tr:nth-child(odd) td,
+    section.lead-invert-pink table tbody > tr:nth-child(odd) th {
+      background: rgba(255, 242, 221, 0.1); }
+    section.lead-invert-pink h1,
+    section.lead-invert-pink h2,
+    section.lead-invert-pink h3,
+    section.lead-invert-pink h4,
+    section.lead-invert-pink h5,
+    section.lead-invert-pink h6 {
+      text-align: center; }
+      section.lead-invert-pink h1 svg[data-marp-fitting='svg'],
+      section.lead-invert-pink h2 svg[data-marp-fitting='svg'],
+      section.lead-invert-pink h3 svg[data-marp-fitting='svg'],
+      section.lead-invert-pink h4 svg[data-marp-fitting='svg'],
+      section.lead-invert-pink h5 svg[data-marp-fitting='svg'],
+      section.lead-invert-pink h6 svg[data-marp-fitting='svg'] {
+        --preserve-aspect-ratio: xMidYMid meet; }
+    section.lead-invert-pink p {
+      text-align: center; }
+    section.lead-invert-pink blockquote > h1,
+    section.lead-invert-pink blockquote > h2,
+    section.lead-invert-pink blockquote > h3,
+    section.lead-invert-pink blockquote > h4,
+    section.lead-invert-pink blockquote > h5,
+    section.lead-invert-pink blockquote > h6,
+    section.lead-invert-pink blockquote > p {
+      text-align: left; }
+    section.lead-invert-pink blockquote svg[data-marp-fitting='svg']:not([data-marp-fitting-math]) {
+      --preserve-aspect-ratio: xMinYMin meet; }
+    section.lead-invert-pink ul > li > p,
+    section.lead-invert-pink ol > li > p {
+      text-align: left; }
+    section.lead-invert-pink table {
+      margin-left: auto;
+      margin-right: auto; }
+  section.red {
+    color: #465A65;
+    background-color: #FFF2DD; }
+    section.red a,
+    section.red mark {
+      color: #FF5152; }
+    section.red code {
+      background: rgba(70, 90, 101, 0.8);
+      color: #FFF2DD; }
+    section.red h1 strong,
+    section.red h2 strong,
+    section.red h3 strong,
+    section.red h4 strong,
+    section.red h5 strong,
+    section.red h6 strong {
+      color: #FF5152; }
+    section.red h1 img,
+    section.red h2 img,
+    section.red h3 img,
+    section.red h4 img,
+    section.red h5 img,
+    section.red h6 img {
+      display: block;
+      margin: auto; }
+    section.red pre > code {
+      background: #465A65;
+      color: #FFF2DD; }
+    section.red header,
+    section.red footer,
+    section.red section::after,
+    section.red blockquote::before,
+    section.red blockquote::after {
+      color: #6b787d; }
+    section.red table th,
+    section.red table td {
+      border-color: #465A65; }
+    section.red table thead th {
+      background: #465A65;
+      color: #FFF2DD; }
+    section.red table tbody > tr:nth-child(odd) td,
+    section.red table tbody > tr:nth-child(odd) th {
+      background: rgba(70, 90, 101, 0.1); }
+  section.invert-red {
+    color: #FFF2DD;
+    background-color: #FF5152; }
+    section.invert-red a,
+    section.invert-red mark {
+      color: #465A65; }
+    section.invert-red code {
+      background: rgba(255, 242, 221, 0.8);
+      color: #465A65; }
+    section.invert-red h1 strong,
+    section.invert-red h2 strong,
+    section.invert-red h3 strong,
+    section.invert-red h4 strong,
+    section.invert-red h5 strong,
+    section.invert-red h6 strong {
+      color: #465A65; }
+    section.invert-red h1 img,
+    section.invert-red h2 img,
+    section.invert-red h3 img,
+    section.invert-red h4 img,
+    section.invert-red h5 img,
+    section.invert-red h6 img {
+      display: block;
+      margin: auto; }
+    section.invert-red pre > code {
+      background: #FFF2DD;
+      color: #465A65; }
+    section.invert-red header,
+    section.invert-red footer,
+    section.invert-red section::after,
+    section.invert-red blockquote::before,
+    section.invert-red blockquote::after {
+      color: #ffd2c1; }
+    section.invert-red table th,
+    section.invert-red table td {
+      border-color: #FFF2DD; }
+    section.invert-red table thead th {
+      background: #FFF2DD;
+      color: #FF5152; }
+    section.invert-red table tbody > tr:nth-child(odd) td,
+    section.invert-red table tbody > tr:nth-child(odd) th {
+      background: rgba(255, 242, 221, 0.1); }
+  section.lead-red {
+    color: #465A65;
+    background-color: #FFF2DD;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center; }
+    section.lead-red a,
+    section.lead-red mark {
+      color: #FF5152; }
+    section.lead-red code {
+      background: rgba(70, 90, 101, 0.8);
+      color: #FFF2DD; }
+    section.lead-red h1 strong,
+    section.lead-red h2 strong,
+    section.lead-red h3 strong,
+    section.lead-red h4 strong,
+    section.lead-red h5 strong,
+    section.lead-red h6 strong {
+      color: #FF5152; }
+    section.lead-red h1 img,
+    section.lead-red h2 img,
+    section.lead-red h3 img,
+    section.lead-red h4 img,
+    section.lead-red h5 img,
+    section.lead-red h6 img {
+      display: block;
+      margin: auto; }
+    section.lead-red pre > code {
+      background: #465A65;
+      color: #FFF2DD; }
+    section.lead-red header,
+    section.lead-red footer,
+    section.lead-red section::after,
+    section.lead-red blockquote::before,
+    section.lead-red blockquote::after {
+      color: #6b787d; }
+    section.lead-red table th,
+    section.lead-red table td {
+      border-color: #465A65; }
+    section.lead-red table thead th {
+      background: #465A65;
+      color: #FFF2DD; }
+    section.lead-red table tbody > tr:nth-child(odd) td,
+    section.lead-red table tbody > tr:nth-child(odd) th {
+      background: rgba(70, 90, 101, 0.1); }
+    section.lead-red h1,
+    section.lead-red h2,
+    section.lead-red h3,
+    section.lead-red h4,
+    section.lead-red h5,
+    section.lead-red h6 {
+      text-align: center; }
+      section.lead-red h1 svg[data-marp-fitting='svg'],
+      section.lead-red h2 svg[data-marp-fitting='svg'],
+      section.lead-red h3 svg[data-marp-fitting='svg'],
+      section.lead-red h4 svg[data-marp-fitting='svg'],
+      section.lead-red h5 svg[data-marp-fitting='svg'],
+      section.lead-red h6 svg[data-marp-fitting='svg'] {
+        --preserve-aspect-ratio: xMidYMid meet; }
+    section.lead-red p {
+      text-align: center; }
+    section.lead-red blockquote > h1,
+    section.lead-red blockquote > h2,
+    section.lead-red blockquote > h3,
+    section.lead-red blockquote > h4,
+    section.lead-red blockquote > h5,
+    section.lead-red blockquote > h6,
+    section.lead-red blockquote > p {
+      text-align: left; }
+    section.lead-red blockquote svg[data-marp-fitting='svg']:not([data-marp-fitting-math]) {
+      --preserve-aspect-ratio: xMinYMin meet; }
+    section.lead-red ul > li > p,
+    section.lead-red ol > li > p {
+      text-align: left; }
+    section.lead-red table {
+      margin-left: auto;
+      margin-right: auto; }
+  section.lead-invert-red {
+    color: #FFF2DD;
+    background-color: #FF5152;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center; }
+    section.lead-invert-red a,
+    section.lead-invert-red mark {
+      color: #465A65; }
+    section.lead-invert-red code {
+      background: rgba(255, 242, 221, 0.8);
+      color: #465A65; }
+    section.lead-invert-red h1 strong,
+    section.lead-invert-red h2 strong,
+    section.lead-invert-red h3 strong,
+    section.lead-invert-red h4 strong,
+    section.lead-invert-red h5 strong,
+    section.lead-invert-red h6 strong {
+      color: #465A65; }
+    section.lead-invert-red h1 img,
+    section.lead-invert-red h2 img,
+    section.lead-invert-red h3 img,
+    section.lead-invert-red h4 img,
+    section.lead-invert-red h5 img,
+    section.lead-invert-red h6 img {
+      display: block;
+      margin: auto; }
+    section.lead-invert-red pre > code {
+      background: #FFF2DD;
+      color: #465A65; }
+    section.lead-invert-red header,
+    section.lead-invert-red footer,
+    section.lead-invert-red section::after,
+    section.lead-invert-red blockquote::before,
+    section.lead-invert-red blockquote::after {
+      color: #ffd2c1; }
+    section.lead-invert-red table th,
+    section.lead-invert-red table td {
+      border-color: #FFF2DD; }
+    section.lead-invert-red table thead th {
+      background: #FFF2DD;
+      color: #FF5152; }
+    section.lead-invert-red table tbody > tr:nth-child(odd) td,
+    section.lead-invert-red table tbody > tr:nth-child(odd) th {
+      background: rgba(255, 242, 221, 0.1); }
+    section.lead-invert-red h1,
+    section.lead-invert-red h2,
+    section.lead-invert-red h3,
+    section.lead-invert-red h4,
+    section.lead-invert-red h5,
+    section.lead-invert-red h6 {
+      text-align: center; }
+      section.lead-invert-red h1 svg[data-marp-fitting='svg'],
+      section.lead-invert-red h2 svg[data-marp-fitting='svg'],
+      section.lead-invert-red h3 svg[data-marp-fitting='svg'],
+      section.lead-invert-red h4 svg[data-marp-fitting='svg'],
+      section.lead-invert-red h5 svg[data-marp-fitting='svg'],
+      section.lead-invert-red h6 svg[data-marp-fitting='svg'] {
+        --preserve-aspect-ratio: xMidYMid meet; }
+    section.lead-invert-red p {
+      text-align: center; }
+    section.lead-invert-red blockquote > h1,
+    section.lead-invert-red blockquote > h2,
+    section.lead-invert-red blockquote > h3,
+    section.lead-invert-red blockquote > h4,
+    section.lead-invert-red blockquote > h5,
+    section.lead-invert-red blockquote > h6,
+    section.lead-invert-red blockquote > p {
+      text-align: left; }
+    section.lead-invert-red blockquote svg[data-marp-fitting='svg']:not([data-marp-fitting-math]) {
+      --preserve-aspect-ratio: xMinYMin meet; }
+    section.lead-invert-red ul > li > p,
+    section.lead-invert-red ol > li > p {
+      text-align: left; }
+    section.lead-invert-red table {
+      margin-left: auto;
+      margin-right: auto; }
+  section.purple {
+    color: #465A65;
+    background-color: #FFF2DD; }
+    section.purple a,
+    section.purple mark {
+      color: #454D71; }
+    section.purple code {
+      background: rgba(70, 90, 101, 0.8);
+      color: #FFF2DD; }
+    section.purple h1 strong,
+    section.purple h2 strong,
+    section.purple h3 strong,
+    section.purple h4 strong,
+    section.purple h5 strong,
+    section.purple h6 strong {
+      color: #454D71; }
+    section.purple h1 img,
+    section.purple h2 img,
+    section.purple h3 img,
+    section.purple h4 img,
+    section.purple h5 img,
+    section.purple h6 img {
+      display: block;
+      margin: auto; }
+    section.purple pre > code {
+      background: #465A65;
+      color: #FFF2DD; }
+    section.purple header,
+    section.purple footer,
+    section.purple section::after,
+    section.purple blockquote::before,
+    section.purple blockquote::after {
+      color: #6b787d; }
+    section.purple table th,
+    section.purple table td {
+      border-color: #465A65; }
+    section.purple table thead th {
+      background: #465A65;
+      color: #FFF2DD; }
+    section.purple table tbody > tr:nth-child(odd) td,
+    section.purple table tbody > tr:nth-child(odd) th {
+      background: rgba(70, 90, 101, 0.1); }
+  section.invert-purple {
+    color: #FFF2DD;
+    background-color: #454D71; }
+    section.invert-purple a,
+    section.invert-purple mark {
+      color: #465A65; }
+    section.invert-purple code {
+      background: rgba(255, 242, 221, 0.8);
+      color: #465A65; }
+    section.invert-purple h1 strong,
+    section.invert-purple h2 strong,
+    section.invert-purple h3 strong,
+    section.invert-purple h4 strong,
+    section.invert-purple h5 strong,
+    section.invert-purple h6 strong {
+      color: #465A65; }
+    section.invert-purple h1 img,
+    section.invert-purple h2 img,
+    section.invert-purple h3 img,
+    section.invert-purple h4 img,
+    section.invert-purple h5 img,
+    section.invert-purple h6 img {
+      display: block;
+      margin: auto; }
+    section.invert-purple pre > code {
+      background: #FFF2DD;
+      color: #465A65; }
+    section.invert-purple header,
+    section.invert-purple footer,
+    section.invert-purple section::after,
+    section.invert-purple blockquote::before,
+    section.invert-purple blockquote::after {
+      color: #dad1c7; }
+    section.invert-purple table th,
+    section.invert-purple table td {
+      border-color: #FFF2DD; }
+    section.invert-purple table thead th {
+      background: #FFF2DD;
+      color: #454D71; }
+    section.invert-purple table tbody > tr:nth-child(odd) td,
+    section.invert-purple table tbody > tr:nth-child(odd) th {
+      background: rgba(255, 242, 221, 0.1); }
+  section.lead-purple {
+    color: #465A65;
+    background-color: #FFF2DD;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center; }
+    section.lead-purple a,
+    section.lead-purple mark {
+      color: #454D71; }
+    section.lead-purple code {
+      background: rgba(70, 90, 101, 0.8);
+      color: #FFF2DD; }
+    section.lead-purple h1 strong,
+    section.lead-purple h2 strong,
+    section.lead-purple h3 strong,
+    section.lead-purple h4 strong,
+    section.lead-purple h5 strong,
+    section.lead-purple h6 strong {
+      color: #454D71; }
+    section.lead-purple h1 img,
+    section.lead-purple h2 img,
+    section.lead-purple h3 img,
+    section.lead-purple h4 img,
+    section.lead-purple h5 img,
+    section.lead-purple h6 img {
+      display: block;
+      margin: auto; }
+    section.lead-purple pre > code {
+      background: #465A65;
+      color: #FFF2DD; }
+    section.lead-purple header,
+    section.lead-purple footer,
+    section.lead-purple section::after,
+    section.lead-purple blockquote::before,
+    section.lead-purple blockquote::after {
+      color: #6b787d; }
+    section.lead-purple table th,
+    section.lead-purple table td {
+      border-color: #465A65; }
+    section.lead-purple table thead th {
+      background: #465A65;
+      color: #FFF2DD; }
+    section.lead-purple table tbody > tr:nth-child(odd) td,
+    section.lead-purple table tbody > tr:nth-child(odd) th {
+      background: rgba(70, 90, 101, 0.1); }
+    section.lead-purple h1,
+    section.lead-purple h2,
+    section.lead-purple h3,
+    section.lead-purple h4,
+    section.lead-purple h5,
+    section.lead-purple h6 {
+      text-align: center; }
+      section.lead-purple h1 svg[data-marp-fitting='svg'],
+      section.lead-purple h2 svg[data-marp-fitting='svg'],
+      section.lead-purple h3 svg[data-marp-fitting='svg'],
+      section.lead-purple h4 svg[data-marp-fitting='svg'],
+      section.lead-purple h5 svg[data-marp-fitting='svg'],
+      section.lead-purple h6 svg[data-marp-fitting='svg'] {
+        --preserve-aspect-ratio: xMidYMid meet; }
+    section.lead-purple p {
+      text-align: center; }
+    section.lead-purple blockquote > h1,
+    section.lead-purple blockquote > h2,
+    section.lead-purple blockquote > h3,
+    section.lead-purple blockquote > h4,
+    section.lead-purple blockquote > h5,
+    section.lead-purple blockquote > h6,
+    section.lead-purple blockquote > p {
+      text-align: left; }
+    section.lead-purple blockquote svg[data-marp-fitting='svg']:not([data-marp-fitting-math]) {
+      --preserve-aspect-ratio: xMinYMin meet; }
+    section.lead-purple ul > li > p,
+    section.lead-purple ol > li > p {
+      text-align: left; }
+    section.lead-purple table {
+      margin-left: auto;
+      margin-right: auto; }
+  section.lead-invert-purple {
+    color: #FFF2DD;
+    background-color: #454D71;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center; }
+    section.lead-invert-purple a,
+    section.lead-invert-purple mark {
+      color: #465A65; }
+    section.lead-invert-purple code {
+      background: rgba(255, 242, 221, 0.8);
+      color: #465A65; }
+    section.lead-invert-purple h1 strong,
+    section.lead-invert-purple h2 strong,
+    section.lead-invert-purple h3 strong,
+    section.lead-invert-purple h4 strong,
+    section.lead-invert-purple h5 strong,
+    section.lead-invert-purple h6 strong {
+      color: #465A65; }
+    section.lead-invert-purple h1 img,
+    section.lead-invert-purple h2 img,
+    section.lead-invert-purple h3 img,
+    section.lead-invert-purple h4 img,
+    section.lead-invert-purple h5 img,
+    section.lead-invert-purple h6 img {
+      display: block;
+      margin: auto; }
+    section.lead-invert-purple pre > code {
+      background: #FFF2DD;
+      color: #465A65; }
+    section.lead-invert-purple header,
+    section.lead-invert-purple footer,
+    section.lead-invert-purple section::after,
+    section.lead-invert-purple blockquote::before,
+    section.lead-invert-purple blockquote::after {
+      color: #dad1c7; }
+    section.lead-invert-purple table th,
+    section.lead-invert-purple table td {
+      border-color: #FFF2DD; }
+    section.lead-invert-purple table thead th {
+      background: #FFF2DD;
+      color: #454D71; }
+    section.lead-invert-purple table tbody > tr:nth-child(odd) td,
+    section.lead-invert-purple table tbody > tr:nth-child(odd) th {
+      background: rgba(255, 242, 221, 0.1); }
+    section.lead-invert-purple h1,
+    section.lead-invert-purple h2,
+    section.lead-invert-purple h3,
+    section.lead-invert-purple h4,
+    section.lead-invert-purple h5,
+    section.lead-invert-purple h6 {
+      text-align: center; }
+      section.lead-invert-purple h1 svg[data-marp-fitting='svg'],
+      section.lead-invert-purple h2 svg[data-marp-fitting='svg'],
+      section.lead-invert-purple h3 svg[data-marp-fitting='svg'],
+      section.lead-invert-purple h4 svg[data-marp-fitting='svg'],
+      section.lead-invert-purple h5 svg[data-marp-fitting='svg'],
+      section.lead-invert-purple h6 svg[data-marp-fitting='svg'] {
+        --preserve-aspect-ratio: xMidYMid meet; }
+    section.lead-invert-purple p {
+      text-align: center; }
+    section.lead-invert-purple blockquote > h1,
+    section.lead-invert-purple blockquote > h2,
+    section.lead-invert-purple blockquote > h3,
+    section.lead-invert-purple blockquote > h4,
+    section.lead-invert-purple blockquote > h5,
+    section.lead-invert-purple blockquote > h6,
+    section.lead-invert-purple blockquote > p {
+      text-align: left; }
+    section.lead-invert-purple blockquote svg[data-marp-fitting='svg']:not([data-marp-fitting-math]) {
+      --preserve-aspect-ratio: xMinYMin meet; }
+    section.lead-invert-purple ul > li > p,
+    section.lead-invert-purple ol > li > p {
+      text-align: left; }
+    section.lead-invert-purple table {
+      margin-left: auto;
+      margin-right: auto; }
+  section.orange {
+    color: #465A65;
+    background-color: #FFF2DD; }
+    section.orange a,
+    section.orange mark {
+      color: #FF9000; }
+    section.orange code {
+      background: rgba(70, 90, 101, 0.8);
+      color: #FFF2DD; }
+    section.orange h1 strong,
+    section.orange h2 strong,
+    section.orange h3 strong,
+    section.orange h4 strong,
+    section.orange h5 strong,
+    section.orange h6 strong {
+      color: #FF9000; }
+    section.orange h1 img,
+    section.orange h2 img,
+    section.orange h3 img,
+    section.orange h4 img,
+    section.orange h5 img,
+    section.orange h6 img {
+      display: block;
+      margin: auto; }
+    section.orange pre > code {
+      background: #465A65;
+      color: #FFF2DD; }
+    section.orange header,
+    section.orange footer,
+    section.orange section::after,
+    section.orange blockquote::before,
+    section.orange blockquote::after {
+      color: #6b787d; }
+    section.orange table th,
+    section.orange table td {
+      border-color: #465A65; }
+    section.orange table thead th {
+      background: #465A65;
+      color: #FFF2DD; }
+    section.orange table tbody > tr:nth-child(odd) td,
+    section.orange table tbody > tr:nth-child(odd) th {
+      background: rgba(70, 90, 101, 0.1); }
+  section.invert-orange {
+    color: #FFF2DD;
+    background-color: #FF9000; }
+    section.invert-orange a,
+    section.invert-orange mark {
+      color: #465A65; }
+    section.invert-orange code {
+      background: rgba(255, 242, 221, 0.8);
+      color: #465A65; }
+    section.invert-orange h1 strong,
+    section.invert-orange h2 strong,
+    section.invert-orange h3 strong,
+    section.invert-orange h4 strong,
+    section.invert-orange h5 strong,
+    section.invert-orange h6 strong {
+      color: #465A65; }
+    section.invert-orange h1 img,
+    section.invert-orange h2 img,
+    section.invert-orange h3 img,
+    section.invert-orange h4 img,
+    section.invert-orange h5 img,
+    section.invert-orange h6 img {
+      display: block;
+      margin: auto; }
+    section.invert-orange pre > code {
+      background: #FFF2DD;
+      color: #465A65; }
+    section.invert-orange header,
+    section.invert-orange footer,
+    section.invert-orange section::after,
+    section.invert-orange blockquote::before,
+    section.invert-orange blockquote::after {
+      color: #ffdeb1; }
+    section.invert-orange table th,
+    section.invert-orange table td {
+      border-color: #FFF2DD; }
+    section.invert-orange table thead th {
+      background: #FFF2DD;
+      color: #FF9000; }
+    section.invert-orange table tbody > tr:nth-child(odd) td,
+    section.invert-orange table tbody > tr:nth-child(odd) th {
+      background: rgba(255, 242, 221, 0.1); }
+  section.lead-orange {
+    color: #465A65;
+    background-color: #FFF2DD;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center; }
+    section.lead-orange a,
+    section.lead-orange mark {
+      color: #FF9000; }
+    section.lead-orange code {
+      background: rgba(70, 90, 101, 0.8);
+      color: #FFF2DD; }
+    section.lead-orange h1 strong,
+    section.lead-orange h2 strong,
+    section.lead-orange h3 strong,
+    section.lead-orange h4 strong,
+    section.lead-orange h5 strong,
+    section.lead-orange h6 strong {
+      color: #FF9000; }
+    section.lead-orange h1 img,
+    section.lead-orange h2 img,
+    section.lead-orange h3 img,
+    section.lead-orange h4 img,
+    section.lead-orange h5 img,
+    section.lead-orange h6 img {
+      display: block;
+      margin: auto; }
+    section.lead-orange pre > code {
+      background: #465A65;
+      color: #FFF2DD; }
+    section.lead-orange header,
+    section.lead-orange footer,
+    section.lead-orange section::after,
+    section.lead-orange blockquote::before,
+    section.lead-orange blockquote::after {
+      color: #6b787d; }
+    section.lead-orange table th,
+    section.lead-orange table td {
+      border-color: #465A65; }
+    section.lead-orange table thead th {
+      background: #465A65;
+      color: #FFF2DD; }
+    section.lead-orange table tbody > tr:nth-child(odd) td,
+    section.lead-orange table tbody > tr:nth-child(odd) th {
+      background: rgba(70, 90, 101, 0.1); }
+    section.lead-orange h1,
+    section.lead-orange h2,
+    section.lead-orange h3,
+    section.lead-orange h4,
+    section.lead-orange h5,
+    section.lead-orange h6 {
+      text-align: center; }
+      section.lead-orange h1 svg[data-marp-fitting='svg'],
+      section.lead-orange h2 svg[data-marp-fitting='svg'],
+      section.lead-orange h3 svg[data-marp-fitting='svg'],
+      section.lead-orange h4 svg[data-marp-fitting='svg'],
+      section.lead-orange h5 svg[data-marp-fitting='svg'],
+      section.lead-orange h6 svg[data-marp-fitting='svg'] {
+        --preserve-aspect-ratio: xMidYMid meet; }
+    section.lead-orange p {
+      text-align: center; }
+    section.lead-orange blockquote > h1,
+    section.lead-orange blockquote > h2,
+    section.lead-orange blockquote > h3,
+    section.lead-orange blockquote > h4,
+    section.lead-orange blockquote > h5,
+    section.lead-orange blockquote > h6,
+    section.lead-orange blockquote > p {
+      text-align: left; }
+    section.lead-orange blockquote svg[data-marp-fitting='svg']:not([data-marp-fitting-math]) {
+      --preserve-aspect-ratio: xMinYMin meet; }
+    section.lead-orange ul > li > p,
+    section.lead-orange ol > li > p {
+      text-align: left; }
+    section.lead-orange table {
+      margin-left: auto;
+      margin-right: auto; }
+  section.lead-invert-orange {
+    color: #FFF2DD;
+    background-color: #FF9000;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center; }
+    section.lead-invert-orange a,
+    section.lead-invert-orange mark {
+      color: #465A65; }
+    section.lead-invert-orange code {
+      background: rgba(255, 242, 221, 0.8);
+      color: #465A65; }
+    section.lead-invert-orange h1 strong,
+    section.lead-invert-orange h2 strong,
+    section.lead-invert-orange h3 strong,
+    section.lead-invert-orange h4 strong,
+    section.lead-invert-orange h5 strong,
+    section.lead-invert-orange h6 strong {
+      color: #465A65; }
+    section.lead-invert-orange h1 img,
+    section.lead-invert-orange h2 img,
+    section.lead-invert-orange h3 img,
+    section.lead-invert-orange h4 img,
+    section.lead-invert-orange h5 img,
+    section.lead-invert-orange h6 img {
+      display: block;
+      margin: auto; }
+    section.lead-invert-orange pre > code {
+      background: #FFF2DD;
+      color: #465A65; }
+    section.lead-invert-orange header,
+    section.lead-invert-orange footer,
+    section.lead-invert-orange section::after,
+    section.lead-invert-orange blockquote::before,
+    section.lead-invert-orange blockquote::after {
+      color: #ffdeb1; }
+    section.lead-invert-orange table th,
+    section.lead-invert-orange table td {
+      border-color: #FFF2DD; }
+    section.lead-invert-orange table thead th {
+      background: #FFF2DD;
+      color: #FF9000; }
+    section.lead-invert-orange table tbody > tr:nth-child(odd) td,
+    section.lead-invert-orange table tbody > tr:nth-child(odd) th {
+      background: rgba(255, 242, 221, 0.1); }
+    section.lead-invert-orange h1,
+    section.lead-invert-orange h2,
+    section.lead-invert-orange h3,
+    section.lead-invert-orange h4,
+    section.lead-invert-orange h5,
+    section.lead-invert-orange h6 {
+      text-align: center; }
+      section.lead-invert-orange h1 svg[data-marp-fitting='svg'],
+      section.lead-invert-orange h2 svg[data-marp-fitting='svg'],
+      section.lead-invert-orange h3 svg[data-marp-fitting='svg'],
+      section.lead-invert-orange h4 svg[data-marp-fitting='svg'],
+      section.lead-invert-orange h5 svg[data-marp-fitting='svg'],
+      section.lead-invert-orange h6 svg[data-marp-fitting='svg'] {
+        --preserve-aspect-ratio: xMidYMid meet; }
+    section.lead-invert-orange p {
+      text-align: center; }
+    section.lead-invert-orange blockquote > h1,
+    section.lead-invert-orange blockquote > h2,
+    section.lead-invert-orange blockquote > h3,
+    section.lead-invert-orange blockquote > h4,
+    section.lead-invert-orange blockquote > h5,
+    section.lead-invert-orange blockquote > h6,
+    section.lead-invert-orange blockquote > p {
+      text-align: left; }
+    section.lead-invert-orange blockquote svg[data-marp-fitting='svg']:not([data-marp-fitting-math]) {
+      --preserve-aspect-ratio: xMinYMin meet; }
+    section.lead-invert-orange ul > li > p,
+    section.lead-invert-orange ol > li > p {
+      text-align: left; }
+    section.lead-invert-orange table {
+      margin-left: auto;
+      margin-right: auto; }
+
+header,
+footer,
+section::after {
+  box-sizing: border-box;
+  font-size: 66%;
+  height: 70px;
+  line-height: 50px;
+  overflow: hidden;
+  padding: 10px 25px;
+  position: absolute; }
+
+header {
+  left: 0;
+  right: 0;
+  top: 0; }
+
+footer {
+  left: 0;
+  right: 0;
+  bottom: 0; }
+
+section::after {
+  right: 0;
+  bottom: 0;
+  font-size: 80%; }
