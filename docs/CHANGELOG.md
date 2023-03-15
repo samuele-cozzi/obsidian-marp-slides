@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.29.1](https://github.com/samuele-cozzi/obsidian-marp-slides/compare/0.29.0...0.29.1) (2023-03-15)
+
+
+### Bug Fixes
+
+* fixes for publish plugin ([#58](https://github.com/samuele-cozzi/obsidian-marp-slides/issues/58)) ([01cd1f5](https://github.com/samuele-cozzi/obsidian-marp-slides/commit/01cd1f5cbdb9c8ff23b5d773b8d2a9f2935685f4))
+
 ## [0.29.0](https://github.com/samuele-cozzi/obsidian-marp-slides/compare/0.28.2...0.29.0) (2023-03-09)
 
 
