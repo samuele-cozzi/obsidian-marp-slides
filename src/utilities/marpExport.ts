@@ -18,12 +18,11 @@ export class MarpExport {
         const themePath = (new FilePath(this.settings)).getThemePath(file);
 
         if (completeFilePath != ''){            
-            console.log(completeFilePath);
+            //console.log(completeFilePath);
             
             const argv: string[] = [completeFilePath,'--allow-local-files'];
             
             if (themePath != ''){
-                console.log(themePath);
                 argv.push('--theme-set');
                 argv.push(themePath);
             }
@@ -101,14 +100,12 @@ export class MarpExport {
 
             if (exitCode > 0) {
                 console.error(`Failure (Exit status: ${exitCode})`)
-            } else {
-                console.log('Success')
             }
         } catch(e) {
             if (e instanceof CLIError){
-                console.log(`CLIError code: ${e.errorCode}, message: ${e.message}`);
+                console.error(`CLIError code: ${e.errorCode}, message: ${e.message}`);
             } else {
-                console.log("Generic Error!");
+                console.error("Generic Error!");
             }
         }
     }

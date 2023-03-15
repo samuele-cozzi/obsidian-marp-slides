@@ -18,19 +18,19 @@ export class FilePath {
         {
             basePath = normalizePath(basePath);
         }
-		console.log(`Root Path: ${basePath}`);
+		//console.log(`Root Path: ${basePath}`);
 		return basePath;
 	}
 
 	getCompleteFileBasePath(file: TFile): string{
         const basePath = `app://local/${this.getRootPath(file)}/${normalizePath(file.parent.path)}/`;
-        console.log(`Complete File Base Path: ${basePath}`);
+        //console.log(`Complete File Base Path: ${basePath}`);
         return basePath;
 	}
 
     getCompleteFilePath(file: TFile) : string{
         const basePath = `${this.getRootPath(file)}/${normalizePath(file.path)}`;
-        console.log(`Complete File Path: ${basePath}`);
+        //console.log(`Complete File Path: ${basePath}`);
         return basePath;
 	}
 
