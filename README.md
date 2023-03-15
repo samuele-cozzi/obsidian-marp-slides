@@ -22,14 +22,16 @@ Marp have powerful tools for Markdown Slides: [Marpit Framework](https://marpit.
 ## Features
 
 - [Preview Slides](https://samuele-cozzi.github.io/obsidian-marp-slides/SlidesPreview)
-- [Export slide deck (html, pdf, pptx, img)](https://samuele-cozzi.github.io/obsidian-marp-slides/SlidesExport)
+- [Export slide deck (html, pdf, pptx, img)](https://samuele-cozzi.github.io/obsidian-marp-slides/SlidesExport) using Marp cli API
 - [Use custom theme CSS](https://samuele-cozzi.github.io/obsidian-marp-slides/SlidesCustomTheme)
+
+> ⚠️ Export except HTML requires to install any one of [Google Chrome](https://www.google.com/chrome/), [Chromium](https://www.chromium.org/), or [Microsoft Edge](https://www.microsoft.com/edge). You may also specify the custom path for Chrome / Chromium-based browser by preference `CHEROME_PATH`.
 
 ## Not supported
 
 - Wiki Link
 
-## References (Tanks)
+## Many Thanks 👏
 
 - [plugin obsidian development docs](https://marcus.se.net/obsidian-plugin-docs/)
 - [marp vs code](https://github.com/marp-team/marp-vscode)

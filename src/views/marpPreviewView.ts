@@ -40,18 +40,15 @@ export class MarpPreviewView extends ItemView  {
     }
 
     async onClose() {
-        //console.log("Marp Preview onClose View");
         // Nothing to clean up.
     }
 
     async onChange(view : MarkdownView) {
-        console.log("Marp Preview onChange View");
         this.displaySlides(view);
     }
     
     async displaySlides(view : MarkdownView) {
-        console.log("Marp Preview Display Slides");
-
+        
         const basePath = (new FilePath(this.settings)).getCompleteFileBasePath(view.file);
         const markdownText = view.data;
         
@@ -59,7 +56,6 @@ export class MarpPreviewView extends ItemView  {
         container.empty();
        
         let { html, css } = this.marp.render(markdownText);
-        //console.log(html);
         
         // Replace Backgorund Url for images
         html = html.replace(/background-image:url\(&quot;/g, `background-image:url(&quot;${basePath}`);
