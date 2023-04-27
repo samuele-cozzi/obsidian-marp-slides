@@ -1,5 +1,6 @@
 import { ItemView, WorkspaceLeaf, MarkdownView, normalizePath } from 'obsidian';
 import { Marp } from '@marp-team/marp-core'
+import { browser, type MarpCoreBrowser } from '@marp-team/marp-core/browser'
 
 import { MarpSlidesSettings } from '../utilities/settings'
 import { FilePath } from '../utilities/filePath'
@@ -7,7 +8,25 @@ import { FilePath } from '../utilities/filePath'
 export const MARP_PREVIEW_VIEW = 'marp-preview-view';
 
 export class MarpPreviewView extends ItemView  {
-    private marp = new Marp();
+    private marp = new Marp({
+        container: { tag: 'div', id: '__marp-vscode' },
+        slideContainer: { tag: 'div', 'data-marp-vscode-slide-wrapper': '' },
+        html: false, //enableHtml() || undefined,
+        inlineSVG: {
+            enabled: true,
+            backdropSelector: false
+        },
+        markdown: {
+          //breaks: breaks(!!baseOption.breaks),
+          //typographer: baseOption.typographer,
+        },
+        //math: math(),
+        //math: "katex",
+        minifyCSS: false,
+        script: false
+      });
+    
+    private marpBrowser: MarpCoreBrowser | undefined;
     private settings : MarpSlidesSettings;
 
     constructor(settings: MarpSlidesSettings, leaf: WorkspaceLeaf) {
@@ -54,7 +73,8 @@ export class MarpPreviewView extends ItemView  {
         
         const container = this.containerEl.children[1];
         container.empty();
-       
+        this.marpBrowser = browser(container);
+
         let { html, css } = this.marp.render(markdownText);
         
         // Replace Backgorund Url for images
@@ -65,11 +85,13 @@ export class MarpPreviewView extends ItemView  {
             <html>
             <head>
             <base href="${basePath}"></base>
-            <style>${css}</style>
+            <style id="__marp-vscode-style">${css}</style>
             </head>
             <body>${html}</body>
             </html>
-            `
+            `;
+
         container.innerHTML = htmlFile;
+        
 	}
 }
