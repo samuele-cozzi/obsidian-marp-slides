@@ -8,23 +8,7 @@ import { FilePath } from '../utilities/filePath'
 export const MARP_PREVIEW_VIEW = 'marp-preview-view';
 
 export class MarpPreviewView extends ItemView  {
-    private marp = new Marp({
-        container: { tag: 'div', id: '__marp-vscode' },
-        slideContainer: { tag: 'div', 'data-marp-vscode-slide-wrapper': '' },
-        html: false, //enableHtml() || undefined,
-        inlineSVG: {
-            enabled: true,
-            backdropSelector: false
-        },
-        markdown: {
-          //breaks: breaks(!!baseOption.breaks),
-          //typographer: baseOption.typographer,
-        },
-        //math: math(),
-        //math: "katex",
-        minifyCSS: false,
-        script: false
-      });
+    private marp: Marp; 
     
     private marpBrowser: MarpCoreBrowser | undefined;
     private settings : MarpSlidesSettings;
@@ -33,6 +17,19 @@ export class MarpPreviewView extends ItemView  {
         super(leaf);
 
         this.settings = settings;
+
+        this.marp = new Marp({
+            container: { tag: 'div', id: '__marp-vscode' },
+            slideContainer: { tag: 'div', 'data-marp-vscode-slide-wrapper': '' },
+            html: false, //enableHtml() || undefined,
+            inlineSVG: {
+                enabled: true,
+                backdropSelector: false
+            },
+            //math: math(),
+            minifyCSS: true,
+            script: false
+          });
     }
 
     getViewType() {
@@ -44,6 +41,11 @@ export class MarpPreviewView extends ItemView  {
     }
 
     async onOpen() {
+        // console.log("marp slide onopen");
+
+        const container = this.containerEl.children[1];
+        container.empty();
+        this.marpBrowser = browser(container);
 
         if (this.settings.ThemePath != '') {        
             const fileContents: string[] = await Promise.all(
@@ -60,6 +62,7 @@ export class MarpPreviewView extends ItemView  {
 
     async onClose() {
         // Nothing to clean up.
+        // console.log("marp slide onclose");
     }
 
     async onChange(view : MarkdownView) {
@@ -73,7 +76,7 @@ export class MarpPreviewView extends ItemView  {
         
         const container = this.containerEl.children[1];
         container.empty();
-        this.marpBrowser = browser(container);
+        
 
         let { html, css } = this.marp.render(markdownText);
         
@@ -92,6 +95,7 @@ export class MarpPreviewView extends ItemView  {
             `;
 
         container.innerHTML = htmlFile;
+        this.marpBrowser?.update()
         
 	}
 }

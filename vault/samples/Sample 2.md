@@ -1,9 +1,12 @@
 ---
-theme: olive
+theme: default
 footer: Samuele Cozzi
 ---
 
 # <!-- fit --> First Slide
+
+
+ciao
 
 --- 
 
@@ -25,7 +28,8 @@ footer: Samuele Cozzi
 ---
 
 # Autoscaling Code
-``` cpp
+
+```
 bool getBit(int num, int i) {
     return ((num & (1<<i)) != 0);
 }
@@ -62,6 +66,8 @@ bool getBit(int num, int i) {
 	int i = 0;int i = 0;
 
     return ((num & (1<<i)) != 0);
+    popo
+    
 }
 ```
 
