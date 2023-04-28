@@ -9,8 +9,6 @@ math: latex
 
 #### ~Let's graduate from Beamer~
 
-<br>
-
 **Author Taro**
 Hogehoge Laboratory M2
 YYYY/MM/DD

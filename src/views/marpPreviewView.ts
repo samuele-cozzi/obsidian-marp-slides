@@ -1,5 +1,6 @@
 import { ItemView, WorkspaceLeaf, MarkdownView, normalizePath } from 'obsidian';
 import { Marp } from '@marp-team/marp-core'
+import { browser, type MarpCoreBrowser } from '@marp-team/marp-core/browser'
 
 import { MarpSlidesSettings } from '../utilities/settings'
 import { FilePath } from '../utilities/filePath'
@@ -7,13 +8,28 @@ import { FilePath } from '../utilities/filePath'
 export const MARP_PREVIEW_VIEW = 'marp-preview-view';
 
 export class MarpPreviewView extends ItemView  {
-    private marp = new Marp();
+    private marp: Marp; 
+    
+    private marpBrowser: MarpCoreBrowser | undefined;
     private settings : MarpSlidesSettings;
 
     constructor(settings: MarpSlidesSettings, leaf: WorkspaceLeaf) {
         super(leaf);
 
         this.settings = settings;
+
+        this.marp = new Marp({
+            container: { tag: 'div', id: '__marp-vscode' },
+            slideContainer: { tag: 'div', 'data-marp-vscode-slide-wrapper': '' },
+            html: false, //enableHtml() || undefined,
+            inlineSVG: {
+                enabled: true,
+                backdropSelector: false
+            },
+            //math: math(),
+            minifyCSS: true,
+            script: false
+          });
     }
 
     getViewType() {
@@ -25,6 +41,11 @@ export class MarpPreviewView extends ItemView  {
     }
 
     async onOpen() {
+        // console.log("marp slide onopen");
+
+        const container = this.containerEl.children[1];
+        container.empty();
+        this.marpBrowser = browser(container);
 
         if (this.settings.ThemePath != '') {        
             const fileContents: string[] = await Promise.all(
@@ -41,6 +62,7 @@ export class MarpPreviewView extends ItemView  {
 
     async onClose() {
         // Nothing to clean up.
+        // console.log("marp slide onclose");
     }
 
     async onChange(view : MarkdownView) {
@@ -54,7 +76,8 @@ export class MarpPreviewView extends ItemView  {
         
         const container = this.containerEl.children[1];
         container.empty();
-       
+        
+
         let { html, css } = this.marp.render(markdownText);
         
         // Replace Backgorund Url for images
@@ -65,11 +88,14 @@ export class MarpPreviewView extends ItemView  {
             <html>
             <head>
             <base href="${basePath}"></base>
-            <style>${css}</style>
+            <style id="__marp-vscode-style">${css}</style>
             </head>
             <body>${html}</body>
             </html>
-            `
+            `;
+
         container.innerHTML = htmlFile;
+        this.marpBrowser?.update()
+        
 	}
 }

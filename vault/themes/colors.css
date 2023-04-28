@@ -4,6 +4,7 @@
  *
  * @theme colors
  * @author MATSUBARA Nobutada
+ * @auto-scaling true
  */
 @import url("https://fonts.googleapis.com/css?family=Lato:400,900|Roboto+Mono:400,700");
 @import url("https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/styles/github.min.css");
