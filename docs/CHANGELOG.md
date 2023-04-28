@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.30.0](https://github.com/samuele-cozzi/obsidian-marp-slides/compare/0.29.1...0.30.0) (2023-04-28)
+
+
+### Features
+
+* autoscaling base ([#61](https://github.com/samuele-cozzi/obsidian-marp-slides/issues/61)) ([d3e0fca](https://github.com/samuele-cozzi/obsidian-marp-slides/commit/d3e0fca67f8944f2a6df93ae62410c9b381342ac))
+
 ## [0.29.1](https://github.com/samuele-cozzi/obsidian-marp-slides/compare/0.29.0...0.29.1) (2023-03-15)
 
 
