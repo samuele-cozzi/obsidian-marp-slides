@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.30.1](https://github.com/samuele-cozzi/obsidian-marp-slides/compare/0.30.0...0.30.1) (2023-04-28)
+
+
+### Bug Fixes
+
+* local development ([4543176](https://github.com/samuele-cozzi/obsidian-marp-slides/commit/4543176c9751ee71b1fa78a0e8955839e3ee12ba))
+* local development ([3368d82](https://github.com/samuele-cozzi/obsidian-marp-slides/commit/3368d82a3be159d52331544c1b3e8fd034913dab))
+* Merge pull request [#63](https://github.com/samuele-cozzi/obsidian-marp-slides/issues/63) from samuele-cozzi:fix/release-0.30 ([4543176](https://github.com/samuele-cozzi/obsidian-marp-slides/commit/4543176c9751ee71b1fa78a0e8955839e3ee12ba))
+
 ## [0.30.0](https://github.com/samuele-cozzi/obsidian-marp-slides/compare/0.29.1...0.30.0) (2023-04-28)
 
 
