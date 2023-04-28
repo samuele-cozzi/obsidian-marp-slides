@@ -40,7 +40,7 @@ const context = await esbuild.context({
 	sourcemap: prod ? false : "inline",
 	treeShaking: true,
 	//outfile: "vault/.obsidian/plugins/obsidian-marp-slides/main.js", //for local dev
-	outputfile: "main.js"
+	outfile: "main.js"
 });
 
 if (prod) {
