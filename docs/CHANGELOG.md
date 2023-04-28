@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.30.2](https://github.com/samuele-cozzi/obsidian-marp-slides/compare/0.30.1...0.30.2) (2023-04-28)
+
+
+### Bug Fixes
+
+* main.js location for deployment ([#65](https://github.com/samuele-cozzi/obsidian-marp-slides/issues/65)) ([5a4ed39](https://github.com/samuele-cozzi/obsidian-marp-slides/commit/5a4ed39b68887f1e0a674dd2771835e06aa570b3))
+
 ## [0.30.1](https://github.com/samuele-cozzi/obsidian-marp-slides/compare/0.30.0...0.30.1) (2023-04-28)
 
 
