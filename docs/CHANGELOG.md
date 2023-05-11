@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.31.0](https://github.com/samuele-cozzi/obsidian-marp-slides/compare/0.30.2...0.31.0) (2023-05-11)
+
+
+### Features
+
+* enable HTML setting ([#72](https://github.com/samuele-cozzi/obsidian-marp-slides/issues/72)) ([97bd5b9](https://github.com/samuele-cozzi/obsidian-marp-slides/commit/97bd5b9a1f744ea7a7fd50739ceefa142b356ae1))
+
 ## [0.30.2](https://github.com/samuele-cozzi/obsidian-marp-slides/compare/0.30.1...0.30.2) (2023-04-28)
 
 
