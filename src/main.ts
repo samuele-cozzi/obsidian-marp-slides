@@ -171,5 +171,17 @@ export class MarpSlidesSettingTab extends PluginSettingTab {
 					this.plugin.settings.EnableHTML = value;
 					await this.plugin.saveSettings();
 				}));
+	
+		new Setting(containerEl)
+			.setName('Math Typesettings')
+			.setDesc('Controls math syntax and the default library for rendering math in Marp Core. A using library can override by math global directive in Markdown.')
+			.addDropdown(toggle => toggle
+				.addOption("mathjax","mathjax")
+				.addOption("katex","katex")
+				.setValue(this.plugin.settings.MathTypesettings)
+				.onChange(async (value) => {
+					this.plugin.settings.MathTypesettings = value;
+					await this.plugin.saveSettings();
+				}));
 	}
 }

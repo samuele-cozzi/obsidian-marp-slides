@@ -4,6 +4,7 @@ import { browser, type MarpCoreBrowser } from '@marp-team/marp-core/browser'
 
 import { MarpSlidesSettings } from '../utilities/settings'
 import { FilePath } from '../utilities/filePath'
+import { MathOptions } from '@marp-team/marp-core/types/src/math/math';
 
 export const MARP_PREVIEW_VIEW = 'marp-preview-view';
 
@@ -26,7 +27,7 @@ export class MarpPreviewView extends ItemView  {
                 enabled: true,
                 backdropSelector: false
             },
-            //math: math(),
+            math: this.settings.MathTypesettings as MathOptions,
             minifyCSS: true,
             script: false
           });
