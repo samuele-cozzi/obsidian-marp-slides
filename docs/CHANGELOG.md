@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.32.0](https://github.com/samuele-cozzi/obsidian-marp-slides/compare/0.31.0...0.32.0) (2023-05-11)
+
+
+### Features
+
+* Settings: Math Typesettings [#71](https://github.com/samuele-cozzi/obsidian-marp-slides/issues/71) ([#74](https://github.com/samuele-cozzi/obsidian-marp-slides/issues/74)) ([9e9c00f](https://github.com/samuele-cozzi/obsidian-marp-slides/commit/9e9c00f9befc548f6159723a46e454aba905b475))
+
 ## [0.31.0](https://github.com/samuele-cozzi/obsidian-marp-slides/compare/0.30.2...0.31.0) (2023-05-11)
 
 
