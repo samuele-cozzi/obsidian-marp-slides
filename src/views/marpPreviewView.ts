@@ -21,7 +21,7 @@ export class MarpPreviewView extends ItemView  {
         this.marp = new Marp({
             container: { tag: 'div', id: '__marp-vscode' },
             slideContainer: { tag: 'div', 'data-marp-vscode-slide-wrapper': '' },
-            html: false, //enableHtml() || undefined,
+            html: this.settings.EnableHTML,
             inlineSVG: {
                 enabled: true,
                 backdropSelector: false

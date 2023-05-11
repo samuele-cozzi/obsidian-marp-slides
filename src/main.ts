@@ -161,5 +161,15 @@ export class MarpSlidesSettingTab extends PluginSettingTab {
 					this.plugin.settings.ThemePath = value;
 					await this.plugin.saveSettings();
 				}));
+		
+		new Setting(containerEl)
+			.setName('Enable HTML')
+			.setDesc('Enable all HTML elements in Marp Markdown. Please Attention when you enable!!!')
+			.addToggle(toggle => toggle
+				.setValue(this.plugin.settings.EnableHTML)
+				.onChange(async (value) => {
+					this.plugin.settings.EnableHTML = value;
+					await this.plugin.saveSettings();
+				}));
 	}
 }
