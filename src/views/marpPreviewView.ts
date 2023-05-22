@@ -1,8 +1,9 @@
-import { ItemView, WorkspaceLeaf, MarkdownView, normalizePath } from 'obsidian';
+import { ItemView, WorkspaceLeaf, MarkdownView, normalizePath, TFile } from 'obsidian';
 import { Marp } from '@marp-team/marp-core'
 import { browser, type MarpCoreBrowser } from '@marp-team/marp-core/browser'
 
 import { MarpSlidesSettings } from '../utilities/settings'
+import { MarpExport } from '../utilities/marpExport';
 import { FilePath } from '../utilities/filePath'
 import { MathOptions } from '@marp-team/marp-core/types/src/math/math';
 
@@ -13,6 +14,8 @@ export class MarpPreviewView extends ItemView  {
     
     private marpBrowser: MarpCoreBrowser | undefined;
     private settings : MarpSlidesSettings;
+
+    private file : TFile;
 
     constructor(settings: MarpSlidesSettings, leaf: WorkspaceLeaf) {
         super(leaf);
@@ -59,6 +62,8 @@ export class MarpPreviewView extends ItemView  {
                 this.marp.themeSet.add(content);
             });
         }
+
+        this.addActions();
     }
 
     async onClose() {
@@ -69,9 +74,32 @@ export class MarpPreviewView extends ItemView  {
     async onChange(view : MarkdownView) {
         this.displaySlides(view);
     }
+
+    async addActions() {
+        const marpCli = new MarpExport(this.settings);
+        
+        this.addAction('image', 'Export as PNG', () => {
+            if (this.file) {
+                marpCli.export(this.file, 'png');
+            }
+        });
+
+        this.addAction('code-glyph', 'Export as HTML', () => {
+            if (this.file) {
+                marpCli.export(this.file, 'html');
+            }
+        });
+
+        this.addAction('slides-marp-export-pdf', 'Export as PDF', () => {
+            if (this.file) {
+                marpCli.export(this.file, 'pdf');
+            }
+        });
+      }
     
     async displaySlides(view : MarkdownView) {
         
+        this.file = view.file;
         const basePath = (new FilePath(this.settings)).getCompleteFileBasePath(view.file);
         const markdownText = view.data;
         
