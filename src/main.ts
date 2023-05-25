@@ -29,12 +29,9 @@ export default class MarpSlides extends Plugin {
 		this.addCommand({
 			id: 'preview',
 			name: 'Slide Preview',
-			callback: () => {
-				this.showPreviewSlide();
-			}
+			callback: () => { this.showPreviewSlide();}
 		});
 		
-		// This adds a simple command that can be triggered anywhere
 		this.addCommand({
 			id: 'export-pdf',
 			name: 'Export PDF',

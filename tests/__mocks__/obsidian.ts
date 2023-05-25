@@ -20,7 +20,8 @@ export const FileSystemAdapter = jest.fn().mockImplementation(() => {
   return {
     constructor: () => {},
     write: (path: string, data: string) => { _path = path},
-    getBasePath: () => { return _path; }
+    getBasePath: () => { return _path; },
+    getResourcePath: () => { return  `app://local/${normalizePath(_path)}?aaaa`; }
   }
 });
 

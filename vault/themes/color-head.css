@@ -1,0 +1,103 @@
+/* @theme color-head */
+
+@import "gaia";
+
+:root {
+    --color-background: #fff;
+    --color-foreground: #2c2c2c;
+    --color-highlight: #f96;
+    --color-dimmed: #720606;
+}
+
+section {
+    padding: 0;
+}
+
+header {
+    color: var(--color-background);
+    padding-top:0;
+    margin-top: -10px !important;
+}
+
+footer {
+    border-left: 2px solid var(--color-dimmed);
+    padding: 0px 20px;
+    margin: 10px 20px 10px 60px;
+    height: 40px;
+    font-size: 50%;
+}
+
+section::after {
+    left: 0;
+    height: 60px;
+    font-size: 50%;
+    color: var(--color-dimmed);
+} 
+
+h1 {
+    background-color: var(--color-dimmed);
+    color: var(--color-background);
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 25px 25px 15px 25px;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+li,ul,ol,
+blockquote,
+table, 
+code, marp-pre {
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+
+
+
+
+
+/* section > header {
+    width: 96%;
+}
+section > header > img {
+    float: right;
+}
+section.box-tiles > ul{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    height: 100%;
+}
+section.box-tiles > ul > li{
+    border-radius: 5px;
+    background-color: #f6f8fa;
+    border: 1px solid #999;
+    float: left;
+    padding: 0.3em;
+    margin: 0.3em;
+}
+section.box-2 > ul > li{
+    width: 45%;
+    height: 80%;
+}
+section.box-3 > ul > li{
+    width: 30%;
+    height: 90%;
+}
+section.box-4 > ul > li{
+    width: 45%;
+    height: 45%;
+}
+section.box-6 > ul > li{
+    width: 30%;
+    height: 45%;
+}
+section.box-center > ul > li{
+    text-align: center;
+} */

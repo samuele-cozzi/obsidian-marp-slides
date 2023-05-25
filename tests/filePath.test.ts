@@ -21,7 +21,7 @@ test('file base path', () => {
     const file = new TFile;
 
     file.parent.path = element.relative;
-    file.vault.adapter.write(element.base, '');
+    file.vault.adapter.write(`${element.base}\\${element.relative}`, '');
 
     const result = filePath.getCompleteFileBasePath(file);
 

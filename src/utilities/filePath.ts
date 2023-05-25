@@ -23,9 +23,11 @@ export class FilePath {
 	}
 
 	getCompleteFileBasePath(file: TFile): string{
-        const basePath = `app://local/${this.getRootPath(file)}/${normalizePath(file.parent.path)}/`;
-        //console.log(`Complete File Base Path: ${basePath}`);
-        return basePath;
+
+        //const basePath = `app://local/${this.getRootPath(file)}/${normalizePath(file.parent.path)}/`;
+        const resourcePath = (file.vault.adapter as FileSystemAdapter).getResourcePath(normalizePath(file.parent.path)).split("?");
+
+        return `${resourcePath[0]}/`;
 	}
 
     getCompleteFilePath(file: TFile) : string{
