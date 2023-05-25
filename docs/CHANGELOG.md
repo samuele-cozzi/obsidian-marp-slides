@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.33.1](https://github.com/samuele-cozzi/obsidian-marp-slides/compare/0.33.0...0.33.1) (2023-05-25)
+
+
+### Bug Fixes
+
+* images import ([9504a37](https://github.com/samuele-cozzi/obsidian-marp-slides/commit/9504a37213665dfddc8669abb40b56091464d452))
+
 ## [0.33.0](https://github.com/samuele-cozzi/obsidian-marp-slides/compare/0.32.0...0.33.0) (2023-05-22)
 
 
