@@ -2,15 +2,23 @@
 
 @import "gaia";
 
+/* COLOR CONFIGURATION */
 :root {
     --color-background: #fff;
     --color-foreground: #2c2c2c;
     --color-highlight: #f96;
     --color-dimmed: #720606;
+    /* --color-background-stripe: #333 */
 }
+
+
 
 section {
     padding: 0;
+}
+
+p,li {
+    font-size: 0.8em;
 }
 
 header {
@@ -20,11 +28,14 @@ header {
 }
 
 footer {
-    border-left: 2px solid var(--color-dimmed);
+    border-left: 2px solid;
+    /* border-image: linear-gradient(to right, #000 50%, transparent 50%) 100% 1; */
     padding: 0px 20px;
     margin: 10px 20px 10px 60px;
     height: 40px;
     font-size: 50%;
+    border-image: linear-gradient(to bottom, rgba(0,0,0,0) 33%,var(--color-dimmed) 33%,var(--color-dimmed) 100%,rgba(0,0,0,0) 75%);
+    border-image-slice: 1;
 }
 
 section::after {
@@ -43,56 +54,78 @@ h1 {
     padding: 25px 25px 15px 25px;
 }
 
+blockquote {
+    width: 60%;
+    text-align: center;
+    align-self: center;
+    padding: 66px;
+    border-radius: 30px;
+    background-color: var(--color-background-stripe,transparent);
+}
+
+blockquote::before,blockquote::after {
+    margin: 10px;
+}
+
+table {
+    width: calc(100% - 80px);;
+}
+
 h2,
 h3,
 h4,
 h5,
 h6,
-p,
+p, strong,
 li,ul,ol,
 blockquote,
 table, 
 code, marp-pre {
-  margin-left: 40px;
-  margin-right: 40px;
+  margin-left: 40px !important;
+  margin-right: 40px !important;
 }
 
-/* section > header {
-    width: 96%;
-}
-section > header > img {
-    float: right;
-}
-section.box-tiles > ul{
-    margin: 0;
+
+
+section.box-flex > ul{
+    margin: 0 !important;
+    height: 80%;
     padding: 0;
     list-style-type: none;
-    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items:stretch;
+    align-content: stretch;
 }
-section.box-tiles > ul > li{
+
+section.box-flex > ul > li{
+    margin: 10px !important;
     border-radius: 5px;
-    background-color: #f6f8fa;
-    border: 1px solid #999;
-    float: left;
-    padding: 0.3em;
-    margin: 0.3em;
+    background-color: var(--color-background-stripe,transparent);
+    padding: 0.5em;
+    flex: 1 1 0;
 }
-section.box-2 > ul > li{
-    width: 45%;
-    height: 80%;
-}
-section.box-3 > ul > li{
-    width: 30%;
-    height: 90%;
-}
-section.box-4 > ul > li{
-    width: 45%;
-    height: 45%;
-}
-section.box-6 > ul > li{
-    width: 30%;
-    height: 45%;
-}
+
 section.box-center > ul > li{
     text-align: center;
-} */
+}
+
+section.vertical-center {
+    justify-content: center;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: stretch;
+}
+
+section.small p,section.small li {
+    font-size: 0.6em;
+}
+
+section.extrasmall p, section.extrasmall li {
+    font-size: 0.4em;
+}
+
+section.vertical-center h1 {
+    width: 45%;
+}
