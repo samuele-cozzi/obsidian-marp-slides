@@ -1,5 +1,6 @@
 ---
 theme: color-head
+#size: 4:3
 
 paginate: true
 _paginate: false
@@ -8,6 +9,12 @@ header: 'Title of deck'
 _header: ''
 footer: 'this is footer'
 _footer: ''
+
+#class: small extrasmall
+#class: lead
+#class: vertical-center
+#class: box-flex box-center
+
 ---
 
 <!-- _class: lead -->
@@ -21,8 +28,9 @@ Milan, Marp Demo
 YYYY/MM/DD
 
 
---- 
+---
 
+<!-- _class: vertical-center -->
 
 # Agenda 
 
@@ -33,7 +41,28 @@ YYYY/MM/DD
 
 ---
 
-# Section
+
+<!-- _class: vertical-center -->
+
+## Introduction
+
+text
+
+![bg right:33%](../attachments/placeholder-circle.png)
+
+---
+
+<!-- _class:  vertical-center -->
+
+# Section Header
+
+Section Details
+
+
+
+---
+
+# Content
 
 ## Subsection
 
@@ -49,30 +78,6 @@ Text
 
 ---
 
-# Introduction
-
-Text
-
----
-
-# Text 
-
-text
-
----
-
-# Two Columns 
-
-## column 1
-
-text
-
-## column 2
-
-text
-
----
-
 # Two Columns Image
 
 ## column 1
@@ -81,31 +86,128 @@ text
 
 ![bg right](../attachments/placeholder-circle.png)
 
+
+--- 
+
+<!-- _class: 'box-flex' -->
+
+# Two Columns 
+
+- ## column 1
+
+	text
+
+- ## column 2
+
+	text
+
+
 ---
+
+<!-- _class: 'box-flex box-center' -->
+# Two Columns With Centered Pictures
+
+- ## picture 1
+	![center h:400](../attachments/placeholder-circle.png)
+ - ![center](../attachments/placeholder-circle.png)
+
+
+---
+
+<!-- _class: 'box-flex' -->
 
 # Three Columns 
 
-## column 1
+- ## column 1
 
-text
+	text
 
-## column 2
+- ## column 2
 
-text
-
-## column 3
-
-text
+	text
+	
+- ## column 3
+	text
 
 ---
 
-# Basic Block List 
+<!-- _class: 'box-flex' -->
 
-- text
-- text
-- text
-- text
-- text
+# Four Columns 
+
+- ## column 1
+
+	text
+
+- ## column 2
+
+	text
+	
+- ## column 3
+	text
+
+- ## column 4
+	lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum 
+
+---
+
+<!-- _class: 'box-flex' -->
+
+# Six Columns 
+
+- ## column 1
+
+	text
+
+- ## column 2
+
+	text
+	
+- ## column 3
+	text
+
+- ## column 4
+	text
+
+- ## column 5
+	text
+
+- ## column 6
+	text
+
+---
+
+<!-- _class: 'box-flex' -->
+
+# Eight Columns 
+
+- ## column 1
+
+	text
+
+- ## column 2
+
+	text
+	
+- ## column 3
+	text
+
+- ## column 4
+	text
+
+- ## column 5
+	text
+
+- ## column 6
+	text
+
+- ## column 7
+	text
+
+- ## column 8
+	text
+
+
 ---
 
 # Picture 
@@ -123,10 +225,11 @@ text
 | text | text | text | text |
 
 ---
+<!-- _class: vertical-center -->
 
-# Quote
 
 > Quote of the day
+
 
 ---
 
@@ -223,3 +326,25 @@ f(x) = \int_{-\infty}^\infty
     \hat f(\xi)\,e^{2 \pi i \xi x}
     \,d\xi
 $$
+---
+<!-- _class: vertical-center  -->
+<!-- _footer: '' -->
+<!-- _paginate: false -->
+
+![bg left:33%](../attachments/placeholder-circle.png)
+
+## Summary
+
+This is the summary of presentation
+
+
+---
+
+<!-- _class: vertical-center -->
+
+# Thank You
+
+Author
+mail@email.com
+www.author.com
+@Twitter
