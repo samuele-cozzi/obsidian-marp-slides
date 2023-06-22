@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.34.0](https://github.com/samuele-cozzi/obsidian-marp-slides/compare/0.33.1...0.34.0) (2023-06-22)
+
+
+### Features
+
+* advanced html ([a19ed79](https://github.com/samuele-cozzi/obsidian-marp-slides/commit/a19ed790b4c02570cb8d3a23a9b804141eab8bc5))
+
 ## [0.33.1](https://github.com/samuele-cozzi/obsidian-marp-slides/compare/0.33.0...0.33.1) (2023-05-25)
 
 
