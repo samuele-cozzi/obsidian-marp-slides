@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.36.1](https://github.com/samuele-cozzi/obsidian-marp-slides/compare/0.36.0...0.36.1) (2023-06-22)
+
+
+### Bug Fixes
+
+* add plugin copy package ([ca85ae4](https://github.com/samuele-cozzi/obsidian-marp-slides/commit/ca85ae49ecf2ef365646deee259e2cdc7c0bffcb))
+
 ## [0.36.0](https://github.com/samuele-cozzi/obsidian-marp-slides/compare/0.35.0...0.36.0) (2023-06-22)
 
 
