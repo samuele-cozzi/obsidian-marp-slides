@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.34.1](https://github.com/samuele-cozzi/obsidian-marp-slides/compare/0.34.0...0.34.1) (2023-06-22)
+
+
+### Bug Fixes
+
+* main file ([c2f5d00](https://github.com/samuele-cozzi/obsidian-marp-slides/commit/c2f5d00a20a7ebf4116f6dac36ff689fa97142d5))
+
 ## [0.34.0](https://github.com/samuele-cozzi/obsidian-marp-slides/compare/0.33.1...0.34.0) (2023-06-22)
 
 
