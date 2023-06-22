@@ -117,3 +117,23 @@ jobs:
           asset_path: ./styles.css
           asset_name: styles.css
           asset_content_type: text/css
+      - name: Upload styles.css
+        id: upload-bespoke-js
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ needs.release-please.outputs.upload_url }}
+          asset_path: ./node_modules/@marp-team/marp-cli/lib/bespoke.js
+          asset_name: renderer/bespoke.js
+          asset_content_type: text/javascript
+      - name: Upload styles.css
+        id: upload-watch-js
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ needs.release-please.outputs.upload_url }}
+          asset_path: ./node_modules/@marp-team/marp-cli/lib/watch.js
+          asset_name: renderer/watch.js
+          asset_content_type: text/javascript
