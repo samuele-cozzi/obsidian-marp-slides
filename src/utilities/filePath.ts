@@ -37,7 +37,7 @@ export class FilePath {
 	}
 
     getResourcesPath(file: TFile) : string{
-        const basePath = `${this.getRootPath(file)}/.obsidian/plugins/obsidian-marp-slides`;
+        const basePath = `${this.getRootPath(file)}/.obsidian/plugins/obsidian-marp-slides/lib`;
         console.log(`Complete File Path: ${basePath}`);
         return basePath;
 	}
