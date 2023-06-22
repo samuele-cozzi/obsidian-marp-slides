@@ -16,6 +16,7 @@ export class MarpExport {
     async export(file: TFile, type: string){
         const completeFilePath = (new FilePath(this.settings)).getCompleteFilePath(file);
         const themePath = (new FilePath(this.settings)).getThemePath(file);
+        const resourcesPath = (new FilePath(this.settings)).getResourcesPath(file);
 
         if (completeFilePath != ''){            
             //console.log(completeFilePath);
@@ -43,26 +44,39 @@ export class MarpExport {
                     argv.push('--images');
                     argv.push('--png');
                     break;
+                case 'html':
+                    argv.push('--template');
+                    argv.push(this.settings.HTMLExportMode);
+                    //argv.push('bare');
+                    //argv.push('bespoke');
+                    break;
                 default:
+                    //argv.remove(completeFilePath);
                     argv.push('--template');
                     argv.push('bare');
                     //argv.push('bespoke');
                     //argv.push('--engine');
                     //argv.push('@marp-team/marpit');
+                    //process.env.PORT = "5001";
+                    //argv.push('PORT=5001');
+                    // argv.push('--server');
+                    // argv.push('--preview');
+                    // argv.push('C:/Users/samue/code/obsidian-marp-slides/vault/samples');
+
             }
-            await this.run(argv);
+            await this.run(argv, resourcesPath);
         } 
 
     }
 
     //async exportPdf(argv: string[], opts?: MarpCLIAPIOptions | undefined){
-    private async run(argv: string[]){
+    private async run(argv: string[], resourcesPath: string){
         const { CHROME_PATH } = process.env;
 
         try {
             process.env.CHROME_PATH = this.settings.CHROME_PATH || CHROME_PATH;
 
-            this.runMarpCli(argv);
+            this.runMarpCli(argv, resourcesPath);
             
         } catch (e) {
             console.error(e)
@@ -91,12 +105,14 @@ export class MarpExport {
         }
     }
 
-    private async runMarpCli(argv: string[]) {
+    private async runMarpCli(argv: string[], resourcesPath: string) {
         //console.info(`Execute Marp CLI [${argv.join(' ')}] (${JSON.stringify(opts)})`)
         console.info(`Execute Marp CLI [${argv.join(' ')}]`);
-        
-        try {
-            const exitCode = await marpCli(argv)
+        let temp__dirname = __dirname;
+
+        try {    
+            __dirname = resourcesPath;
+            const exitCode = await marpCli(argv, {});
 
             if (exitCode > 0) {
                 console.error(`Failure (Exit status: ${exitCode})`)
@@ -108,5 +124,7 @@ export class MarpExport {
                 console.error("Generic Error!");
             }
         }
+
+        __dirname = temp__dirname;
     }
 }

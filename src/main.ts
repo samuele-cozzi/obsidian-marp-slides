@@ -181,5 +181,17 @@ export class MarpSlidesSettingTab extends PluginSettingTab {
 					this.plugin.settings.MathTypesettings = value;
 					await this.plugin.saveSettings();
 				}));
+
+		new Setting(containerEl)
+			.setName('HTML Export Mode')
+			.setDesc('Controls HTML library for eporting HTML File in Marp Cli. bespoke.js is experimental')
+			.addDropdown(toggle => toggle
+				.addOption("bare","bare.js")
+				.addOption("bespoke","bespoke.js")
+				.setValue(this.plugin.settings.HTMLExportMode)
+				.onChange(async (value) => {
+					this.plugin.settings.HTMLExportMode = value;
+					await this.plugin.saveSettings();
+				}));
 	}
 }

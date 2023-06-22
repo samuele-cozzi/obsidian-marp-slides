@@ -3,11 +3,13 @@ export interface MarpSlidesSettings {
 	ThemePath: string;
 	EnableHTML: boolean;
 	MathTypesettings: string ;
+	HTMLExportMode: string;
 }
 
 export const DEFAULT_SETTINGS: MarpSlidesSettings = {
 	CHROME_PATH: '',
 	ThemePath: '',
 	EnableHTML: false,
-	MathTypesettings: 'mathjax'
+	MathTypesettings: 'mathjax',
+	HTMLExportMode: 'bare'
 }

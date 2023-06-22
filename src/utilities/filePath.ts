@@ -36,6 +36,12 @@ export class FilePath {
         return basePath;
 	}
 
+    getResourcesPath(file: TFile) : string{
+        const basePath = `${this.getRootPath(file)}/.obsidian/plugins/obsidian-marp-slides/renderer`;
+        console.log(`Complete File Path: ${basePath}`);
+        return basePath;
+	}
+
     getThemePath(file: TFile): string{
         const themePath = `${this.getRootPath(file)}/${normalizePath(this.settings.ThemePath)}`;
         if (this.settings.ThemePath != ''){

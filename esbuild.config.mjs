@@ -39,8 +39,8 @@ const context = await esbuild.context({
 	logLevel: "info",
 	sourcemap: prod ? false : "inline",
 	treeShaking: true,
-	//outfile: "vault/.obsidian/plugins/obsidian-marp-slides/main.js", //for local dev
-	outfile: "main.js"
+	outfile: "vault/.obsidian/plugins/obsidian-marp-slides/main.js", //for local dev
+	//outfile: "main.js"
 });
 
 if (prod) {
