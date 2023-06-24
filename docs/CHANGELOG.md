@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.37.0](https://github.com/samuele-cozzi/obsidian-marp-slides/compare/0.36.1...0.37.0) (2023-06-24)
+
+
+### Features
+
+* advanced html export ([14523f9](https://github.com/samuele-cozzi/obsidian-marp-slides/commit/14523f9fbf642674a56f154c3c1f47b271972eb7))
+* advanced html export ([41e77f3](https://github.com/samuele-cozzi/obsidian-marp-slides/commit/41e77f310dbf5ca04f9f915df9b9dc9fdc4d14ba))
+* Merge pull request [#94](https://github.com/samuele-cozzi/obsidian-marp-slides/issues/94) from samuele-cozzi:feature/advanced-html-export ([14523f9](https://github.com/samuele-cozzi/obsidian-marp-slides/commit/14523f9fbf642674a56f154c3c1f47b271972eb7))
+
 ## [0.36.1](https://github.com/samuele-cozzi/obsidian-marp-slides/compare/0.36.0...0.36.1) (2023-06-22)
 
 
