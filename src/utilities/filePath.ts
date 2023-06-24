@@ -23,21 +23,20 @@ export class FilePath {
 	}
 
 	getCompleteFileBasePath(file: TFile): string{
-
-        //const basePath = `app://local/${this.getRootPath(file)}/${normalizePath(file.parent.path)}/`;
         const resourcePath = (file.vault.adapter as FileSystemAdapter).getResourcePath(normalizePath(file.parent.path)).split("?");
-
+        console.log(`Complete File Base Path: ${resourcePath}`);
         return `${resourcePath[0]}/`;
 	}
 
     getCompleteFilePath(file: TFile) : string{
         const basePath = `${this.getRootPath(file)}/${normalizePath(file.path)}`;
-        //console.log(`Complete File Path: ${basePath}`);
+        console.log(`Complete File Path: ${basePath}`);
         return basePath;
 	}
 
     getThemePath(file: TFile): string{
         const themePath = `${this.getRootPath(file)}/${normalizePath(this.settings.ThemePath)}`;
+        console.log(`Theme Path: ${themePath}`);
         if (this.settings.ThemePath != ''){
             return themePath;
         } 
