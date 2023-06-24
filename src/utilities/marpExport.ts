@@ -16,7 +16,7 @@ export class MarpExport {
     async export(file: TFile, type: string){
         const completeFilePath = (new FilePath(this.settings)).getCompleteFilePath(file);
         const themePath = (new FilePath(this.settings)).getThemePath(file);
-        const resourcesPath = (new FilePath(this.settings)).getResourcesPath(file);
+        const resourcesPath = (new FilePath(this.settings)).getLibDirectory(file.vault);
 
         if (completeFilePath != ''){            
             //console.log(completeFilePath);

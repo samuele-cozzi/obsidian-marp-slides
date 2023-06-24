@@ -1,4 +1,4 @@
-import { normalizePath, FileSystemAdapter, TFile } from 'obsidian';
+import { Vault, normalizePath, FileSystemAdapter, TFile } from 'obsidian';
 import { MarpSlidesSettings } from './settings';
 
 export class FilePath {
@@ -36,12 +36,6 @@ export class FilePath {
         return basePath;
 	}
 
-    getResourcesPath(file: TFile) : string{
-        const basePath = `${this.getRootPath(file)}/.obsidian/plugins/obsidian-marp-slides/lib`;
-        console.log(`Complete File Path: ${basePath}`);
-        return basePath;
-	}
-
     getThemePath(file: TFile): string{
         const themePath = `${this.getRootPath(file)}/${normalizePath(this.settings.ThemePath)}`;
         if (this.settings.ThemePath != ''){
@@ -52,4 +46,18 @@ export class FilePath {
             return '';
         }
     }
+
+    private getPluginDirectory(vault: Vault): string {
+        let fileSystem = vault.adapter as FileSystemAdapter;
+        let path = normalizePath(`${fileSystem.getBasePath()}/${vault.configDir}/plugins/marp-slides`) + '/';
+        console.log(path);
+        return path;
+	}
+
+    getLibDirectory(vault: Vault): string {
+        let pluginDirectory = this.getPluginDirectory(vault);
+        let path = normalizePath(`${pluginDirectory}lib`) + '/';
+        console.log(path);
+        return path;
+	}
 }

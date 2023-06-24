@@ -40,16 +40,8 @@ const context = await esbuild.context({
 	logLevel: "info",
 	sourcemap: prod ? false : "inline",
 	treeShaking: true,
-	//outfile: "vault/.obsidian/plugins/obsidian-marp-slides/main.js", //for local dev!!!
+	//outfile: "vault/.obsidian/plugins/marp-slides/main.js", //for local dev!!!
 	outfile: "main.js",
-	plugins: [
-		copy({
-			assets: {
-				from: ['node_modules/@marp-team/marp-cli/lib/*'],
-				to: ['./lib/'],
-			}
-		})
-	]
 });
 
 if (prod) {
