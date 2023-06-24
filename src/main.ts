@@ -3,6 +3,7 @@ import { MarkdownView, TAbstractFile, Plugin, addIcon, App, PluginSettingTab, Se
 import { MARP_PREVIEW_VIEW, MarpPreviewView } from './views/marpPreviewView';
 import { MarpExport } from './utilities/marpExport';
 import { ICON_SLIDE_PREVIEW, ICON_EXPORT_PDF } from './utilities/icons';
+import { Libs } from './utilities/libs';
 import { MarpSlidesSettings, DEFAULT_SETTINGS } from 'utilities/settings';
 
 
@@ -14,6 +15,9 @@ export default class MarpSlides extends Plugin {
 
 	async onload() {
 		await this.loadSettings();
+
+		const libsUtility = new Libs(this.settings);
+		libsUtility.loadLibs(this.app);
 
 		this.registerView(
 			MARP_PREVIEW_VIEW,
