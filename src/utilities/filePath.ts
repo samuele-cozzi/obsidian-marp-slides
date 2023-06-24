@@ -48,15 +48,15 @@ export class FilePath {
     }
 
     private getPluginDirectory(vault: Vault): string {
-        let fileSystem = vault.adapter as FileSystemAdapter;
-        let path = normalizePath(`${fileSystem.getBasePath()}/${vault.configDir}/plugins/marp-slides`) + '/';
+        const fileSystem = vault.adapter as FileSystemAdapter;
+        const path = normalizePath(`${fileSystem.getBasePath()}/${vault.configDir}/plugins/marp-slides`) + '/';
         console.log(path);
         return path;
 	}
 
     getLibDirectory(vault: Vault): string {
-        let pluginDirectory = this.getPluginDirectory(vault);
-        let path = normalizePath(`${pluginDirectory}lib`) + '/';
+        const pluginDirectory = this.getPluginDirectory(vault);
+        const path = normalizePath(`${pluginDirectory}lib`) + '/';
         console.log(path);
         return path;
 	}

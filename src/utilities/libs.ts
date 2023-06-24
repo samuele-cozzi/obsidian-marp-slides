@@ -14,8 +14,8 @@ export class Libs {
     }
  
     loadLibs(app: App){
-        let libPathUtility = new FilePath(this.settings);
-        let libPath = libPathUtility.getLibDirectory(app.vault);
+        const libPathUtility = new FilePath(this.settings);
+        const libPath = libPathUtility.getLibDirectory(app.vault);
         if (!existsSync(libPath)) {
 			//Download binary
 			const downloadUrl = `https://github.com/samuele-cozzi/obsidian-marp-slides/releases/download/lib-v1/lib.zip`;
@@ -34,13 +34,14 @@ export class Libs {
 						.then(contents => {
 							Object.keys(contents.files).forEach(function (filename) {
 								if (!contents.files[filename].dir) {
-									zip
-										.file(filename)!
-										.async('nodebuffer')
+									const file = zip.file(filename);
+									if (file != null){
+										file.async('nodebuffer')
 										.then(function (content) {
 											const dest = `${libPathUtility.getLibDirectory(app.vault)}${filename}`;
 											outputFileSync(dest, content);
 										});
+									}
 								}
 							});
 						})
