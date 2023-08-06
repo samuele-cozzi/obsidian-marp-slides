@@ -28,6 +28,10 @@ export class MarpExport {
                 argv.push(themePath);
             }
 
+            if (this.settings.EnableHTML){
+                argv.push('--html');
+            }
+
             switch (type) {
                 case 'pdf':
                     argv.push('--pdf');
@@ -51,18 +55,17 @@ export class MarpExport {
                     //argv.push('bespoke');
                     break;
                 default:
-                    //argv.remove(completeFilePath);
-                    argv.push('--template');
-                    argv.push('bare');
+                    //argv.push('--template');
+                    //argv.push('bare');
                     //argv.push('bespoke');
                     //argv.push('--engine');
                     //argv.push('@marp-team/marpit');
+                    //argv.remove(completeFilePath);
                     //process.env.PORT = "5001";
                     //argv.push('PORT=5001');
-                    // argv.push('--server');
-                    // argv.push('--preview');
-                    // argv.push('C:/Users/samue/code/obsidian-marp-slides/vault/samples');
-
+                    //argv.push('--server');
+                    argv.push('--preview');
+                    //argv.push('--watch');
             }
             await this.run(argv, resourcesPath);
         } 
