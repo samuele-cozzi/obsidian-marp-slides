@@ -66,6 +66,12 @@ export default class MarpSlides extends Plugin {
 			callback: (() => this.exportFile('png'))
 		});		
 
+		// this.addCommand({
+		// 	id: 'export-deck',
+		// 	name: 'Export Deck',
+		// 	callback: (() => this.exportFile(''))
+		// });
+
 		// This adds a settings tab so the user can configure various aspects of the plugin
 		this.addSettingTab(new MarpSlidesSettingTab(this.app, this));
 
