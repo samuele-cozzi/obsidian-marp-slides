@@ -2,13 +2,24 @@
 
 @import "gaia";
 
+/* 
+Usage:
+- slides: <!-- _class: 'xxx yyy' -->
+- fitting: <!-- fit -->
+
+Classes:
+- First slide: 'lead' 
+- Second Slides: 'divider'
+- Boxes: 'box-flex box-bg'
+- text: big, small, extrasmall, center
+*/
+
 /* COLOR CONFIGURATION */
 :root {
     --color-background: #fff;
     --color-foreground: #2c2c2c;
     --color-highlight: #f96;
     --color-dimmed: #720606;
-    /* --color-background-stripe: #333 */
 }
 
 
@@ -102,20 +113,27 @@ section.box-flex > ul{
 section.box-flex > ul > li{
     margin: 10px !important;
     border-radius: 5px;
-    background-color: var(--color-background-stripe,transparent);
     padding: 0.5em;
     flex: 1 1 0;
 }
 
-section.box-center > ul > li{
-    text-align: center;
+section.box-bg > ul >li {
+    background-color: var(--color-background-stripe,transparent);
 }
 
-section.vertical-center {
+section.divider {
     justify-content: center;
     display: flex;
     flex-flow: column nowrap;
     align-items: stretch;
+}
+
+section.divider h1 {
+    width: 45%;
+}
+
+section.small p,section.big li {
+    font-size: 1em;
 }
 
 section.small p,section.small li {
@@ -126,6 +144,6 @@ section.extrasmall p, section.extrasmall li {
     font-size: 0.4em;
 }
 
-section.vertical-center h1 {
-    width: 45%;
+section.center p, section.center > ul > li {
+    text-align: center;
 }
