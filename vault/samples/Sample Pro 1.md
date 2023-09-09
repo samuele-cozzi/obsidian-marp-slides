@@ -10,10 +10,10 @@ _header: ''
 footer: 'this is footer'
 _footer: ''
 
-#class: small extrasmall
+#class: small extrasmall center
 #class: lead
-#class: vertical-center
-#class: box-flex box-center
+#class: divider
+#class: box-flex box-bg
 
 ---
 
@@ -30,7 +30,7 @@ YYYY/MM/DD
 
 ---
 
-<!-- _class: vertical-center -->
+<!-- _class: divider -->
 
 # Agenda 
 
@@ -42,7 +42,7 @@ YYYY/MM/DD
 ---
 
 
-<!-- _class: vertical-center -->
+<!-- _class: divider -->
 
 ## Introduction
 
@@ -52,7 +52,7 @@ text
 
 ---
 
-<!-- _class:  vertical-center -->
+<!-- _class:  divider -->
 
 # Section Header
 
@@ -104,7 +104,7 @@ text
 
 ---
 
-<!-- _class: 'box-flex box-center' -->
+<!-- _class: 'box-flex center' -->
 # Two Columns With Centered Pictures
 
 - ## picture 1
@@ -114,7 +114,7 @@ text
 
 ---
 
-<!-- _class: 'box-flex' -->
+<!-- _class: 'box-flex box-bg' -->
 
 # Three Columns 
 
@@ -131,7 +131,7 @@ text
 
 ---
 
-<!-- _class: 'box-flex' -->
+<!-- _class: 'box-flex box-bg' -->
 
 # Four Columns 
 
@@ -151,7 +151,7 @@ text
 
 ---
 
-<!-- _class: 'box-flex' -->
+<!-- _class: 'box-flex box-bg' -->
 
 # Six Columns 
 
@@ -177,7 +177,7 @@ text
 
 ---
 
-<!-- _class: 'box-flex' -->
+<!-- _class: 'box-flex box-bg' -->
 
 # Eight Columns 
 
@@ -210,6 +210,7 @@ text
 
 ---
 
+<!-- _class: center -->
 # Picture 
 
 ![center](../attachments/placeholder-circle.png)
@@ -225,7 +226,7 @@ text
 | text | text | text | text |
 
 ---
-<!-- _class: vertical-center -->
+<!-- _class: divider-->
 
 
 > Quote of the day
@@ -327,7 +328,7 @@ f(x) = \int_{-\infty}^\infty
     \,d\xi
 $$
 ---
-<!-- _class: vertical-center  -->
+<!-- _class: divider  -->
 <!-- _footer: '' -->
 <!-- _paginate: false -->
 
@@ -340,7 +341,7 @@ This is the summary of presentation
 
 ---
 
-<!-- _class: vertical-center -->
+<!-- _class: divider -->
 
 # Thank You
 
