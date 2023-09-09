@@ -54,6 +54,9 @@ export class MarpExport {
                     //argv.push('bare');
                     //argv.push('bespoke');
                     break;
+                case 'preview':
+                    argv.push('--preview');
+                    break;
                 default:
                     //argv.push('--template');
                     //argv.push('bare');
@@ -64,7 +67,7 @@ export class MarpExport {
                     //process.env.PORT = "5001";
                     //argv.push('PORT=5001');
                     //argv.push('--server');
-                    argv.push('--preview');
+                    
                     //argv.push('--watch');
             }
             await this.run(argv, resourcesPath);

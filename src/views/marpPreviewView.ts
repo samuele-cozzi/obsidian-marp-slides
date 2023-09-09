@@ -95,6 +95,12 @@ export class MarpPreviewView extends ItemView  {
                 marpCli.export(this.file, 'pdf');
             }
         });
+
+        this.addAction('slides-marp-slide-present', 'Preview Slides', () => {
+            if (this.file) {
+                marpCli.export(this.file, 'preview');
+            }
+        });
       }
     
     async displaySlides(view : MarkdownView) {
