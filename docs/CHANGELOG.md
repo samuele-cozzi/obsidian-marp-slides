@@ -1,3 +1,8 @@
+---
+title: Changelog
+nav_order: 99
+---
+
 # Changelog
 
 ## [0.38.0](https://github.com/samuele-cozzi/obsidian-marp-slides/compare/0.37.1...0.38.0) (2023-09-10)
