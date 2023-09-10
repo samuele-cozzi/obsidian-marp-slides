@@ -24,19 +24,19 @@ export class FilePath {
 
 	getCompleteFileBasePath(file: TFile): string{
         const resourcePath = (file.vault.adapter as FileSystemAdapter).getResourcePath(normalizePath(file.parent.path)).split("?");
-        console.log(`Complete File Base Path: ${resourcePath}`);
+        //console.log(`Complete File Base Path: ${resourcePath}`);
         return `${resourcePath[0]}/`;
 	}
 
     getCompleteFilePath(file: TFile) : string{
         const basePath = `${this.getRootPath(file)}/${normalizePath(file.path)}`;
-        console.log(`Complete File Path: ${basePath}`);
+        //console.log(`Complete File Path: ${basePath}`);
         return basePath;
 	}
 
     getThemePath(file: TFile): string{
         const themePath = `${this.getRootPath(file)}/${normalizePath(this.settings.ThemePath)}`;
-        console.log(`Theme Path: ${themePath}`);
+        //console.log(`Theme Path: ${themePath}`);
         if (this.settings.ThemePath != ''){
             return themePath;
         } 
@@ -49,14 +49,14 @@ export class FilePath {
     private getPluginDirectory(vault: Vault): string {
         const fileSystem = vault.adapter as FileSystemAdapter;
         const path = normalizePath(`${fileSystem.getBasePath()}/${vault.configDir}/plugins/marp-slides`) + '/';
-        console.log(path);
+        //console.log(path);
         return path;
 	}
 
     getLibDirectory(vault: Vault): string {
         const pluginDirectory = this.getPluginDirectory(vault);
         const path = normalizePath(`${pluginDirectory}lib`) + '/';
-        console.log(path);
+        //console.log(path);
         return path;
 	}
 }
