@@ -7,9 +7,10 @@ nav_order: 1
 
 ## Getting Started
 
-- [Setup Vault](10.GettingStarted.md#setup-vault)
-- [Marp Syntax](10.GettingStarted.md#marp-syntax)
-- [First Deck](10.GettingStarted.md#first-deck)
+- [Setup Vault](11.SetupVault.md)
+- [Configuration](12.Configuration.md)
+- [Marp Syntax](13.MarpSyntax.md)
+- [First Deck](14.FirstDeck.md)
 
 ## Features
 
