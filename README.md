@@ -10,6 +10,11 @@ Marp Slides is very simple & powerful slide deck extension for [Obsidian](href="
 See the documentation of [Marpit Markdown](https://marpit.marp.app/markdown) and [the features of Marp Core](https://github.com/marp-team/marp-core#features) about how to write.
 Marp have powerful tools for Markdown Slides: [Marpit Framework](https://marpit.marp.app/), [CLI tool](https://github.com/marp-team/marp-cli), [Web interface](https://web.marp.app/) and so on.
 
+## Getting Started
+
+- [Read Documentation](https://samuele-cozzi.github.io/obsidian-marp-slides/)
+- [View the demo Presentation](https://samuele-cozzi.github.io/obsidian-marp-slides/pictures/Sample%20Pro%201.html)
+
 ## Features
 
 - [Preview Slides](https://samuele-cozzi.github.io/obsidian-marp-slides/21.SlidesPreview.html)
