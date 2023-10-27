@@ -5,6 +5,14 @@ nav_order: 99
 
 # Changelog
 
+## [0.38.1](https://github.com/samuele-cozzi/obsidian-marp-slides/compare/0.38.0...0.38.1) (2023-10-27)
+
+
+### Bug Fixes
+
+* enable advanced html ([88a95ae](https://github.com/samuele-cozzi/obsidian-marp-slides/commit/88a95aefb072f0f9963779b962f5f70a42797e47))
+* Merge pull request [#109](https://github.com/samuele-cozzi/obsidian-marp-slides/issues/109) from samuele-cozzi/108-html-enhanced-view ([88a95ae](https://github.com/samuele-cozzi/obsidian-marp-slides/commit/88a95aefb072f0f9963779b962f5f70a42797e47))
+
 ## [0.38.0](https://github.com/samuele-cozzi/obsidian-marp-slides/compare/0.37.1...0.38.0) (2023-09-10)
 
 

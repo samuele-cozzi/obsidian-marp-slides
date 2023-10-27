@@ -1,6 +1,7 @@
 import esbuild from "esbuild";
 import process from "process";
 import builtins from "builtin-modules";
+import { copy } from 'esbuild-plugin-copy';
 
 const banner =
 `/*
@@ -39,6 +40,14 @@ const context = await esbuild.context({
 	logLevel: "info",
 	sourcemap: prod ? false : "inline",
 	treeShaking: true,
+	plugins: [
+		copy({
+			assets: {
+				from: ['node_modules/@marp-team/marp-cli/lib/*'],
+				to: ['./lib/'],
+			}
+		})
+	],
 	//outfile: "vault/.obsidian/plugins/marp-slides/main.js", //for local dev!!!
 	outfile: "main.js",
 });
