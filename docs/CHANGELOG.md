@@ -5,6 +5,13 @@ nav_order: 99
 
 # Changelog
 
+## [0.39.0](https://github.com/samuele-cozzi/obsidian-marp-slides/compare/0.38.1...0.39.0) (2023-10-31)
+
+
+### Features
+
+* release new version ([9f8a6e1](https://github.com/samuele-cozzi/obsidian-marp-slides/commit/9f8a6e179314dc87da59985e9ae58bdb8287c050))
+
 ## [0.38.1](https://github.com/samuele-cozzi/obsidian-marp-slides/compare/0.38.0...0.38.1) (2023-10-27)
 
 
