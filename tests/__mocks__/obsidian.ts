@@ -11,7 +11,8 @@ export const TFile = jest.fn().mockImplementation(() => {
 export const Vault = jest.fn().mockImplementation(() => {
   return {
     constructor: () => {},
-    adapter: new FileSystemAdapter
+    adapter: new FileSystemAdapter,
+    getConfig: () => { return "relative"; }
   }
 });
 
