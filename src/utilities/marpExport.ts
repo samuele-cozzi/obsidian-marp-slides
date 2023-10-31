@@ -14,9 +14,12 @@ export class MarpExport {
     }
 
     async export(file: TFile, type: string){
-        const completeFilePath = (new FilePath(this.settings)).getCompleteFilePath(file);
-        const themePath = (new FilePath(this.settings)).getThemePath(file);
-        const resourcesPath = (new FilePath(this.settings)).getLibDirectory(file.vault);
+        const filesTool = new FilePath(this.settings);
+        await filesTool.removeFileFromRoot(file);
+        await filesTool.copyFileToRoot(file);
+        const completeFilePath = filesTool.getCompleteFilePath(file);
+        const themePath = filesTool.getThemePath(file);
+        const resourcesPath = filesTool.getLibDirectory(file.vault);
 
         if (completeFilePath != ''){            
             //console.log(completeFilePath);
@@ -26,10 +29,6 @@ export class MarpExport {
             if (themePath != ''){
                 argv.push('--theme-set');
                 argv.push(themePath);
-            }
-
-            if (this.settings.EnableHTML){
-                argv.push('--html');
             }
 
             switch (type) {
@@ -49,12 +48,14 @@ export class MarpExport {
                     argv.push('--png');
                     break;
                 case 'html':
+                    argv.push('--html');
                     argv.push('--template');
                     argv.push(this.settings.HTMLExportMode);
                     //argv.push('bare');
                     //argv.push('bespoke');
                     break;
                 case 'preview':
+                    argv.push('--html');
                     argv.push('--preview');
                     break;
                 default:

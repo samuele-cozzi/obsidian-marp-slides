@@ -1,20 +1,11 @@
 ---
 theme: color-head
-#size: 4:3
-
 paginate: true
 _paginate: false
-# header: ![w:75](../attachments/placeholder-circle.png)
-header: 'Title of deck'
-_header: ''
-footer: 'this is footer'
-_footer: ''
-
-#class: small extrasmall center
-#class: lead
-#class: divider
-#class: box-flex box-bg
-
+header: Title of deck
+_header: 
+footer: this is footer
+_footer: ""
 ---
 
 <!-- _class: lead -->
