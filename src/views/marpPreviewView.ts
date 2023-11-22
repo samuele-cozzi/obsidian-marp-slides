@@ -96,6 +96,12 @@ export class MarpPreviewView extends ItemView  {
             }
         });
 
+        this.addAction('slides-marp-export-pptx', 'Export as PPTX', () => {
+            if (this.file) {
+                marpCli.export(this.file, 'pptx');
+            }
+        });
+
         this.addAction('slides-marp-slide-present', 'Preview Slides', () => {
             if (this.file) {
                 marpCli.export(this.file, 'preview');
