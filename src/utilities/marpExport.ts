@@ -34,25 +34,39 @@ export class MarpExport {
             switch (type) {
                 case 'pdf':
                     argv.push('--pdf');
+                    if (this.settings.EXPORT_PATH != ''){
+                        argv.push('-o');
+                        argv.push(`${this.settings.EXPORT_PATH}${file.basename}.pdf`);
+                    }
                     break;
                 case 'pdf-with-notes':
                     argv.push('--pdf');
                     argv.push('--pdf-notes');
                     argv.push('--pdf-outlines');
+                    if (this.settings.EXPORT_PATH != ''){
+                        argv.push('-o');
+                        argv.push(`${this.settings.EXPORT_PATH}${file.basename}.pdf`);
+                    }
                     break;
                 case 'pptx':
                     argv.push('--pptx');
+                    if (this.settings.EXPORT_PATH != ''){
+                        argv.push('-o');
+                        argv.push(`${this.settings.EXPORT_PATH}${file.basename}.pptx`);
+                    }
                     break;
                 case 'png':
                     argv.push('--images');
                     argv.push('--png');
+                    if (this.settings.EXPORT_PATH != ''){
+                        argv.push('-o');
+                        argv.push(`${this.settings.EXPORT_PATH}${file.basename}.png`);
+                    }
                     break;
                 case 'html':
                     argv.push('--html');
                     argv.push('--template');
                     argv.push(this.settings.HTMLExportMode);
-                    //argv.push('bare');
-                    //argv.push('bespoke');
                     break;
                 case 'preview':
                     argv.push('--html');
