@@ -170,6 +170,17 @@ export class MarpSlidesSettingTab extends PluginSettingTab {
 					this.plugin.settings.ThemePath = value;
 					await this.plugin.saveSettings();
 				}));
+
+		new Setting(containerEl)
+			.setName('Export Path')
+			.setDesc('Sets the custom path to export PDF, PPTX, and images. If it\'s empty, Marp will export in the same folder of the note. Export path does not affect HTML export')
+			.addText(text => text
+				.setPlaceholder('C:\\Users\\user\\Downloads\\')
+				.setValue(this.plugin.settings.EXPORT_PATH)
+				.onChange(async (value) => {
+					this.plugin.settings.EXPORT_PATH = value;
+					await this.plugin.saveSettings();
+				}));
 		
 		new Setting(containerEl)
 			.setName('Enable HTML')
