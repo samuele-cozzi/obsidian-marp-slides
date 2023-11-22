@@ -5,6 +5,13 @@ nav_order: 99
 
 # Changelog
 
+## [0.40.0](https://github.com/samuele-cozzi/obsidian-marp-slides/compare/0.39.0...0.40.0) (2023-11-22)
+
+
+### Features
+
+* documentation tree ([d66318e](https://github.com/samuele-cozzi/obsidian-marp-slides/commit/d66318e1357b930dbd6fa647f2cf6e2b15588c5c))
+
 ## [0.39.0](https://github.com/samuele-cozzi/obsidian-marp-slides/compare/0.38.1...0.39.0) (2023-10-31)
 
 
