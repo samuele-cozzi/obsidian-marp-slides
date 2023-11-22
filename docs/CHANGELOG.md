@@ -5,6 +5,15 @@ nav_order: 99
 
 # Changelog
 
+## [0.41.0](https://github.com/samuele-cozzi/obsidian-marp-slides/compare/0.40.0...0.41.0) (2023-11-22)
+
+
+### Features
+
+* Merge pull request [#121](https://github.com/samuele-cozzi/obsidian-marp-slides/issues/121) from samuele-cozzi:116-how-to-export-the-powerpoint-document ([16adf12](https://github.com/samuele-cozzi/obsidian-marp-slides/commit/16adf120d5640d65628f8107ce9466d706ef66f5))
+* shortcut for export pptx ([16adf12](https://github.com/samuele-cozzi/obsidian-marp-slides/commit/16adf120d5640d65628f8107ce9466d706ef66f5))
+* shortcut for export pptx ([5efbe82](https://github.com/samuele-cozzi/obsidian-marp-slides/commit/5efbe8266ba4d94cd43b87c328c9e59c576db717))
+
 ## [0.40.0](https://github.com/samuele-cozzi/obsidian-marp-slides/compare/0.39.0...0.40.0) (2023-11-22)
 
 
