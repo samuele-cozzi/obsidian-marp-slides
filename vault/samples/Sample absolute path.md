@@ -1,5 +1,5 @@
 ---
-theme: color-head
+theme: minimal-turquoise
 ---
 <!-- _class: lead -->
 # Title

@@ -1,5 +1,5 @@
 ---
-theme: color-head
+theme: minimal-turquoise
 paginate: true
 _paginate: false
 header: Title of deck
@@ -23,7 +23,7 @@ YYYY/MM/DD
 
 <!-- _class: divider -->
 
-# Agenda 
+## Agenda 
 
 1. text
 1. text
@@ -35,7 +35,7 @@ YYYY/MM/DD
 
 <!-- _class: divider -->
 
-## Introduction
+### Introduction
 
 text
 
@@ -45,7 +45,7 @@ text
 
 <!-- _class:  divider -->
 
-# Section Header
+## Section Header
 
 Section Details
 
@@ -53,9 +53,7 @@ Section Details
 
 ---
 
-# Content
-
-## Subsection
+## Content
 
 ### Subsection 1
 
@@ -69,9 +67,9 @@ Text
 
 ---
 
-# Two Columns Image
+## Two Columns Image
 
-## column 1
+### column 1
 
 text
 
@@ -82,13 +80,13 @@ text
 
 <!-- _class: 'box-flex' -->
 
-# Two Columns 
+## Two Columns 
 
-- ## column 1
+- ### column 1
 
 	text
 
-- ## column 2
+- ### column 2
 
 	text
 
@@ -96,9 +94,9 @@ text
 ---
 
 <!-- _class: 'box-flex center' -->
-# Two Columns With Centered Pictures
+## Two Columns With Centered Pictures
 
-- ## picture 1
+- ### picture 1
 	![center h:400](../attachments/placeholder-circle.png)
  - ![center](../attachments/placeholder-circle.png)
 
@@ -107,108 +105,108 @@ text
 
 <!-- _class: 'box-flex box-bg' -->
 
-# Three Columns 
+## Three Columns 
 
-- ## column 1
+- ### column 1
 
 	text
 
-- ## column 2
+- ### column 2
 
 	text
 	
-- ## column 3
+- ### column 3
 	text
 
 ---
 
 <!-- _class: 'box-flex box-bg' -->
 
-# Four Columns 
+## Four Columns 
 
-- ## column 1
+- ### column 1
 
 	text
 
-- ## column 2
+- ### column 2
 
 	text
 	
-- ## column 3
+- ### column 3
 	text
 
-- ## column 4
+- ### column 4
 	lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum 
 
 ---
 
 <!-- _class: 'box-flex box-bg' -->
 
-# Six Columns 
+## Six Columns 
 
-- ## column 1
+- ### column 1
 
 	text
 
-- ## column 2
+- ### column 2
 
 	text
 	
-- ## column 3
+- ### column 3
 	text
 
-- ## column 4
+- ### column 4
 	text
 
-- ## column 5
+- ### column 5
 	text
 
-- ## column 6
+- ### column 6
 	text
 
 ---
 
 <!-- _class: 'box-flex box-bg' -->
 
-# Eight Columns 
+## Eight Columns 
 
-- ## column 1
+- ### column 1
 
 	text
 
-- ## column 2
+- ### column 2
 
 	text
 	
-- ## column 3
+- ### column 3
 	text
 
-- ## column 4
+- ### column 4
 	text
 
-- ## column 5
+- ### column 5
 	text
 
-- ## column 6
+- ### column 6
 	text
 
-- ## column 7
+- ### column 7
 	text
 
-- ## column 8
+- ### column 8
 	text
 
 
 ---
 
 <!-- _class: center -->
-# Picture 
+## Picture 
 
 ![center](../attachments/placeholder-circle.png)
 
 ---
 
-# Table
+## Table
 
 | text | text | text | text |
 |---|---|---|---|
@@ -225,7 +223,7 @@ text
 
 ---
 
-# Code
+## Code
 
 ``` javascript
 var foo = ""
@@ -237,7 +235,7 @@ var foo = ""
 <!-- _footer: '' -->
 <!-- _paginate: false -->
 
-# Autoscaling Code
+## Autoscaling Code
 
 ```
 bool getBit(int num, int i) {
@@ -283,7 +281,7 @@ bool getBit(int num, int i) {
 
 ---
 
-# Math
+## Math
 
 Text text .....:
 
@@ -301,7 +299,7 @@ Conclusion
 
 --- 
 
-# Autoscaling Math
+## Autoscaling Math
 
 $$
 f(x) = \int_{-\infty}^\infty
@@ -325,7 +323,7 @@ $$
 
 ![bg left:33%](../attachments/placeholder-circle.png)
 
-## Summary
+### Summary
 
 This is the summary of presentation
 
@@ -334,7 +332,7 @@ This is the summary of presentation
 
 <!-- _class: divider -->
 
-# Thank You
+## Thank You
 
 Author
 mail@email.com
