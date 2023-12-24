@@ -10,7 +10,7 @@ export class FilePath  {
     }
 
     private getLinkFormat(file: TFile): string {
-        console.log(`newLinkFormat: ${(file.vault as any).getConfig("newLinkFormat")}`);
+        //console.log(`newLinkFormat: ${(file.vault as any).getConfig("newLinkFormat")}`);
         return (file.vault as any).getConfig("newLinkFormat");
     }
 
@@ -34,7 +34,7 @@ export class FilePath  {
             basePath = `${normalizePath(basePath)}/`;
         }
 
-        console.log(`Root Path: ${basePath}`);
+        //console.log(`Root Path: ${basePath}`);
         return basePath;
 	}
 
@@ -47,7 +47,7 @@ export class FilePath  {
         {
             resourcePath = (file.vault.adapter as FileSystemAdapter).getResourcePath(normalizePath(file.parent.path)).split("?");
         }
-        console.log(`Complete File Base Path: ${resourcePath}`);
+        //console.log(`Complete File Base Path: ${resourcePath}`);
         return `${resourcePath[0]}/`;
 	}
 
@@ -57,14 +57,14 @@ export class FilePath  {
         if(this.isAbsoluteLinkFormat(file)){
             basePath = `${this.getRootPath(file)}${normalizePath(file.name)}`;
         }
-        console.log(`Complete File Path: ${basePath}`);
+        //console.log(`Complete File Path: ${basePath}`);
         return basePath;
 	}
 
     public async copyFileToRoot(file: TFile) {
         if(this.isAbsoluteLinkFormat(file)){
             await (file.vault.adapter as FileSystemAdapter).copy(file.path, file.name);
-            console.log(`copied!`);
+            //console.log(`copied!`);
         }
     }
 
@@ -77,7 +77,7 @@ export class FilePath  {
 
     public getThemePath(file: TFile): string{
         const themePath = `${this.getRootPath(file)}${normalizePath(this.settings.ThemePath)}`;
-        console.log(`Theme Path: ${themePath}`);
+        //console.log(`Theme Path: ${themePath}`);
         if (this.settings.ThemePath != ''){
             return themePath;
         } 
@@ -90,14 +90,14 @@ export class FilePath  {
     private getPluginDirectory(vault: Vault): string {
         const fileSystem = vault.adapter as FileSystemAdapter;
         const path = normalizePath(`${fileSystem.getBasePath()}/${vault.configDir}/plugins/marp-slides`) + '/';
-        console.log(path);
+        //console.log(path);
         return path;
 	}
 
     public getLibDirectory(vault: Vault): string {
         const pluginDirectory = this.getPluginDirectory(vault);
         const path = normalizePath(`${pluginDirectory}lib`) + '/';
-        console.log(path);
+        //console.log(path);
         return path;
 	}
 }

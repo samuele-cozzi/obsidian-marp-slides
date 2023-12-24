@@ -1,7 +1,3 @@
----
-theme: color-head
----
-
 <!--  _class: lead -->
 # Title
 
@@ -17,6 +13,28 @@ theme: color-head
 ---
 
 # Content
+
+![bg right](../attachments/placeholder-circle.png)
+
+## Content 1
+### Content 2
+
+Content 3
+
+---
+
+# Content 1
+
+![bg right](../attachments/placeholder-circle.png)
+
+## Content 1
+### Content 2
+
+Content 3
+
+---
+
+# Content 2
 
 ![bg right](../attachments/placeholder-circle.png)
 

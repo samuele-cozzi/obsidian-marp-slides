@@ -5,6 +5,7 @@ export interface MarpSlidesSettings {
 	MathTypesettings: string ;
 	HTMLExportMode: string;
 	EXPORT_PATH: string;
+	EnableSyncPreview: boolean;
 }
 
 export const DEFAULT_SETTINGS: MarpSlidesSettings = {
@@ -13,5 +14,6 @@ export const DEFAULT_SETTINGS: MarpSlidesSettings = {
 	EnableHTML: false,
 	MathTypesettings: 'mathjax',
 	HTMLExportMode: 'bare',
-	EXPORT_PATH: ''
+	EXPORT_PATH: '',
+	EnableSyncPreview: true
 }
