@@ -1,4 +1,4 @@
-import { MarkdownView, TAbstractFile, Plugin, addIcon, App, PluginSettingTab, Setting  } from 'obsidian';
+import { MarkdownView, TAbstractFile, Plugin, addIcon, App, PluginSettingTab, Setting, EditorSuggest, EditorPosition, Editor, TFile, EditorSuggestTriggerInfo, EditorSuggestContext  } from 'obsidian';
 
 import { MARP_PREVIEW_VIEW, MarpPreviewView } from './views/marpPreviewView';
 import { MarpExport } from './utilities/marpExport';
@@ -77,6 +77,9 @@ export default class MarpSlides extends Plugin {
 		// This adds a settings tab so the user can configure various aspects of the plugin
 		this.addSettingTab(new MarpSlidesSettingTab(this.app, this));
 
+		if (this.settings.EnableSyncPreview)
+			this.registerEditorSuggest(new LineSelectionListener(this.app, this));
+
 		this.registerEvent(this.app.vault.on('modify', this.onChange.bind(this)));
 	}
 
@@ -125,6 +128,14 @@ export default class MarpSlides extends Plugin {
 			active: true,
 		});
 
+		const leaf = this.app.workspace.getLeavesOfType(MARP_PREVIEW_VIEW)[0];
+
+		this.app.workspace.revealLeaf(leaf);
+
+		return leaf.view as MarpPreviewView;
+	}
+
+	getViewInstance(): MarpPreviewView {
 		const leaf = this.app.workspace.getLeavesOfType(MARP_PREVIEW_VIEW)[0];
 
 		this.app.workspace.revealLeaf(leaf);
@@ -207,7 +218,7 @@ export class MarpSlidesSettingTab extends PluginSettingTab {
 
 		new Setting(containerEl)
 			.setName('HTML Export Mode')
-			.setDesc('Controls HTML library for eporting HTML File in Marp Cli. bespoke.js is experimental')
+			.setDesc('(Experimental) Controls HTML library for eporting HTML File in Marp Cli. bespoke.js is experimental')
 			.addDropdown(toggle => toggle
 				.addOption("bare","bare.js")
 				.addOption("bespoke","bespoke.js")
@@ -216,5 +227,63 @@ export class MarpSlidesSettingTab extends PluginSettingTab {
 					this.plugin.settings.HTMLExportMode = value;
 					await this.plugin.saveSettings();
 				}));
+		
+		new Setting(containerEl)
+			.setName('Sync Preview')
+			.setDesc('(Experimental) Sync the slide preview with the editor cursor')
+			.addToggle(toggle => toggle
+				.setValue(this.plugin.settings.EnableSyncPreview)
+				.onChange(async (value) => {
+					this.plugin.settings.EnableSyncPreview = value;
+					await this.plugin.saveSettings();
+				}));
+	}
+}
+
+class LineSelectionListener extends EditorSuggest<string> {
+	private plugin: MarpSlides;
+
+	constructor(app: App, plugin: MarpSlides) {
+		super(app);
+		this.plugin = plugin;
+	}
+
+	onTrigger(cursor: EditorPosition, editor: Editor, file: TFile): EditorSuggestTriggerInfo {
+		//console.log("line: " + cursor.line);
+		//console.log("ch: " + cursor.ch);
+		//console.log("value: " + editor.getValue());
+        
+        let triggerInfo: EditorSuggestTriggerInfo = {start:cursor, end:cursor, query:""};
+        const instance = this.plugin.getViewInstance();
+
+		const lines = editor.getValue().split('\n');
+		const firstNLines = lines.slice(0, cursor.line);
+		const text = firstNLines.join('\n');
+
+		if (instance) {
+			
+			const regex = new RegExp('---', 'g');
+			let matches = text.match(regex);
+			let slide = matches ? matches.length : 0;
+			var matter = require('gray-matter');
+			const frontMatter = matter(text);
+			if (frontMatter.data !== null && Object.keys(frontMatter.data).length > 0) {
+				instance.onLineChanged(slide - 2);
+			} else {
+				instance.onLineChanged(slide);
+			}			
+		}
+		return triggerInfo;
+	}
+	getSuggestions(context: EditorSuggestContext): string[] | Promise<string[]> {
+		let suggestion :string[] = [];
+		return suggestion;
+		//throw new Error('Method not implemented.');
+	}
+	renderSuggestion(value: string, el: HTMLElement): void {
+		throw new Error('Method not implemented.');
+	}
+	selectSuggestion(value: string, evt: MouseEvent | KeyboardEvent): void {
+		throw new Error('Method not implemented.');
 	}
 }

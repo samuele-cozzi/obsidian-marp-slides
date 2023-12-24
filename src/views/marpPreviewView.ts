@@ -75,6 +75,14 @@ export class MarpPreviewView extends ItemView  {
         this.displaySlides(view);
     }
 
+    async onLineChanged(line: number) {
+        try {
+		    this.containerEl.children[1].children[2].children[line].scrollIntoView();
+        } catch {
+            console.log("Preview slide not found!")
+        }
+	}
+
     async addActions() {
         const marpCli = new MarpExport(this.settings);
         
@@ -136,7 +144,6 @@ export class MarpPreviewView extends ItemView  {
             `;
 
         container.innerHTML = htmlFile;
-        this.marpBrowser?.update()
-        
+        this.marpBrowser?.update();
 	}
 }
