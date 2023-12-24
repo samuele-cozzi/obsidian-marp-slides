@@ -5,6 +5,14 @@ nav_order: 99
 
 # Changelog
 
+## [0.42.0](https://github.com/samuele-cozzi/obsidian-marp-slides/compare/0.41.0...0.42.0) (2023-12-24)
+
+
+### Features
+
+* Merge pull request [#126](https://github.com/samuele-cozzi/obsidian-marp-slides/issues/126) from samuele-cozzi:124-synchronize-scrolling-of-markdown-editing-view-and-slide-preview-view ([9ebc658](https://github.com/samuele-cozzi/obsidian-marp-slides/commit/9ebc658222b558806e7e5d55b80fe4a3ed872d17))
+* sync code editor and preview ([9ebc658](https://github.com/samuele-cozzi/obsidian-marp-slides/commit/9ebc658222b558806e7e5d55b80fe4a3ed872d17))
+
 ## [0.41.0](https://github.com/samuele-cozzi/obsidian-marp-slides/compare/0.40.0...0.41.0) (2023-11-22)
 
 
