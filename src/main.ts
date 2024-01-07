@@ -135,12 +135,14 @@ export default class MarpSlides extends Plugin {
 		return leaf.view as MarpPreviewView;
 	}
 
-	getViewInstance(): MarpPreviewView {
+	getViewInstance(): MarpPreviewView | null {
 		const leaf = this.app.workspace.getLeavesOfType(MARP_PREVIEW_VIEW)[0];
-
-		this.app.workspace.revealLeaf(leaf);
-
-		return leaf.view as MarpPreviewView;
+		if (leaf){
+			this.app.workspace.revealLeaf(leaf);
+			return leaf.view as MarpPreviewView;
+		} else {
+			return null;
+		}
 	}
 }
 
@@ -256,11 +258,10 @@ class LineSelectionListener extends EditorSuggest<string> {
         let triggerInfo: EditorSuggestTriggerInfo = {start:cursor, end:cursor, query:""};
         const instance = this.plugin.getViewInstance();
 
-		const lines = editor.getValue().split('\n');
-		const firstNLines = lines.slice(0, cursor.line);
-		const text = firstNLines.join('\n');
-
 		if (instance) {
+			const lines = editor.getValue().split('\n');
+			const firstNLines = lines.slice(0, cursor.line);
+			const text = firstNLines.join('\n');
 			
 			const regex = new RegExp('---', 'g');
 			let matches = text.match(regex);
