@@ -5,6 +5,14 @@ nav_order: 99
 
 # Changelog
 
+## [0.42.1](https://github.com/samuele-cozzi/obsidian-marp-slides/compare/0.42.0...0.42.1) (2024-01-07)
+
+
+### Bug Fixes
+
+* error Line selection listener ([d37a358](https://github.com/samuele-cozzi/obsidian-marp-slides/commit/d37a35856e22c7921162067c665eec0e63beae92))
+* Merge pull request [#131](https://github.com/samuele-cozzi/obsidian-marp-slides/issues/131) from samuele-cozzi:130-v0420-breaks-other-plugins-suggestion-completion ([d37a358](https://github.com/samuele-cozzi/obsidian-marp-slides/commit/d37a35856e22c7921162067c665eec0e63beae92))
+
 ## [0.42.0](https://github.com/samuele-cozzi/obsidian-marp-slides/compare/0.41.0...0.42.0) (2023-12-24)
 
 
