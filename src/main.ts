@@ -250,7 +250,7 @@ class LineSelectionListener extends EditorSuggest<string> {
 		this.plugin = plugin;
 	}
 
-	onTrigger(cursor: EditorPosition, editor: Editor, file: TFile): EditorSuggestTriggerInfo {
+	onTrigger(cursor: EditorPosition, editor: Editor, file: TFile): EditorSuggestTriggerInfo | null {
 		//console.log("line: " + cursor.line);
 		//console.log("ch: " + cursor.ch);
 		//console.log("value: " + editor.getValue());
@@ -274,7 +274,7 @@ class LineSelectionListener extends EditorSuggest<string> {
 				instance.onLineChanged(slide);
 			}			
 		}
-		return triggerInfo;
+		return null;
 	}
 	getSuggestions(context: EditorSuggestContext): string[] | Promise<string[]> {
 		let suggestion :string[] = [];
