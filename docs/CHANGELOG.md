@@ -5,6 +5,13 @@ nav_order: 99
 
 # Changelog
 
+## [0.43.0](https://github.com/samuele-cozzi/obsidian-marp-slides/compare/0.42.2...0.43.0) (2024-01-20)
+
+
+### Features
+
+* mobile app alpha ([6d5f50c](https://github.com/samuele-cozzi/obsidian-marp-slides/commit/6d5f50c1f25f1a9cf35247def50c23c581b0b3f0))
+
 ## [0.42.2](https://github.com/samuele-cozzi/obsidian-marp-slides/compare/0.42.1...0.42.2) (2024-01-18)
 
 
