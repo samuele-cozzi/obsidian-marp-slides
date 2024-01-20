@@ -6,5 +6,5 @@
   "description": "Create markdown-based Marp presentations in Obsidian",
   "author": "Samuele Cozzi",
   "authorUrl": "https://samuele-cozzi.web.app/",
-  "isDesktopOnly": true
+  "isDesktopOnly": false
 }

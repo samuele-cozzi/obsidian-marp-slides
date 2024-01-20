@@ -29,6 +29,7 @@ Marp have powerful tools for Markdown Slides: [Marpit Framework](https://marpit.
 ## Not supported
 
 - Wiki Link
+- Mobile App Plugin is in Alpha Version
 
 ## Many Thanks 👏
 
