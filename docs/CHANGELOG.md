@@ -5,6 +5,13 @@ nav_order: 99
 
 # Changelog
 
+## [0.44.0](https://github.com/samuele-cozzi/obsidian-marp-slides/compare/0.43.0...0.44.0) (2024-01-31)
+
+
+### Features
+
+* Merge pull request [#140](https://github.com/samuele-cozzi/obsidian-marp-slides/issues/140) from samuele-cozzi:139-external-images-dont-appear-in-deck-preview ([43e829f](https://github.com/samuele-cozzi/obsidian-marp-slides/commit/43e829fe4ed98ee504bcb5b3778f9815a8a91489))
+
 ## [0.43.0](https://github.com/samuele-cozzi/obsidian-marp-slides/compare/0.42.2...0.43.0) (2024-01-20)
 
 
