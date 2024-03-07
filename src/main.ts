@@ -239,6 +239,16 @@ export class MarpSlidesSettingTab extends PluginSettingTab {
 					this.plugin.settings.EnableSyncPreview = value;
 					await this.plugin.saveSettings();
 				}));
+
+		new Setting(containerEl)
+			.setName('MarkdownIt Plugins')
+			.setDesc('(Experimental) ...')
+			.addToggle(toggle => toggle
+				.setValue(this.plugin.settings.EnableMarkdownItPlugins)
+				.onChange(async (value) => {
+					this.plugin.settings.EnableMarkdownItPlugins = value;
+					await this.plugin.saveSettings();
+				}));
 	}
 }
 

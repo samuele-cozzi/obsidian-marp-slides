@@ -96,7 +96,14 @@ export class FilePath  {
 
     public getLibDirectory(vault: Vault): string {
         const pluginDirectory = this.getPluginDirectory(vault);
-        const path = normalizePath(`${pluginDirectory}lib`) + '/';
+        const path = normalizePath(`${pluginDirectory}lib2`) + '/';
+        //console.log(path);
+        return path;
+	}
+
+    public getMarpEngine(vault: Vault): string {
+        const libDirectory = this.getLibDirectory(vault);
+        const path = normalizePath(`${libDirectory}/marp.config.js`);
         //console.log(path);
         return path;
 	}

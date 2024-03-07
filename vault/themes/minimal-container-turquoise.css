@@ -1,0 +1,152 @@
+/* @theme minimal-container-turquoise */
+
+@import "gaia";
+
+/* 
+Usage:
+- slides: <!-- _class: 'xxx yyy' -->
+- fitting: <!-- fit -->
+
+Classes:
+- First slide: 'lead' 
+- First slide of a section: 'divider'
+- Boxes: 'box-flex box-bg'
+- text: big, small, extrasmall, center
+*/
+
+/* COLOR CONFIGURATION */
+:root {
+    --color-background: #fff;
+    --color-foreground: #455054;
+    --color-highlight: #E69D45;
+    --color-background-stripe: #D4CFC9;
+    --color-dimmed: #308695;
+}
+
+
+section {
+    padding: 0;
+}
+
+p,li {
+    font-size: 0.8em;
+}
+
+header {
+    color: var(--color-background);
+    padding-top:0;
+    margin-top: -10px !important;
+}
+
+footer {
+    border-left: 2px solid;
+    /* border-image: linear-gradient(to right, #000 50%, transparent 50%) 100% 1; */
+    padding: 0px 20px;
+    margin: 10px 20px 10px 60px;
+    height: 40px;
+    font-size: 50%;
+    border-image: linear-gradient(to bottom, rgba(0,0,0,0) 33%,var(--color-dimmed) 33%,var(--color-dimmed) 100%,rgba(0,0,0,0) 75%);
+    border-image-slice: 1;
+}
+
+section::after {
+    left: 0;
+    height: 60px;
+    font-size: 50%;
+    color: var(--color-dimmed);
+} 
+
+h1, h2 {
+    background-color: var(--color-dimmed);
+    color: var(--color-background);
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 25px 25px 15px 25px;
+}
+
+blockquote {
+    width: 60%;
+    text-align: center;
+    align-self: center;
+    padding: 66px;
+    border-radius: 30px;
+    background-color: var(--color-background-stripe, transparent);
+}
+
+blockquote::before,blockquote::after {
+    margin: 10px;
+}
+
+table {
+    width: calc(100% - 80px);;
+}
+
+h3,
+h4,
+h5,
+h6,
+p, strong,
+li,ul,ol,
+blockquote,
+table, 
+code, marp-pre {
+  margin-left: 40px !important;
+  margin-right: 40px !important;
+}
+
+section.lead h2 {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+}
+
+section.divider h2 {
+    width: 45%;
+}
+
+section.divider {
+    justify-content: center;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: stretch;
+}
+
+
+section.box-flex {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    align-items: stretch;
+}
+
+section.box-flex > * {
+    flex: 1 100%;
+}
+
+section.box-flex > .container{
+    margin: 10px !important;
+    border-radius: 5px;
+    padding: 0.5em;
+    flex: 1 1 0;
+}
+
+section.box-bg > .container {
+    background-color: var(--color-background-stripe,transparent);
+}
+
+section.small p,section.big li {
+    font-size: 1em;
+}
+
+section.small p,section.small li {
+    font-size: 0.6em;
+}
+
+section.extrasmall p, section.extrasmall li {
+    font-size: 0.4em;
+}
+
+section.center p, section.center > ul > li {
+    text-align: center;
+}
