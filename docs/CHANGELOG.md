@@ -5,6 +5,13 @@ nav_order: 99
 
 # Changelog
 
+## [0.45.3](https://github.com/samuele-cozzi/obsidian-marp-slides/compare/0.45.2...0.45.3) (2024-03-09)
+
+
+### Bug Fixes
+
+* dependencies of markdown-it plugins ([657c0aa](https://github.com/samuele-cozzi/obsidian-marp-slides/commit/657c0aa672b370e4daea7c16a229fbc6de9f0f89))
+
 ## [0.45.2](https://github.com/samuele-cozzi/obsidian-marp-slides/compare/0.45.1...0.45.2) (2024-03-09)
 
 
