@@ -98,7 +98,7 @@ export class FilePath  {
 
     public getLibDirectory(vault: Vault): string {
         const pluginDirectory = this.getPluginDirectory(vault);
-        const path = normalizePath(`${pluginDirectory}lib2`) + '/';
+        const path = normalizePath(`${pluginDirectory}lib3`) + '/';
         //console.log(path);
         return path;
 	}

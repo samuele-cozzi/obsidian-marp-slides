@@ -19,7 +19,7 @@ export class Libs {
 
         if (!existsSync(libPath)) {
 			//Download binary
-			const downloadUrl = `https://github.com/samuele-cozzi/obsidian-marp-slides/releases/download/lib-v2/lib.zip`;
+			const downloadUrl = `https://github.com/samuele-cozzi/obsidian-marp-slides/releases/download/lib-v3/lib.zip`;
 
 			const bufs: Uint8Array[] = [];
 			

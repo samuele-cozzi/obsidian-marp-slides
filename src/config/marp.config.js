@@ -1,4 +1,4 @@
 module.exports = ({ marp }) => 
-  marp.use(require("markdown-it-container"), "container")
-  .use(require('markdown-it-mark'))
-  .use(require("@kazumatu981/markdown-it-kroki"),{entrypoint: "https://kroki.io"});
+  marp.use(require("./markdown-it/@kazumatu981/markdown-it-kroki/index"))
+  .use(require("./markdown-it/markdown-it-mark/dist/markdown-it-mark.min")) 
+  .use(require("./markdown-it/markdown-it-container/dist/markdown-it-container.min"), "container");
