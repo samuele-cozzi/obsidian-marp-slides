@@ -242,7 +242,7 @@ export class MarpSlidesSettingTab extends PluginSettingTab {
 
 		new Setting(containerEl)
 			.setName('MarkdownIt Plugins')
-			.setDesc('(Experimental) ...')
+			.setDesc('(Experimental) Enable the Markdown It Plugins (Mark, Containers, Kroki)')
 			.addToggle(toggle => toggle
 				.setValue(this.plugin.settings.EnableMarkdownItPlugins)
 				.onChange(async (value) => {
