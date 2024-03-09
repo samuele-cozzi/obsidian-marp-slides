@@ -20,8 +20,10 @@ test('file base path', () => {
   tests.forEach(element => {
     const file = new TFile;
 
-    file.parent.path = element.relative;
-    file.vault.adapter.write(`${element.base}\\${element.relative}`, '');
+    if (file.parent != null){
+      file.parent.path = element.relative;
+      file.vault.adapter.write(`${element.base}\\${element.relative}`, '');
+    }
 
     const result = filePath.getCompleteFileBasePath(file);
 

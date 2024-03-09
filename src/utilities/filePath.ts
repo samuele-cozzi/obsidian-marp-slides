@@ -39,13 +39,15 @@ export class FilePath  {
 	}
 
 	public getCompleteFileBasePath(file: TFile): string{
-        let resourcePath = [];
+        let resourcePath = [""];
         if(this.isAbsoluteLinkFormat(file)){
             resourcePath = (file.vault.adapter as FileSystemAdapter).getResourcePath(normalizePath("/")).split("?");
         }
         else
         {
-            resourcePath = (file.vault.adapter as FileSystemAdapter).getResourcePath(normalizePath(file.parent.path)).split("?");
+            if (file.parent != null){
+                resourcePath = (file.vault.adapter as FileSystemAdapter).getResourcePath(normalizePath(file.parent.path)).split("?");
+            }
         }
         //console.log(`Complete File Base Path: ${resourcePath}`);
         return `${resourcePath[0]}/`;
