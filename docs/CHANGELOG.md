@@ -5,6 +5,13 @@ nav_order: 99
 
 # Changelog
 
+## [0.45.0](https://github.com/samuele-cozzi/obsidian-marp-slides/compare/0.44.0...0.45.0) (2024-03-09)
+
+
+### Features
+
+* Merge pull request [#144](https://github.com/samuele-cozzi/obsidian-marp-slides/issues/144) from samuele-cozzi:134-highlighting-missing ([50c4453](https://github.com/samuele-cozzi/obsidian-marp-slides/commit/50c4453f1d2c55f52ebbf0b10417fcb01ae189d2))
+
 ## [0.44.0](https://github.com/samuele-cozzi/obsidian-marp-slides/compare/0.43.0...0.44.0) (2024-01-31)
 
 
