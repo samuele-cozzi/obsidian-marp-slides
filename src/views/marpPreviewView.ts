@@ -65,7 +65,7 @@ export class MarpPreviewView extends ItemView  {
         if (this.settings.ThemePath != '') {        
             const fileContents: string[] = await Promise.all(
                 this.app.vault.getFiles()
-                    .filter(x => x.parent.path == normalizePath(this.settings.ThemePath))
+                    .filter(x => x.parent?.path == normalizePath(this.settings.ThemePath))
                     .map((file) => this.app.vault.cachedRead(file))
             );
 
@@ -130,31 +130,37 @@ export class MarpPreviewView extends ItemView  {
     
     async displaySlides(view : MarkdownView) {
         
-        this.file = view.file;
-        const basePath = (new FilePath(this.settings)).getCompleteFileBasePath(view.file);
-        const markdownText = view.data;
-        
-        const container = this.containerEl.children[1];
-        container.empty();
-        
+        if (view.file != null) {
+            this.file = view.file;
+            const basePath = (new FilePath(this.settings)).getCompleteFileBasePath(view.file);
+            const markdownText = view.data;
+            
+            const container = this.containerEl.children[1];
+            container.empty();
+            
 
-        let { html, css } = this.marp.render(markdownText);
-        
-        // Replace Backgorund Url for images
-        html = html.replace(/(?!background-image:url\(&quot;http)background-image:url\(&quot;/g, `background-image:url(&quot;${basePath}`);
+            let { html, css } = this.marp.render(markdownText);
+            
+            // Replace Backgorund Url for images
+            html = html.replace(/(?!background-image:url\(&quot;http)background-image:url\(&quot;/g, `background-image:url(&quot;${basePath}`);
 
-        const htmlFile = `
-            <!DOCTYPE html>
-            <html>
-            <head>
-            <base href="${basePath}"></base>
-            <style id="__marp-vscode-style">${css}</style>
-            </head>
-            <body>${html}</body>
-            </html>
-            `;
+            const htmlFile = `
+                <!DOCTYPE html>
+                <html>
+                <head>
+                <base href="${basePath}"></base>
+                <style id="__marp-vscode-style">${css}</style>
+                </head>
+                <body>${html}</body>
+                </html>
+                `;
 
-        container.innerHTML = htmlFile;
-        this.marpBrowser?.update();
+            container.innerHTML = htmlFile;
+            this.marpBrowser?.update();
+        }
+        else
+        {
+            console.log("Errore: view.file is null")
+        }
 	}
 }
