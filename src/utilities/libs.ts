@@ -16,9 +16,10 @@ export class Libs {
     loadLibs(app: App){
         const libPathUtility = new FilePath(this.settings);
         const libPath = libPathUtility.getLibDirectory(app.vault);
+
         if (!existsSync(libPath)) {
 			//Download binary
-			const downloadUrl = `https://github.com/samuele-cozzi/obsidian-marp-slides/releases/download/lib-v1/lib.zip`;
+			const downloadUrl = `https://github.com/samuele-cozzi/obsidian-marp-slides/releases/download/lib-v2/lib.zip`;
 
 			const bufs: Uint8Array[] = [];
 			

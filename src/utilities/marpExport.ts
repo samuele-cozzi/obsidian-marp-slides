@@ -20,12 +20,19 @@ export class MarpExport {
         const completeFilePath = filesTool.getCompleteFilePath(file);
         const themePath = filesTool.getThemePath(file);
         const resourcesPath = filesTool.getLibDirectory(file.vault);
+        const marpEngineConfig = filesTool.getMarpEngine(file.vault);
 
         if (completeFilePath != ''){            
             //console.log(completeFilePath);
             
             const argv: string[] = [completeFilePath,'--allow-local-files'];
-            
+            //const argv: string[] = ['--engine', '@marp-team/marp-core', completeFilePath,'--allow-local-files'];
+
+            if (this.settings.EnableMarkdownItPlugins){
+                argv.push('--engine');
+                argv.push(marpEngineConfig);
+            }
+
             if (themePath != ''){
                 argv.push('--theme-set');
                 argv.push(themePath);

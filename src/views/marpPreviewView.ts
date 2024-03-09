@@ -7,6 +7,10 @@ import { MarpExport } from '../utilities/marpExport';
 import { FilePath } from '../utilities/filePath'
 import { MathOptions } from '@marp-team/marp-core/types/src/math/math';
 
+const markdownItContainer = require('markdown-it-container');
+const markdownItMark = require('markdown-it-mark');
+const markdownItKroki = require('@kazumatu981/markdown-it-kroki');
+
 export const MARP_PREVIEW_VIEW = 'marp-preview-view';
 
 export class MarpPreviewView extends ItemView  {
@@ -34,6 +38,13 @@ export class MarpPreviewView extends ItemView  {
             minifyCSS: true,
             script: false
           });
+
+        if (this.settings.EnableMarkdownItPlugins){
+          this.marp
+            .use(markdownItContainer, "container")
+            .use(markdownItMark)
+            .use(markdownItKroki,{entrypoint: "https://kroki.io"});
+        }
     }
 
     getViewType() {
