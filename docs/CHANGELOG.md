@@ -5,6 +5,13 @@ nav_order: 99
 
 # Changelog
 
+## [0.45.4](https://github.com/samuele-cozzi/obsidian-marp-slides/compare/0.45.3...0.45.4) (2024-03-09)
+
+
+### Bug Fixes
+
+* lib not found ([f3666a4](https://github.com/samuele-cozzi/obsidian-marp-slides/commit/f3666a453fef14dc0f128d0f54da06b128d7126d))
+
 ## [0.45.3](https://github.com/samuele-cozzi/obsidian-marp-slides/compare/0.45.2...0.45.3) (2024-03-09)
 
 
