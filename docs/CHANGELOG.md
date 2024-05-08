@@ -5,6 +5,15 @@ nav_order: 99
 
 # Changelog
 
+## [0.45.6](https://github.com/samuele-cozzi/obsidian-marp-slides/compare/0.45.5...0.45.6) (2024-05-08)
+
+
+### Bug Fixes
+
+* engine resolved on ubuntu ([8fe76a7](https://github.com/samuele-cozzi/obsidian-marp-slides/commit/8fe76a7adb2605d8ee3d088265d47fcbcc3d37cd))
+* engine resolved on ubuntu ([897fa14](https://github.com/samuele-cozzi/obsidian-marp-slides/commit/897fa14d33cc4ce3780d350dcac74917d9e53d33))
+* Merge pull request [#159](https://github.com/samuele-cozzi/obsidian-marp-slides/issues/159) from samuele-cozzi:156-the-specified-engine-cannot-be-resolved ([8fe76a7](https://github.com/samuele-cozzi/obsidian-marp-slides/commit/8fe76a7adb2605d8ee3d088265d47fcbcc3d37cd))
+
 ## [0.45.5](https://github.com/samuele-cozzi/obsidian-marp-slides/compare/0.45.4...0.45.5) (2024-03-09)
 
 
