@@ -91,21 +91,21 @@ export class FilePath  {
 
     private getPluginDirectory(vault: Vault): string {
         const fileSystem = vault.adapter as FileSystemAdapter;
-        const path = normalizePath(`${fileSystem.getBasePath()}/${vault.configDir}/plugins/marp-slides`) + '/';
+        const path = `${fileSystem.getBasePath()}/${normalizePath(vault.configDir)}/plugins/marp-slides/`;
         //console.log(path);
         return path;
 	}
 
     public getLibDirectory(vault: Vault): string {
         const pluginDirectory = this.getPluginDirectory(vault);
-        const path = normalizePath(`${pluginDirectory}lib3`) + '/';
+        const path = `${pluginDirectory}lib3/`;
         //console.log(path);
         return path;
 	}
 
     public getMarpEngine(vault: Vault): string {
         const libDirectory = this.getLibDirectory(vault);
-        const path = normalizePath(`${libDirectory}/marp.config.js`);
+        const path = `${libDirectory}marp.config.js`;
         //console.log(path);
         return path;
 	}
