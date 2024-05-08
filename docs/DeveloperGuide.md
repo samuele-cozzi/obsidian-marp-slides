@@ -32,6 +32,10 @@ outfile: "vault/.obsidian/plugins/marp-slides/main.js", //for local dev!!!
 Proceed to compile and run the code. This step will apply your changes and generate the executable output, providing an opportunity to test and validate the impact of your configuration adjustments on the project's build and runtime behavior
 
 ```bash
+# get packages
+npm install
+
+# biuld, test, run
 npm run build
 npm run test
 
