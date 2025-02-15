@@ -273,7 +273,7 @@ class LineSelectionListener extends EditorSuggest<string> {
 			const firstNLines = lines.slice(0, cursor.line);
 			const text = firstNLines.join('\n');
 			
-			const regex = new RegExp('---', 'g');
+			const regex = new RegExp("---\r?\n", "g");
 			let matches = text.match(regex);
 			let slide = matches ? matches.length : 0;
 			var matter = require('gray-matter');
