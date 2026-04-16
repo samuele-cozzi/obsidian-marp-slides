@@ -1,4 +1,4 @@
-import { MarkdownView, TAbstractFile, Plugin, addIcon, App, PluginSettingTab, Setting, EditorSuggest, EditorPosition, Editor, TFile, EditorSuggestTriggerInfo, EditorSuggestContext  } from 'obsidian';
+import { MarkdownView, TAbstractFile, Plugin, addIcon, App, PluginSettingTab, Setting, EditorSuggest, EditorPosition, Editor, TFile, EditorSuggestTriggerInfo, EditorSuggestContext } from 'obsidian';
 
 import { MARP_PREVIEW_VIEW, MarpPreviewView } from './views/marpPreviewView';
 import { MarpExport } from './utilities/marpExport';
@@ -8,10 +8,10 @@ import { MarpSlidesSettings, DEFAULT_SETTINGS } from 'utilities/settings';
 
 
 export default class MarpSlides extends Plugin {
-	
+
 	public settings: MarpSlidesSettings;
-	private slidesView : MarpPreviewView;
-	private editorView : MarkdownView | null;
+	private slidesView: MarpPreviewView;
+	private editorView: MarkdownView | null;
 
 	async onload() {
 		await this.loadSettings();
@@ -31,13 +31,13 @@ export default class MarpSlides extends Plugin {
 		this.addRibbonIcon('slides-preview-marp', 'Show Slide Preview', async () => {
 			await this.showPreviewSlide();
 		});
-		
+
 		this.addCommand({
 			id: 'preview',
 			name: 'Slide Preview',
-			callback: () => { this.showPreviewSlide();}
+			callback: () => { this.showPreviewSlide(); }
 		});
-		
+
 		this.addCommand({
 			id: 'export-pdf',
 			name: 'Export PDF',
@@ -63,10 +63,16 @@ export default class MarpSlides extends Plugin {
 		});
 
 		this.addCommand({
+			id: 'export-editable-pptx',
+			name: 'Export editable PPTX (Experimental)',
+			callback: (() => this.exportFile('editable-pptx'))
+		});
+
+		this.addCommand({
 			id: 'export-png',
 			name: 'Export PNG',
 			callback: (() => this.exportFile('png'))
-		});		
+		});
 
 		// this.addCommand({
 		// 	id: 'export-deck',
@@ -101,15 +107,15 @@ export default class MarpSlides extends Plugin {
 		}
 	}
 
-	async exportFile(type: string){
+	async exportFile(type: string) {
 		const file = this.app.workspace.getActiveFile();
-		if(file !== null){
+		if (file !== null) {
 			const marpCli = new MarpExport(this.settings, this.app);
-			await marpCli.export(file,type);
+			await marpCli.export(file, type);
 		}
 	}
 
-	async showPreviewSlide(){
+	async showPreviewSlide() {
 		this.editorView = this.app.workspace.getActiveViewOfType(MarkdownView);
 
 		if (!this.editorView) {
@@ -119,10 +125,10 @@ export default class MarpSlides extends Plugin {
 		this.slidesView = await this.activateView();
 		this.slidesView.displaySlides(this.editorView);
 	}
-	
-	async activateView() : Promise<MarpPreviewView> {
+
+	async activateView(): Promise<MarpPreviewView> {
 		this.app.workspace.detachLeavesOfType(MARP_PREVIEW_VIEW);
-	
+
 		await this.app.workspace.getLeaf('split').setViewState({
 			type: MARP_PREVIEW_VIEW,
 			active: true,
@@ -137,7 +143,7 @@ export default class MarpSlides extends Plugin {
 
 	getViewInstance(): MarpPreviewView | null {
 		const leaf = this.app.workspace.getLeavesOfType(MARP_PREVIEW_VIEW)[0];
-		if (leaf){
+		if (leaf) {
 			this.app.workspace.revealLeaf(leaf);
 			return leaf.view as MarpPreviewView;
 		} else {
@@ -157,11 +163,11 @@ export class MarpSlidesSettingTab extends PluginSettingTab {
 	}
 
 	display(): void {
-		const {containerEl} = this;
+		const { containerEl } = this;
 
 		containerEl.empty();
 
-		containerEl.createEl('h2', {text: 'MARP Slide Plugin - Settings'});
+		containerEl.createEl('h2', { text: 'MARP Slide Plugin - Settings' });
 
 		new Setting(containerEl)
 			.setName('Chrome Path')
@@ -173,7 +179,7 @@ export class MarpSlidesSettingTab extends PluginSettingTab {
 					this.plugin.settings.CHROME_PATH = value;
 					await this.plugin.saveSettings();
 				}));
-		
+
 		new Setting(containerEl)
 			.setName('Theme Path')
 			.setDesc('Local paths to additional theme CSS for Marp core and Marpit framework. The rule for paths is following Markdown: Styles.')
@@ -195,7 +201,7 @@ export class MarpSlidesSettingTab extends PluginSettingTab {
 					this.plugin.settings.EXPORT_PATH = value;
 					await this.plugin.saveSettings();
 				}));
-		
+
 		new Setting(containerEl)
 			.setName('Enable HTML')
 			.setDesc('Enable all HTML elements in Marp Markdown. Please Attention when you enable!!!')
@@ -205,13 +211,13 @@ export class MarpSlidesSettingTab extends PluginSettingTab {
 					this.plugin.settings.EnableHTML = value;
 					await this.plugin.saveSettings();
 				}));
-	
+
 		new Setting(containerEl)
 			.setName('Math Typesettings')
 			.setDesc('Controls math syntax and the default library for rendering math in Marp Core. A using library can override by math global directive in Markdown.')
 			.addDropdown(toggle => toggle
-				.addOption("mathjax","mathjax")
-				.addOption("katex","katex")
+				.addOption("mathjax", "mathjax")
+				.addOption("katex", "katex")
 				.setValue(this.plugin.settings.MathTypesettings)
 				.onChange(async (value) => {
 					this.plugin.settings.MathTypesettings = value;
@@ -222,14 +228,14 @@ export class MarpSlidesSettingTab extends PluginSettingTab {
 			.setName('HTML Export Mode')
 			.setDesc('(Experimental) Controls HTML library for eporting HTML File in Marp Cli. bespoke.js is experimental')
 			.addDropdown(toggle => toggle
-				.addOption("bare","bare.js")
-				.addOption("bespoke","bespoke.js")
+				.addOption("bare", "bare.js")
+				.addOption("bespoke", "bespoke.js")
 				.setValue(this.plugin.settings.HTMLExportMode)
 				.onChange(async (value) => {
 					this.plugin.settings.HTMLExportMode = value;
 					await this.plugin.saveSettings();
 				}));
-		
+
 		new Setting(containerEl)
 			.setName('Sync Preview')
 			.setDesc('(Experimental) Sync the slide preview with the editor cursor')
@@ -264,15 +270,15 @@ class LineSelectionListener extends EditorSuggest<string> {
 		//console.log("line: " + cursor.line);
 		//console.log("ch: " + cursor.ch);
 		//console.log("value: " + editor.getValue());
-        
-        let triggerInfo: EditorSuggestTriggerInfo = {start:cursor, end:cursor, query:""};
-        const instance = this.plugin.getViewInstance();
+
+		let triggerInfo: EditorSuggestTriggerInfo = { start: cursor, end: cursor, query: "" };
+		const instance = this.plugin.getViewInstance();
 
 		if (instance) {
 			const lines = editor.getValue().split('\n');
 			const firstNLines = lines.slice(0, cursor.line);
 			const text = firstNLines.join('\n');
-			
+
 			const regex = new RegExp('---', 'g');
 			let matches = text.match(regex);
 			let slide = matches ? matches.length : 0;
@@ -282,12 +288,12 @@ class LineSelectionListener extends EditorSuggest<string> {
 				instance.onLineChanged(slide - 2);
 			} else {
 				instance.onLineChanged(slide);
-			}			
+			}
 		}
 		return null;
 	}
 	getSuggestions(context: EditorSuggestContext): string[] | Promise<string[]> {
-		let suggestion :string[] = [];
+		let suggestion: string[] = [];
 		return suggestion;
 		//throw new Error('Method not implemented.');
 	}
