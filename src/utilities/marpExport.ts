@@ -52,6 +52,10 @@ export class MarpExport {
                 argv.push(themePath);
             }
 
+            if (this.settings.EnableHTML){
+                argv.push('--html');
+            }
+
             switch (type) {
                 case 'pdf':
                     argv.push('--pdf');
