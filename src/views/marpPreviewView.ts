@@ -147,6 +147,9 @@ export class MarpPreviewView extends ItemView  {
             
             // Replace Backgorund Url for images
             html = html.replace(/(?!background-image:url\(&quot;http)background-image:url\(&quot;/g, `background-image:url(&quot;${basePath}`);
+            // The backgroundImage directive renders as url('...') or an unquoted url,
+            // so prefix those relative paths too
+            html = html.replace(/(background-image:url\()('|&#39;|&#x27;)?(?!&quot;|https?:|data:|app:|file:|\/)/g, (m, p, q) => `${p}${q || ''}${basePath}`);
 
             const htmlFile = `
                 <!DOCTYPE html>
