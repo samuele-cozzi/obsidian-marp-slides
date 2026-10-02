@@ -14,7 +14,7 @@ export class FilePath  {
         return (file.vault as any).getConfig("newLinkFormat");
     }
 
-    private isAbsoluteLinkFormat(file: TFile): boolean {
+    public isAbsoluteLinkFormat(file: TFile): boolean {
         if(this.getLinkFormat(file) == "absolute"){
             return true;
         }
@@ -23,7 +23,7 @@ export class FilePath  {
         }
     }
 
-    private getRootPath(file: TFile): string {
+    public getRootPath(file: TFile): string {
         
 		let basePath = (file.vault.adapter as FileSystemAdapter).getBasePath();
         if (basePath.startsWith('/')){
