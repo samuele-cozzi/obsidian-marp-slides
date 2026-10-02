@@ -115,13 +115,23 @@ export class MarpExport {
 
             // Write the output next to the original deck instead of next to the
             // root copy, unless an export path is configured.
-            const outExt: { [type: string]: string } = { 'pdf': 'pdf', 'pdf-with-notes': 'pdf', 'pptx': 'pptx', 'png': 'png' };
+            const outExt: { [type: string]: string } = { 'pdf': 'pdf', 'pdf-with-notes': 'pdf', 'pptx': 'pptx', 'png': 'png', 'html': 'html' };
+            let outPath = '';
             if (outExt[type] && inSubfolder && file.parent != null && filesTool.isAbsoluteLinkFormat(file) && !argv.includes('-o')) {
+                outPath = `${filesTool.getRootPath(file)}${file.parent.path}/${file.basename}.${outExt[type]}`;
                 argv.push('-o');
-                argv.push(`${filesTool.getRootPath(file)}${file.parent.path}/${file.basename}.${outExt[type]}`);
+                argv.push(outPath);
             }
 
             await this.run(argv, resourcesPath);
+
+            // The HTML keeps vault-root-relative paths (attachments/...), so prefix
+            // them with "../" once per folder level to resolve from the deck's folder.
+            if (type == 'html' && outPath != '' && file.parent != null) {
+                const up = '../'.repeat(file.parent.path.split('/').length);
+                const html = readFileSync(outPath, 'utf-8');
+                writeFileSync(outPath, html.replace(/(\bsrc="|url\((?:&quot;|&#39;|&#x27;|'|")?)(?![a-z][a-z0-9+.-]*:|\/|#)(?=[\w.%-])/gi, (m, p) => p + up), 'utf-8');
+            }
 
             // Remove the root copy once Marp CLI is done (the preview server keeps using it)
             if (type != 'preview' && inSubfolder) {
