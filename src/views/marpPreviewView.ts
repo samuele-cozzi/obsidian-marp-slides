@@ -5,6 +5,7 @@ import { browser, type MarpCoreBrowser } from '@marp-team/marp-core/browser'
 import { MarpSlidesSettings } from '../utilities/settings'
 import { MarpExport } from '../utilities/marpExport';
 import { FilePath } from '../utilities/filePath'
+import { fitSections } from '../utilities/autoFit';
 import { MathOptions } from '@marp-team/marp-core/types/src/math/math';
 
 const markdownItContainer = require('markdown-it-container');
@@ -147,6 +148,9 @@ export class MarpPreviewView extends ItemView  {
             
             // Replace Backgorund Url for images
             html = html.replace(/(?!background-image:url\(&quot;http)background-image:url\(&quot;/g, `background-image:url(&quot;${basePath}`);
+            // The backgroundImage directive renders as url('...') or an unquoted url,
+            // so prefix those relative paths too
+            html = html.replace(/(background-image:url\()('|&#39;|&#x27;)?(?!&quot;|https?:|data:|app:|file:|\/)/g, (m, p, q) => `${p}${q || ''}${basePath}`);
 
             const htmlFile = `
                 <!DOCTYPE html>
@@ -161,6 +165,16 @@ export class MarpPreviewView extends ItemView  {
 
             container.innerHTML = htmlFile;
             this.marpBrowser?.update();
+
+            // The preview re-renders on every change, so one fit per render is
+            // enough; refit only if web fonts were still loading.
+            setTimeout(() => {
+                const sections = () => container.querySelectorAll<HTMLElement>('section');
+                fitSections(sections());
+                if (document.fonts && document.fonts.status !== 'loaded') {
+                    document.fonts.ready.then(() => fitSections(sections()));
+                }
+            }, 50);
         }
         else
         {

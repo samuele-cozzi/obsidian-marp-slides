@@ -18,8 +18,14 @@ export class MarpExport {
 
     async export(file: TFile, type: string){
         const filesTool = new FilePath(this.settings);
-        await filesTool.removeFileFromRoot(file);
-        await filesTool.copyFileToRoot(file);
+        // With the "absolute" link format the deck is copied to the vault root so
+        // vault-root image paths resolve. Skip this when the deck already lives in
+        // the root, otherwise removeFileFromRoot would delete the original.
+        const inSubfolder = file.parent != null && !file.parent.isRoot();
+        if (inSubfolder) {
+            await filesTool.removeFileFromRoot(file);
+            await filesTool.copyFileToRoot(file);
+        }
         const completeFilePath = filesTool.getCompleteFilePath(file);
         const themePath = filesTool.getThemePath(file);
         const resourcesPath = filesTool.getLibDirectory(file.vault);
@@ -106,7 +112,31 @@ export class MarpExport {
                     
                     //argv.push('--watch');
             }
+
+            // Write the output next to the original deck instead of next to the
+            // root copy, unless an export path is configured.
+            const outExt: { [type: string]: string } = { 'pdf': 'pdf', 'pdf-with-notes': 'pdf', 'pptx': 'pptx', 'png': 'png', 'html': 'html' };
+            let outPath = '';
+            if (outExt[type] && inSubfolder && file.parent != null && filesTool.isAbsoluteLinkFormat(file) && !argv.includes('-o')) {
+                outPath = `${filesTool.getRootPath(file)}${file.parent.path}/${file.basename}.${outExt[type]}`;
+                argv.push('-o');
+                argv.push(outPath);
+            }
+
             await this.run(argv, resourcesPath);
+
+            // The HTML keeps vault-root-relative paths (attachments/...), so prefix
+            // them with "../" once per folder level to resolve from the deck's folder.
+            if (type == 'html' && outPath != '' && file.parent != null) {
+                const up = '../'.repeat(file.parent.path.split('/').length);
+                const html = readFileSync(outPath, 'utf-8');
+                writeFileSync(outPath, html.replace(/(\bsrc="|url\((?:&quot;|&#39;|&#x27;|'|")?)(?![a-z][a-z0-9+.-]*:|\/|#)(?=[\w.%-])/gi, (m, p) => p + up), 'utf-8');
+            }
+
+            // Remove the root copy once Marp CLI is done (the preview server keeps using it)
+            if (type != 'preview' && inSubfolder) {
+                await filesTool.removeFileFromRoot(file);
+            }
         } 
 
     }
@@ -118,7 +148,7 @@ export class MarpExport {
         try {
             process.env.CHROME_PATH = this.settings.CHROME_PATH || CHROME_PATH;
 
-            this.runMarpCli(argv, resourcesPath);
+            await this.runMarpCli(argv, resourcesPath);
             
         } catch (e) {
             console.error(e)
